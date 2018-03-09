@@ -44,6 +44,19 @@ public class Name {
         return fullName;
     }
 
+    /**
+     * Returns name of person in reverse.
+     */
+    @Override
+    public String nameInReverse(String name) {
+        String nameInReverse = "";
+        int k = 0;
+        for(int i = fullName.length()-1; i>=0; i--) {
+            nameInReverse.charAt(k++) = fullName.charAt(i);
+        }
+        return nameInReverse;
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

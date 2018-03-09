@@ -11,7 +11,7 @@ ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
 endif::[]
-:repoURL: https://github.com/se-edu/addressbook-level4
+:repoURL: https://github.com/se-edu/CS2103JAN2018-F11-B1/main
 
 By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
 
@@ -77,7 +77,8 @@ Updating from LinkedIn will synchronize your CRM Book with your LinkedIn Account
 
 === Adding a person: `add`
 
-Adds a person to the address book +
+Adds a lead to the address book +
+The program will inform the user if the lead is already in the address book +
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`
 
 [TIP]

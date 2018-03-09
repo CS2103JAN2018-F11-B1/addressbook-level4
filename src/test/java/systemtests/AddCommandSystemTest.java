@@ -134,6 +134,10 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
 
         /* ----------------------------------- Perform invalid add operations --------------------------------------- */
 
+        /* Case: add a person who has the same features in the address book except his/her name is in reverse order */
+        command = PersonUtil.getAddCommand(AMY);
+        assertCommandFailure(command, AddCommand.MESSAGE_DUPLICATE_PERSON);
+
         /* Case: add a duplicate person -> rejected */
         command = PersonUtil.getAddCommand(HOON);
         assertCommandFailure(command, AddCommand.MESSAGE_DUPLICATE_PERSON);
