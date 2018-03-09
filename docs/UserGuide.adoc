@@ -77,7 +77,8 @@ Updating from LinkedIn will synchronize your CRM Book with your LinkedIn Account
 
 === Adding a person: `add`
 
-Adds a person to the address book +
+Adds a lead to the address book +
+The program will inform the user if the lead is already in the address book +
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`
 
 [TIP]
