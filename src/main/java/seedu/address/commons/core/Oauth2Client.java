@@ -7,13 +7,14 @@ import com.sun.net.httpserver.HttpServer;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
-import java.net.HttpURLConnection;
 
 import seedu.address.ui.BrowserWindow;
 
 
-
-
+/**
+ * Class that handles the OAuth2 call with LiknedIn
+ * Acts as the client in the client-server scheme
+ */
 public class Oauth2Client {
 
     /**
@@ -31,7 +32,7 @@ public class Oauth2Client {
         String clientId = config.getAppId();
 
         String urlString = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id="
-        + clientId + "&redirect_uri=http://127.0.0.1:13370&state=123";
+            + clientId + "&redirect_uri=http://127.0.0.1:13370&state=123";
 
         BrowserWindow bWindow = new BrowserWindow(urlString);
         bWindow.show();
