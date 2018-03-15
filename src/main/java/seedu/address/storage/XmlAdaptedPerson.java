@@ -129,8 +129,12 @@ public class XmlAdaptedPerson {
         final Type type = new Type(this.type);
 
         final Set<Tag> tags = new HashSet<>(personTags);
-        if (type.value.equals("Lead")) { return new Lead(name, phone, email, address, tags); }
-        if (type.value.equals("Contact")) { return new Contact(name, phone, email, address, tags); }
+        if (type.value.equals("Lead")) {
+            return new Lead(name, phone, email, address, tags);
+        }
+        if (type.value.equals("Contact")) {
+            return new Contact(name, phone, email, address, tags);
+        }
         return new Person(name, phone, email, address, tags);
     }
 

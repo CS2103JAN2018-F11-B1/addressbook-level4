@@ -48,8 +48,7 @@ public class SampleDataUtil {
             for (Person samplePerson : getSamplePersons()) {
                 if (samplePerson instanceof Lead) {
                     sampleAb.addPerson((Lead) samplePerson);
-                }
-                else {
+                } else {
                     sampleAb.addPerson((Contact) samplePerson);
                 }
             }

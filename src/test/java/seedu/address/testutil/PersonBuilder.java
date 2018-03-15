@@ -102,9 +102,15 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Builds the {@code Person}.
+     */
     public Person build() {
-        if (this.type.value.equals("Lead")) { return new Lead(name, phone, email, address, tags); }
-        else { return new Contact(name, phone, email, address, tags); }
+        if (this.type.value.equals("Lead")) {
+            return new Lead(name, phone, email, address, tags);
+        } else {
+            return new Contact(name, phone, email, address, tags);
+        }
     }
 
 }

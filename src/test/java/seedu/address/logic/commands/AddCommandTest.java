@@ -43,7 +43,7 @@ public class AddCommandTest {
     @Test
     public void execute_personAcceptedByModel_addSuccessful() throws Exception {
         ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
-        Lead validPerson = (Lead)new PersonBuilder().build();
+        Lead validPerson = (Lead) new PersonBuilder().build();
 
         CommandResult commandResult = getAddCommandForPerson(validPerson, modelStub).execute();
 
@@ -54,7 +54,7 @@ public class AddCommandTest {
     @Test
     public void execute_duplicatePerson_throwsCommandException() throws Exception {
         ModelStub modelStub = new ModelStubThrowingDuplicatePersonException();
-        Lead validPerson = (Lead)new PersonBuilder().build();
+        Lead validPerson = (Lead) new PersonBuilder().build();
 
         thrown.expect(CommandException.class);
         thrown.expectMessage(AddCommand.MESSAGE_DUPLICATE_PERSON);
@@ -64,8 +64,8 @@ public class AddCommandTest {
 
     @Test
     public void equals() {
-        Lead alice = (Lead)new PersonBuilder().withName("Alice").build();
-        Lead bob = (Lead)new PersonBuilder().withName("Bob").build();
+        Lead alice = (Lead) new PersonBuilder().withName("Alice").build();
+        Lead bob = (Lead) new PersonBuilder().withName("Bob").build();
         AddCommand addAliceCommand = new AddCommand(alice);
         AddCommand addBobCommand = new AddCommand(bob);
 
