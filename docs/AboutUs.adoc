@@ -27,21 +27,21 @@ Responsibilities: UI
 
 '''
 
-=== Johnny Doe
-image::yijinl.jpg[width="150", align="left"]
-{empty}[http://github.com/yijinl[github]] [<<johndoe#, portfolio>>]
+=== Sheikh Umar
+image::sheikh-umar.png[width="150", align="left"]
+{empty}[https://github.com/Sheikh-Umar[github]] [<<johndoe#, portfolio>>]
 
-Role: Developer +
-Responsibilities: Data
+Role: Documentation + Deliverables and deadlines
+Responsibilities: Smart Duplicate detection + Data Enrichment + UI
 
 '''
 
-=== Johnny Roe
-image::m133225.jpg[width="150", align="left"]
-{empty}[http://github.com/m133225[github]] [<<johndoe#, portfolio>>]
+=== Woody Lau
+image::WoodyLau.jpg[width="150", align="left"]
+{empty}[http://github.com/WoodyLau[github]] [<<johndoe#, portfolio>>]
 
-Role: Developer +
-Responsibilities: Dev Ops + Threading
+Role: Developer + Git Expert + Integration
+Responsibilities: Lead, Contact and Account Objects. Calendar and Meeting Scheduling.
 
 '''
 
