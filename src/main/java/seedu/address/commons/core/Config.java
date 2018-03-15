@@ -16,7 +16,7 @@ public class Config {
     private String userPrefsFilePath = "preferences.json";
     private String appId = "78ameftoz7yvk4";
 
-    public String getAppId(){
+    public String getAppId() {
         return appId;
     }
 

@@ -1,9 +1,9 @@
 package seedu.address.logic.commands;
 
+import java.io.IOException;
+
 import seedu.address.commons.core.Oauth2Client;
 import seedu.address.logic.commands.exceptions.CommandException;
-
-import java.io.IOException;
 
 /**
  * Allows a user to login to their LinkedIn account
