@@ -172,7 +172,10 @@ public class MainWindow extends UiPart<Stage> {
         helpWindow.show();
     }
 
-    public void handleLinkedInAuthentication(){
+    /**
+     * Opens the linkedin authentication window.
+     */
+    public void handleLinkedInAuthentication() {
         try {
             Oauth2Client.authenticateWithLinkedIn();
         } catch (IOException e) {
@@ -201,7 +204,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     @Subscribe
-    private void handleLinkedInAuthentication(ShowBrowserRequestEvent event) {
+    private void handleLinkedInAuthenticationEvent(ShowBrowserRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         handleLinkedInAuthentication();
     }
