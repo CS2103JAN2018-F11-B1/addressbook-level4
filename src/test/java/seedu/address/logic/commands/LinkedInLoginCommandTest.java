@@ -9,6 +9,8 @@ import seedu.address.logic.UndoRedoStack;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 
+import java.io.IOException;
+
 public class LinkedInLoginCommandTest {
 
     @Test
@@ -22,7 +24,12 @@ public class LinkedInLoginCommandTest {
      * does nothing for now but will eventually log a user in to LinkedIn.
      */
     private LinkedInLoginCommand prepareCommand(Model model) {
-        LinkedInLoginCommand command = new LinkedInLoginCommand();
+        LinkedInLoginCommand command = null;
+        try {
+            command = new LinkedInLoginCommand();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         command.setData(model, new CommandHistory(), new UndoRedoStack());
         return command;
     }

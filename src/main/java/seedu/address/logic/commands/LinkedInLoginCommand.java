@@ -1,6 +1,9 @@
 package seedu.address.logic.commands;
 
+import seedu.address.commons.core.Oauth2Client;
 import seedu.address.logic.commands.exceptions.CommandException;
+
+import java.io.IOException;
 
 /**
  * Allows a user to login to their LinkedIn account
@@ -16,8 +19,12 @@ public class LinkedInLoginCommand extends UndoableCommand {
     /**
      * Creates a LinkedInLogin log a Salesperson in to LinkedIn
      */
-    public LinkedInLoginCommand() {
-
+    public LinkedInLoginCommand() throws IOException {
+        try {
+            Oauth2Client.startServer();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
