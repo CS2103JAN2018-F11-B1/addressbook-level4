@@ -10,8 +10,6 @@ import org.junit.Test;
 import seedu.address.commons.events.ui.ShowBrowserRequestEvent;
 import seedu.address.ui.testutil.EventsCollectorRule;
 
-import java.io.IOException;
-
 public class LinkedInLoginCommandTest {
 
     @Rule
