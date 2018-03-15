@@ -1,31 +1,25 @@
 package seedu.address.commons.core;
 
-import seedu.address.commons.core.Config;
-import seedu.address.ui.BrowserWindow;
-
-import java.net.InetSocketAddress;
-import java.net.HttpURLConnection;
-
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.InetSocketAddress;
+import java.net.HttpURLConnection;
 
+import seedu.address.ui.BrowserWindow;
 
 
 
 
 public class Oauth2Client {
 
-    private static HttpURLConnection con;
-    private static final String response_type = "code";
-
-    /*
-    * Called when user types Linkedin_login
-    * starts a webserver and opens a browser for Linkedin Authorization
-    */
+    /**
+     * Called when user types Linkedin_login
+     * starts a webserver and opens a browser for Linkedin Authorization
+     */
     public static void authenticateWithLinkedIn() throws IOException {
         try {
             startServer();
@@ -45,9 +39,9 @@ public class Oauth2Client {
 
     }
 
-    /*
-    * Starts a webserver
-    */
+    /**
+     * Starts a webserver
+     */
     public static void startServer() throws IOException {
         int port = 13370;
         HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
@@ -56,9 +50,9 @@ public class Oauth2Client {
         server.start();
     }
 
-    /*
-    * Allows the server to host a webpage at the directory specified in createContext
-    */
+    /**
+     * Allows the server to host a webpage at the directory specified in createContext
+     */
     static class MyHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange t) throws IOException {
