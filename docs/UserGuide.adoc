@@ -83,7 +83,7 @@ Format: `help`
 
 Format: 'linkedin_login'
 
-[Tip]
+[TIP]
 A LinkedIn Login is required if you want to synchronize your CRM Book with your LinkedIn Account. If this is your first login, a synchronization will also take place.
 
 === Update from LinkedIn : 'updateLinkedIn' (IN PROGRESS)
