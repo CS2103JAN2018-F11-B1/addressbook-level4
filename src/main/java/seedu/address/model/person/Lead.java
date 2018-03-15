@@ -37,9 +37,7 @@ public class Lead extends Person {
         this.tags = new UniqueTagList(tags);
     }
 
-    public Name getName() {
-        return name;
-    }
+    public Name getName() { return name; }
 
     public Phone getPhone() {
         return phone;
