@@ -37,7 +37,9 @@ public class Lead extends Person {
         this.tags = new UniqueTagList(tags);
     }
 
-    public Name getName() { return name; }
+    public Name getName() {
+        return name;
+    }
 
     public Phone getPhone() {
         return phone;
@@ -51,7 +53,9 @@ public class Lead extends Person {
         return address;
     }
 
-    public Type getType() { return type; }
+    public Type getType() {
+        return type;
+    }
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}

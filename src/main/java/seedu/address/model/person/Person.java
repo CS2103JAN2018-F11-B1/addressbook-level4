@@ -113,11 +113,17 @@ public class Person {
         return builder.toString();
     }
 
+    /**
+     * Returns a Lead with the same data as the Person.
+     */
     public Lead toLead() {
         Lead lead = new Lead(this.name, this.phone, this.email, this.address, this.getTags());
         return lead;
     }
 
+    /**
+     * Returns a Contact with the same data as the Person.
+     */
     public Contact toContact() {
         Contact contact = new Contact(this.name, this.phone, this.email, this.address, this.getTags());
         return contact;

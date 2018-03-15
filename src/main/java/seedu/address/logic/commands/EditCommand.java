@@ -115,7 +115,9 @@ public class EditCommand extends UndoableCommand {
         if (type.value.equals("Lead")) {
             return new Lead(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
         }
-        else { return new Contact(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags); }
+        else {
+            return new Contact(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        }
     }
 
     @Override

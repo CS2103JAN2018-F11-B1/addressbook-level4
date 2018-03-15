@@ -46,8 +46,12 @@ public class SampleDataUtil {
         try {
             AddressBook sampleAb = new AddressBook();
             for (Person samplePerson : getSamplePersons()) {
-                if (samplePerson instanceof Lead) { sampleAb.addPerson((Lead)samplePerson); }
-                else { sampleAb.addPerson((Contact)samplePerson); }
+                if (samplePerson instanceof Lead) {
+                    sampleAb.addPerson((Lead) samplePerson);
+                }
+                else {
+                    sampleAb.addPerson((Contact) samplePerson);
+                }
             }
             return sampleAb;
         } catch (DuplicatePersonException e) {

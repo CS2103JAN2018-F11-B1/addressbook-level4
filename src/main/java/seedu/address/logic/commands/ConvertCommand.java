@@ -1,20 +1,14 @@
 package seedu.address.logic.commands;
 
-import static java.lang.System.exit;
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.*;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
-import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
@@ -83,7 +77,7 @@ public class ConvertCommand extends UndoableCommand {
         }
         Person test = lastShownList.get(0);
 
-        oldLead = (Lead)lastShownList.get(index.getZeroBased());
+        oldLead = (Lead) lastShownList.get(index.getZeroBased());
         newContact = createContact(oldLead);
     }
 
