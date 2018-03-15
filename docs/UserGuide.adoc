@@ -17,7 +17,12 @@ By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
 
 == Introduction
 
-CRM Book is for those who *prefer to use a desktop app for managing their Leads, Contacts, and Accounts*. More importantly, CRM Book is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, CRM Book can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <<Quick Start>> to get started. Enjoy!
+CRM Book application aims to assist salespeople in managing the information of leads and contacts
+more optimally for future sales decisions. Unique features of this application include identifying if a lead to be added in is a duplicate,
+booking a digital conference with other leads through Zoom, and converting a Lead to a Contact after a sales transaction.
+*More importantly, CRM Book is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast,
+CRM Book can get your contact management tasks done faster than traditional GUI apps.
+Interested? Jump to the <<Quick Start>> to get started. Enjoy!
 
 == Quick Start
 
@@ -47,6 +52,13 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 [[Features]]
 == Features
 
+* Coming in v2.0: Identify if a lead to be added is already in the CRM application. This is a viable feature as leads from different parts of the world
+have different ways of adding the same lead into the CRM application. For instance, certain leads may add a lead in the order of last name-first name
+rather than first name-last name. The CRM application will prompt the user that the lead to be added is a duplicate.
+
+* Group leads from different companies that share the same parent company under a category named after the parent company.
+Example: Leads from Skype and Nokia can be categorised under a group called Microsoft.
+
 ====
 *Command Format*
 
@@ -72,13 +84,13 @@ If this is your first login, a synchronization will also take place.
 
 Format: 'updateLinkedIn'
 
-[Tip]
+[TIP]
 Updating from LinkedIn will synchronize your CRM Book with your LinkedIn Account and highlight all changes since the last synchonization
 
-=== Adding a person: `add`
+=== Adding a person: `a or add`
 
 Adds a person to the address book +
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`
+Format: `a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` or `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`
 
 [TIP]
 A person can have any number of tags (including 0)
@@ -87,11 +99,12 @@ Examples:
 
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `a n/Jake Tan t/friend e/jaketan@example.com a/Simei Street 1, block 999, #09-09 p/1234567`
 
-=== Listing all persons : `list`
+=== Listing all persons : `l or list`
 
 Shows a list of all persons in the address book. +
-Format: `list`
+Format: `list`, `l`
 
 === Editing a person : `edit`
 
@@ -201,7 +214,7 @@ Examples:
 `undo` (reverses the `delete 1` command) +
 
 * `select 1` +
-`list` +
+`l` +
 `undo` +
 The `undo` command fails as there are no undoable commands executed previously.
 
@@ -233,10 +246,10 @@ The `redo` command fails as there are no `undo` commands executed previously.
 `redo` (reapplies the `clear` command) +
 // end::undoredo[]
 
-=== Clearing all entries : `clear`
+=== Clearing all entries : `c or clear`
 
 Clears all entries from the address book. +
-Format: `clear`
+Format: `c`, clear`
 
 === Exiting the program : `exit`
 
@@ -261,16 +274,16 @@ _{explain how the user can enable/disable data encryption}_
 
 == Command Summary
 
-* *Add* `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` +
-e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-* *Clear* : `clear`
+* *Add* `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` + or `a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`
+e.g. `a n/John Tan p/99991111 e/johntan@example.com a/123, Tampines Rd, 54321 t/colleague`
+* *Clear* : `c` or `clear`
 * *Delete* : `delete INDEX` +
 e.g. `delete 3`
 * *Edit* : `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
 e.g. `edit 2 n/James Lee e/jameslee@example.com`
 * *Find* : `find KEYWORD [MORE_KEYWORDS]` +
 e.g. `find James Jake`
-* *List* : `list`
+* *List* : `list`, l`
 * *Help* : `help`
 * *Select* : `select INDEX` +
 e.g.`select 2`
