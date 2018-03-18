@@ -18,6 +18,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.Oauth2Client;
 import seedu.address.commons.events.ui.ExitAppRequestEvent;
+import seedu.address.commons.events.ui.HideBrowserRequestEvent;
 import seedu.address.commons.events.ui.ShowBrowserRequestEvent;
 import seedu.address.commons.events.ui.ShowHelpRequestEvent;
 import seedu.address.logic.Logic;
@@ -183,6 +184,13 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    /**
+     * Closes the linkedin authentication window.
+     */
+    public void handleHideBrowser() {
+        Oauth2Client.closeBrowser();
+    }
+
     void show() {
         primaryStage.show();
     }
@@ -201,6 +209,12 @@ public class MainWindow extends UiPart<Stage> {
 
     void releaseResources() {
         browserPanel.freeResources();
+    }
+
+    @Subscribe
+    private void handleCloseBrowserEvent(HideBrowserRequestEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        handleHideBrowser();
     }
 
     @Subscribe
