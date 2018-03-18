@@ -3,6 +3,7 @@ package seedu.address.commons.core;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.util.logging.Logger;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -32,7 +33,7 @@ public class Oauth2Client {
         String clientId = config.getAppId();
 
         String urlString = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id="
-            + clientId + "&redirect_uri=http://127.0.0.1:13370&state=123";
+            + clientId + "&redirect_uri=http://127.0.0.1:13370/test&state=123";
 
         BrowserWindow bWindow = new BrowserWindow(urlString);
         bWindow.show();
@@ -55,6 +56,7 @@ public class Oauth2Client {
      * Allows the server to host a webpage at the directory specified in createContext
      */
     static class MyHandler implements HttpHandler {
+        private final Logger logger = LogsCenter.getLogger(Oauth2Client.class);
         @Override
         public void handle(HttpExchange t) throws IOException {
             String response = "This is the response";
@@ -62,6 +64,7 @@ public class Oauth2Client {
             OutputStream os = t.getResponseBody();
             os.write(response.getBytes());
             os.close();
+            logger.info("RECEIVED A RESPONSE FROM THE SERVER");
         }
     }
 
