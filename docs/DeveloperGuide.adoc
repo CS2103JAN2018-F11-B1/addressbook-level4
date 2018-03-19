@@ -791,13 +791,13 @@ See this https://github.com/se-edu/addressbook-level4/pull/599[PR] for the step-
 
 === Feature contributions:
 
-David Ten:
-* Major Feature: LinkedIn Synchronize * +
-*Allows a Salesperson to connect his LinkedIn account to the application +
-*Allows Contacts to be connected to their respective LinkedIn account +
+David Ten: +
+** Major Feature ** : LinkedIn Synchronize +
+* Allows a Salesperson to connect his LinkedIn account to the application +
+* Allows Contacts to be connected to their respective LinkedIn account +
 
-* Major Feature: Alert for change of Account * +
-*Allows a Salesperson to be alerted when one of their Contacts move companies
+** Major Feature ** : Alert for change of Account * +
+* Allows a Salesperson to be alerted when one of their Contacts move companies
 
 Umar:
 
