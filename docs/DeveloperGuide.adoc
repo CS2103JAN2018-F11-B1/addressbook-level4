@@ -804,7 +804,6 @@ David Ten: +
 * This allows them to sell to a new account using their old Contact.
 
 Umar:
-
 **Major feature** : Duplicate Detection
 
 * identifying different ways that a lead can be a duplicate. +
@@ -816,6 +815,7 @@ Other examples of duplicate detection include rejecting a lead as he/she has the
 phone number as a lead/contact in the CRM application.
 
 **Minor feature** : Command Alias
+
 * Ensures that commands can be performed using its alias. +
 * In the sales industry, a person may type fast and would want to execute a command quickly.
 Hence, doing a command using its alias will ensure he/she can do a certain command quicker.
