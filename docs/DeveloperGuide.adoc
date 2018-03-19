@@ -803,7 +803,7 @@ David Ten: +
 * Allows a Salesperson to be alerted when one of their Contacts move companies +
 * This allows them to sell to a new account using their old Contact.
 
-Umar:
+Umar: + 
 **Major feature** : Duplicate Detection
 
 * identifying different ways that a lead can be a duplicate. +
