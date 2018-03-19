@@ -1,8 +1,6 @@
 package seedu.address.commons.core;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.InetSocketAddress;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
@@ -40,6 +38,10 @@ import javax.crypto.NoSuchPaddingException;
 public class Oauth2Client {
     static BrowserWindow bWindow;
     static String secret;
+    static String authorizationCode;
+    static String redirectUri = "http://127.0.0.1:13370/test";
+    static String clientId;
+    static Logger logger = LogsCenter.getLogger(Oauth2Client.class);
     /**
      * Called when user types Linkedin_login
      * starts a webserver and opens a browser for Linkedin Authorization
@@ -52,10 +54,10 @@ public class Oauth2Client {
         }
 
         Config config = new Config();
-        String clientId = config.getAppId();
+        clientId = config.getAppId();
 
         String urlString = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id="
-            + clientId + "&redirect_uri=http://127.0.0.1:13370/test&state=123";
+            + clientId + "&redirect_uri=" + redirectUri + "&state=123";
 
         bWindow = new BrowserWindow(urlString);
         bWindow.show();
@@ -115,13 +117,15 @@ public class Oauth2Client {
      * This method exchanges the authorization token for an accessToken
      */
     public static void getAccessToken() throws IOException {
-        Logger logger = LogsCenter.getLogger(Oauth2Client.class);
         HttpClient httpclient = HttpClients.createDefault();
         HttpPost httppost = new HttpPost("https://www.linkedin.com/oauth/v2/accessToken");
 
-        List<NameValuePair> params = new ArrayList<NameValuePair>(2);
-        params.add(new BasicNameValuePair("param-1", "12345"));
-        params.add(new BasicNameValuePair("param-2", "Hello!"));
+        List<NameValuePair> params = new ArrayList<NameValuePair>(5);
+        params.add(new BasicNameValuePair("grant_type", "authorization_code"));
+        params.add(new BasicNameValuePair("code", authorizationCode));
+        params.add(new BasicNameValuePair("redirect_uri", redirectUri));
+        params.add(new BasicNameValuePair("client_id", clientId));
+        params.add(new BasicNameValuePair("client_secret", secret));
         httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 
         HttpResponse response = httpclient.execute(httppost);
@@ -131,16 +135,19 @@ public class Oauth2Client {
             InputStream instream = entity.getContent();
             try {
                 // do something useful
-                logger.info("RESPONSE IS " + response.toString());
-                logger.info("RESPONSE IS " + response.getEntity().toString());
-                logger.info("RESPONSE IS " + response.getAllHeaders().toString());
+                BufferedReader streamReader = new BufferedReader(new InputStreamReader(instream, "UTF-8"));
+                StringBuilder responseStrBuilder = new StringBuilder();
+
+                String inputStr;
+                while ((inputStr = streamReader.readLine()) != null)
+                    responseStrBuilder.append(inputStr);
+                logger.info("FINAL FROM BUFFER" + responseStrBuilder.toString());
+                //the above is a string in JSON format
+                //How to get the access_token value from JSON?
             } finally {
                 instream.close();
             }
         }
-
-
-
     }
 
     /**
@@ -157,6 +164,10 @@ public class Oauth2Client {
             os.write(response.getBytes());
             os.close();
             logger.info("RECEIVED A RESPONSE FROM THE SERVER: " + t.getRequestURI().getQuery());
+
+            String authorizationCodeandState = t.getRequestURI().getQuery();
+            authorizationCode = authorizationCodeandState.substring(5, authorizationCodeandState.length() -10);
+            logger.info("Auth code is: " + authorizationCode);
             //t.getRequestURI().getQuery() receives the response from the server. Need to parse it
             EventsCenter.getInstance().post(new HideBrowserRequestEvent());
 
