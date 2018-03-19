@@ -795,15 +795,15 @@ David Ten: +
 **Major Feature** : LinkedIn Synchronize
 
 * Allows a Salesperson to connect his LinkedIn account to the application +
-* Allows Contacts to be connected to their respective LinkedIn account 
+* Allows Contacts to be connected to their respective LinkedIn account
 
 
-**Major Feature** : Alert for change of Account 
+**Major Feature** : Alert for change of Account
 
 * Allows a Salesperson to be alerted when one of their Contacts move companies +
 * This allows them to sell to a new account using their old Contact.
 
-Umar: + 
+Umar: +
 **Major feature** : Duplicate Detection
 
 * identifying different ways that a lead can be a duplicate. +
