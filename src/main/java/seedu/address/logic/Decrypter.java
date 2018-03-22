@@ -1,12 +1,20 @@
 package seedu.address.logic;
 
-import seedu.address.commons.core.LogsCenter;
 
-import javax.crypto.*;
+import javax.crypto.Cipher;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
-import java.security.*;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.logging.Logger;
+
+import seedu.address.commons.core.LogsCenter;
+
 
 
 /**
@@ -45,10 +53,10 @@ public class Decrypter {
 
         //Decrypt the data
         byte[] byteCipherText = Base64.getDecoder().decode("nvu3QZLMqueiNkyaaOJQmz7Bzrk+Fk+P");
-        desCipher.init(Cipher.DECRYPT_MODE,sKey,desCipher.getParameters());
+        desCipher.init(Cipher.DECRYPT_MODE, sKey, desCipher.getParameters());
         byte[] byteDecryptedText = desCipher.doFinal(byteCipherText);
         strDecryptedText = new String(byteDecryptedText);
-        logger.info("Decrypted Text message is " +strDecryptedText);
+        logger.info("Decrypted Text message is " + strDecryptedText);
         return strDecryptedText;
     }
 
