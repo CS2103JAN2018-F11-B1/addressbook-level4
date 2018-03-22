@@ -47,6 +47,12 @@ public class FindCommandSystemTest extends AddressBookSystemTest {
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
+        /* Case: find person using alias, where person list is not displaying the person we are finding -> 1 person found */
+        command = FindCommand.COMMAND_ALIAS + " Carl";
+        ModelHelper.setFilteredList(expectedModel, CARL);
+        assertCommandSuccess(command, expectedModel);
+        assertSelectedCardUnchanged();
+
         /* Case: find multiple persons in address book, 2 keywords -> 2 persons found */
         command = FindCommand.COMMAND_WORD + " Benson Daniel";
         ModelHelper.setFilteredList(expectedModel, BENSON, DANIEL);
@@ -60,6 +66,11 @@ public class FindCommandSystemTest extends AddressBookSystemTest {
 
         /* Case: find multiple persons in address book, 2 keywords with 1 repeat -> 2 persons found */
         command = FindCommand.COMMAND_WORD + " Daniel Benson Daniel";
+        assertCommandSuccess(command, expectedModel);
+        assertSelectedCardUnchanged();
+
+        /* Case: find multiple persons using find alias in address book, 2 keywords with 1 repeat -> 2 persons found */
+        command = FindCommand.COMMAND_ALIAS + " Daniel Benson Daniel";
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
@@ -123,6 +134,11 @@ public class FindCommandSystemTest extends AddressBookSystemTest {
 
         /* Case: find email of person in address book -> 0 persons found */
         command = FindCommand.COMMAND_WORD + " " + DANIEL.getEmail().value;
+        assertCommandSuccess(command, expectedModel);
+        assertSelectedCardUnchanged();
+
+        /* Case: find email of person in address book using find alias -> 0 persons found */
+        command = FindCommand.COMMAND_ALIAS + " " + DANIEL.getEmail().value;
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
