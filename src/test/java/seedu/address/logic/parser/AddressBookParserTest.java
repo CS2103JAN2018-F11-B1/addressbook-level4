@@ -139,6 +139,12 @@ public class AddressBookParserTest {
     }
 
     @Test
+    public void parseCommand_undoCommandAlias_returnsUndoCommand() throws Exception {
+        assertTrue(parser.parseCommand(UndoCommand.COMMAND_ALIAS) instanceof UndoCommand);
+        assertTrue(parser.parseCommand("u 6") instanceof UndoCommand);
+    }
+
+    @Test
     public void parseCommand_unrecognisedInput_throwsParseException() throws Exception {
         thrown.expect(ParseException.class);
         thrown.expectMessage(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
