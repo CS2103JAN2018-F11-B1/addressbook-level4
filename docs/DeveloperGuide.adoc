@@ -843,7 +843,13 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |salesperson |convert a Lead to a Contact|know who I have successfully sold to in the past
 
-|`* * *` |salesperson |remove duplicate leads, contacts and accounts|not have redundant data in my CRM
+|`* * *` |salesperson |determine if a lead to be added is already a contact|not have redundant data in my CRM
+
+|`* * *` |salesperson |identify a duplicate lead based on email address|not have redundant data in my CRM
+
+|`* * *` |salesperson |identify a duplicate lead based on phone number|not have redundant data in my CRM
+
+|`* * *` |salesperson |identify a duplicate lead based on reverse ordering of name|not have redundant data in my CRM
 
 |`* * *` |salesperson |login to LinkedIn|Sync my LinkedIn contacts
 
