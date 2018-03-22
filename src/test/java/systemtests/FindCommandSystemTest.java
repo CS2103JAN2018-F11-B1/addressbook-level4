@@ -47,6 +47,12 @@ public class FindCommandSystemTest extends AddressBookSystemTest {
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
+        /* Case: find person via find alias command, where person list is not displaying the person we are finding -> 1 person found */
+        command = FindCommand.COMMAND_ALIAS + " Carl";
+        ModelHelper.setFilteredList(expectedModel, CARL);
+        assertCommandSuccess(command, expectedModel);
+        assertSelectedCardUnchanged();
+
         /* Case: find multiple persons in address book, 2 keywords -> 2 persons found */
         command = FindCommand.COMMAND_WORD + " Benson Daniel";
         ModelHelper.setFilteredList(expectedModel, BENSON, DANIEL);
@@ -55,6 +61,11 @@ public class FindCommandSystemTest extends AddressBookSystemTest {
 
         /* Case: find multiple persons in address book, 2 keywords in reversed order -> 2 persons found */
         command = FindCommand.COMMAND_WORD + " Daniel Benson";
+        assertCommandSuccess(command, expectedModel);
+        assertSelectedCardUnchanged();
+
+        /* Case: find multiple persons in address book using find alias command, 2 keywords in reversed order -> 2 persons found */
+        command = FindCommand.COMMAND_ALIAS + " Daniel Benson";
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
@@ -67,6 +78,13 @@ public class FindCommandSystemTest extends AddressBookSystemTest {
          * -> 2 persons found
          */
         command = FindCommand.COMMAND_WORD + " Daniel Benson NonMatchingKeyWord";
+        assertCommandSuccess(command, expectedModel);
+        assertSelectedCardUnchanged();
+
+        /* Case: find multiple persons in address book using find alias command, 2 matching keywords and 1 non-matching keyword
+         * -> 2 persons found
+         */
+        command = FindCommand.COMMAND_ALIAS + " Daniel Benson NonMatchingKeyWord";
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
@@ -123,6 +141,11 @@ public class FindCommandSystemTest extends AddressBookSystemTest {
 
         /* Case: find email of person in address book -> 0 persons found */
         command = FindCommand.COMMAND_WORD + " " + DANIEL.getEmail().value;
+        assertCommandSuccess(command, expectedModel);
+        assertSelectedCardUnchanged();
+
+        /* Case: find email of person in address book using find alias command -> 0 persons found */
+        command = FindCommand.COMMAND_ALIAS + " " + DANIEL.getEmail().value;
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
