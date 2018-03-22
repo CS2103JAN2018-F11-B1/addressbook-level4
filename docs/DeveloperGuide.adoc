@@ -835,6 +835,17 @@ ZHU Leyan: +
 * Allows a Salesperson to add/remove/edit a remark of a person in the CRM +
 * This allows them to record some special information of a customer.
 
+Woody Lau: +
+**Major Feature** : Lead and Contact Creation
+
+* Breaks apart the Person class into Leads and Contacts +
+* Each will have their own functions and fields
+
+
+**Major Feature** : Account Creation
+
+* Allows Contacts to belong to Accounts.
+
 
 [appendix]
 == User Stories
@@ -852,7 +863,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |salesperson |convert a Lead to a Contact|know who I have successfully sold to in the past
 
-|`* * *` |salesperson |remove duplicate leads, contacts and accounts|not have redundant data in my CRM
+|`* * *` |salesperson |identify duplicate leads, contacts and accounts|not have redundant data in my CRM
 
 |`* * *` |salesperson |login to LinkedIn|Sync my LinkedIn contacts
 
