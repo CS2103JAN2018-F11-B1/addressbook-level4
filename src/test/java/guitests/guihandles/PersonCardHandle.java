@@ -75,6 +75,6 @@ public class PersonCardHandle extends NodeHandle<Node> {
                 .map(Label::getStyleClass)
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("No such tag."));
-        }
+    }
 }
 
