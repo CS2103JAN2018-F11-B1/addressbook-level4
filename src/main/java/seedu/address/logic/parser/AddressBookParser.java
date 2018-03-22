@@ -66,6 +66,7 @@ public class AddressBookParser {
             return new ConvertCommandParser().parse(arguments);
 
         case SelectCommand.COMMAND_WORD:
+        case SelectCommand.COMMAND_ALIAS:
             return new SelectCommandParser().parse(arguments);
 
         case DeleteCommand.COMMAND_WORD:
