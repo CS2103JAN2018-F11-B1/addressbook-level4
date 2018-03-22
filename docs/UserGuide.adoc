@@ -231,10 +231,10 @@ The `undo` command fails as there are no undoable commands executed previously.
 `undo` (reverses the `clear` command) +
 `undo` (reverses the `delete 1` command) +
 
-=== Redoing the previously undone command : `redo`
+=== Redoing the previously undone command : `r`, `redo`
 
 Reverses the most recent `undo` command. +
-Format: `redo`
+Format: `r`, `redo`
 
 Examples:
 
@@ -245,6 +245,13 @@ Examples:
 * `delete 1` +
 `redo` +
 The `redo` command fails as there are no `undo` commands executed previously.
+
+* `delete 4` +
+`clear` +
+`undo` (reverses the `clear` command) +
+`undo` (reverses the `delete 4` command) +
+`r` (reapplies the `delete 4` command) +
+`redo` (reapplies the `clear` command) +
 
 * `delete 1` +
 `clear` +
@@ -298,5 +305,5 @@ e.g. `find James Jake`
 e.g.`select 2`
 * *History* : `history`
 * *Undo* : `undo`
-* *Redo* : `redo`
+* *Redo* : `r`, `redo`
 * *Linkedin_login* : 'linkedin_login'
