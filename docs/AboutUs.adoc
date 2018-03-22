@@ -10,46 +10,29 @@ We are a team based in the http://www.comp.nus.edu.sg[School of Computing, Natio
 
 == Project Team
 
-=== John Doe
-image::damithc.jpg[width="150", align="left"]
-{empty}[http://www.comp.nus.edu.sg/~damithch[homepage]] [https://github.com/damithc[github]] [<<johndoe#, portfolio>>]
+=== David Ten
+image::davidTen.png[width="150", align="left"]
+{empty}[https://github.com/davidten[github]]
 
-Role: Project Advisor
-
-'''
-
-=== John Roe
-image::lejolly.jpg[width="150", align="left"]
-{empty}[http://github.com/lejolly[github]] [<<johndoe#, portfolio>>]
-
-Role: Team Lead +
-Responsibilities: UI
+Role: Team Lead + Scheduling and Tracking + CRM Expert
+Responsibilities: LinkedIn Integration
 
 '''
 
-=== Johnny Doe
-image::yijinl.jpg[width="150", align="left"]
-{empty}[http://github.com/yijinl[github]] [<<johndoe#, portfolio>>]
+=== Sheikh Umar
+image::sheikh-umar.png[width="150", align="left"]
+{empty}[https://github.com/Sheikh-Umar[github]] [<<johndoe#, portfolio>>]
 
-Role: Developer +
-Responsibilities: Data
-
-'''
-
-=== Johnny Roe
-image::m133225.jpg[width="150", align="left"]
-{empty}[http://github.com/m133225[github]] [<<johndoe#, portfolio>>]
-
-Role: Developer +
-Responsibilities: Dev Ops + Threading
+Role: Documentation + Deliverables and deadlines
+Responsibilities: Smart Duplicate detection + Data Enrichment + UI
 
 '''
 
-=== Benson Meier
-image::yl_coder.jpg[width="150", align="left"]
-{empty}[http://github.com/yl-coder[github]] [<<johndoe#, portfolio>>]
+=== Woody Lau
+image::WoodyLau.png[width="150", align="left"]
+{empty}[http://github.com/WoodyLau[github]] [<<johndoe#, portfolio>>]
 
-Role: Developer +
-Responsibilities: UI
+Role: Developer + Git Expert + Integration
+Responsibilities: Lead, Contact and Account Objects. Calendar and Meeting Scheduling.
 
 '''

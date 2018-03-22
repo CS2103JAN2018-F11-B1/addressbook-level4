@@ -11,9 +11,14 @@ public class Config {
     public static final String DEFAULT_CONFIG_FILE = "config.json";
 
     // Config values customizable through config file
-    private String appTitle = "Address App";
+    private String appTitle = "CRM Book";
     private Level logLevel = Level.INFO;
     private String userPrefsFilePath = "preferences.json";
+    private String appId = "78ameftoz7yvk4";
+
+    public String getAppId() {
+        return appId;
+    }
 
     public String getAppTitle() {
         return appTitle;
@@ -66,6 +71,7 @@ public class Config {
         sb.append("App title : " + appTitle);
         sb.append("\nCurrent log level : " + logLevel);
         sb.append("\nPreference file Location : " + userPrefsFilePath);
+        sb.append("\nApp Id: " + appId);
         return sb.toString();
     }
 

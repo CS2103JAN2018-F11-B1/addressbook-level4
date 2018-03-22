@@ -12,7 +12,7 @@ ifdef::env-github[]
 endif::[]
 :repoURL: https://github.com/CS2103JAN2018-F11-B1/main
 
-By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
+By: `CS2103-F11-B1`      Since: `Jan 2018`      Licence: `MIT`
 
 == Setting up
 
@@ -789,7 +789,52 @@ See this https://github.com/se-edu/addressbook-level4/pull/599[PR] for the step-
 * prefers typing over mouse input
 * is reasonably comfortable using CLI apps
 
+=== Feature contributions:
+
+David Ten: +
+**Major Feature** : LinkedIn Synchronize
+
+* Allows a Salesperson to connect his LinkedIn account to the application +
+* Allows Contacts to be connected to their respective LinkedIn account
+
+
+**Major Feature** : Alert for change of Account
+
+* Allows a Salesperson to be alerted when one of their Contacts move companies +
+* This allows them to sell to a new account using their old Contact.
+
+Umar: +
+**Major feature** : Duplicate Detection
+
+* identifying different ways that a lead can be a duplicate. +
+* In the sales industry, the same lead may be stored in the CRM application in different forms.
+(Example: A lead already in the CRM application is about to be entered into the CRM application
+in the form of last name-first name. The CRM application will not detect this duplicate
+and successfully store this lead. Now the CRM application has a duplicate.
+Other examples of duplicate detection include rejecting a lead as he/she has the same
+phone number as a lead/contact in the CRM application.
+
+**Minor feature** : Command Alias
+
+* Ensures that commands can be performed using its alias. +
+* In the sales industry, a person may type fast and would want to execute a command quickly.
+Hence, doing a command using its alias will ensure he/she can do a certain command quicker.
+
+
 *Value proposition*: manage contacts faster than a typical mouse/GUI driven app
+
+ZHU Leyan: +
+**Major Feature** : Bulk Import of Leads
+
+* Allows a Salesperson to import a CSV file into the CRM +
+* Allows a Salesperson to import a large number of people into the CRM in one time.
+
+
+**Major Feature** : Remark Command
+
+* Allows a Salesperson to add/remove/edit a remark of a person in the CRM +
+* This allows them to record some special information of a customer.
+
 
 [appendix]
 == User Stories
@@ -868,6 +913,8 @@ _{More to be added}_
 .  Should work on any <<mainstream-os,mainstream OS>> as long as it has Java `1.8.0_60` or higher installed.
 .  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 .  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+.  Should process a query and respond within 3 seconds.
+.  Should be compatible across Linux, Windows, and MacOS operating systems.
 
 _{More to be added}_
 
@@ -879,6 +926,9 @@ Windows, Linux, Unix, OS-X
 
 [[private-contact-detail]] Private contact detail::
 A contact detail that is not meant to be shared with others
+
+[[zoom]] Zoom::
+A digital conferencing platform
 
 [appendix]
 == Product Survey
