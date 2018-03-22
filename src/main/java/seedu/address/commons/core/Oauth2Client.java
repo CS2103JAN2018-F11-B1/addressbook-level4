@@ -141,9 +141,9 @@ public class Oauth2Client {
                 String inputStr;
                 while ((inputStr = streamReader.readLine()) != null)
                     responseStrBuilder.append(inputStr);
-                logger.info("FINAL FROM BUFFER" + responseStrBuilder.toString());
-                //the above is a string in JSON format
-                //How to get the access_token value from JSON?
+                logger.info("Login to LinkedIn Successful" + responseStrBuilder.toString());
+                //Output is the access token
+                //Login Successful
             } finally {
                 instream.close();
             }
