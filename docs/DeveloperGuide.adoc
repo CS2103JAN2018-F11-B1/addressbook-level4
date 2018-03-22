@@ -389,20 +389,26 @@ Certain properties of the application can be controlled (e.g App name, logging l
 
 ==== Current Implementation
 
-A command can be performed by typing in its alias rather than the word.
-The feature is implemented by adding the alias of the command into its respective java document, and updating the AddressBookParser java document.
-The feature is implemented this way to utilise the command java documents that are available as opposed to creating a new java document for a certain alias. This feature is implemented to allow a user to enter a command without specifying the entire word of the command.
+A command can be performed by typing in its alias rather than the word. +
 
-=== Identifying a Duplicate feature [Planning to add]
+The feature is implemented by adding the alias of the command into its respective java document, and updating the AddressBookParser java document. +
+The feature is implemented this way to utilise the command java documents that are available as opposed to creating a new java document for a certain alias. +
+
+This feature is implemented to allow a user to enter a command without specifying the entire word of the command. +
+
+=== Identifying a Duplicate Lead feature [Planning to add]
 
 ==== Current Implementation
-The CRM application will ensure that every lead in the address book is unique.
-The feature is implemented by checking the phone number and email address of a new lead with all of the phone numbers and email addressesof all leads and contacts in its respective hash sets in the add command. The feature will be implemented on the add command because the current application detects duplicates at the add command.
-However, the application identifies a duplicate based on whether all of the attributes of a lead is exactly the same as that of a lead/contact in the application.
+The CRM application will ensure that every lead in the address book is unique. +
+
+The feature is implemented by checking the phone number and email address of a new lead with all of the phone numbers and email addresses of all leads and contacts in its respective hash sets in the add command. +
+
+The feature will be implemented on the add command because the current application detects duplicates at the add command. +
+
 The phone number and email address of a lead will be checked in two respective hash sets.
 If any of these hash sets contain either the phone number of email address of a lead,
 the CRM application will display a message that the lead is a duplicate and will reject this lead.
-The following action diagram shows how the undo operation works:
+The following action diagram shows how the operation of identifying a duplicate lead works:
 
 image::DetectDuplicateActivityDiagram.png[width="800"]
 
