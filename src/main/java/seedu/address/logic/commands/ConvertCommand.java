@@ -71,9 +71,9 @@ public class ConvertCommand extends UndoableCommand {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        try{
+        try {
             oldLead = (Lead) lastShownList.get(index.getZeroBased());
-        } catch (ClassCastException cce){
+        } catch (ClassCastException cce) {
             throw new CommandException(MESSAGE_NOT_CONVERTED);
         }
         newContact = createContact(oldLead);
