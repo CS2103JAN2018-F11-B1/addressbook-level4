@@ -102,5 +102,4 @@ public class Lead extends Person {
         getTags().forEach(builder::append);
         return builder.toString();
     }
-
 }
