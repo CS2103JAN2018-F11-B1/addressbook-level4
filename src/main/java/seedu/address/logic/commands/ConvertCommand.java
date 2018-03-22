@@ -10,7 +10,6 @@ import java.util.Set;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Contact;
 import seedu.address.model.person.Email;
@@ -46,7 +45,7 @@ public class ConvertCommand extends UndoableCommand {
     /**
      * @param index of the person in the filtered person list to edit
      */
-    public ConvertCommand(Index index) throws ParseException {
+    public ConvertCommand(Index index) {
         requireNonNull(index);
 
         this.index = index;
