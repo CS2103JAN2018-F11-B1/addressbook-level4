@@ -1058,6 +1058,8 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`*` |salesperson |see my calendar |schedule meetings without conflicting
 
+|`*` |salesperson that types fast|execute a command with as few types as possible|use my CRM Book efficiently
+
 |`*` |salesperson |schedule a meeting using zoom |schedule meetings easily and with a link other salespeople can use
 
 |=======================================================================
