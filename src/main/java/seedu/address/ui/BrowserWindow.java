@@ -67,7 +67,7 @@ public class BrowserWindow extends UiPart<Stage> {
      * 2) This method is called during animation or layout processing.
      * 3) This method is called on the primary stage.
      */
-    public void hide() {
+    public void hide(){
         logger.info("Closing a browser for the application.");
         getRoot().close();
     }

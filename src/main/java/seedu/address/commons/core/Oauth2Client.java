@@ -1,10 +1,6 @@
 package seedu.address.commons.core;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.InetSocketAddress;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
@@ -12,27 +8,27 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
 import javafx.application.Platform;
-import seedu.address.commons.events.ui.HideBrowserRequestEvent;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
 import seedu.address.logic.Decrypter;
 import seedu.address.ui.BrowserWindow;
+import seedu.address.commons.events.ui.HideBrowserRequestEvent;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 
 /**
@@ -40,12 +36,12 @@ import seedu.address.ui.BrowserWindow;
  * Acts as the client in the client-server scheme
  */
 public class Oauth2Client {
-    private static BrowserWindow bWindow;
-    private static String secret;
-    private static String authorizationCode;
-    private static String redirectUri = "http://127.0.0.1:13370/test";
-    private static String clientId;
-    private static Logger logger = LogsCenter.getLogger(Oauth2Client.class);
+    static BrowserWindow bWindow;
+    static String secret;
+    static String authorizationCode;
+    static String redirectUri = "http://127.0.0.1:13370/test";
+    static String clientId;
+    static Logger logger = LogsCenter.getLogger(Oauth2Client.class);
     /**
      * Called when user types Linkedin_login
      * starts a webserver and opens a browser for Linkedin Authorization
@@ -83,7 +79,7 @@ public class Oauth2Client {
      * Closes a browser window.
      * Platform.runLater method is needed to avoid 'Not on FX application thread' error
      */
-    public static void closeBrowser() {
+    public static void closeBrowser(){
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -92,7 +88,7 @@ public class Oauth2Client {
         });
     }
 
-    public static void getLinkedInS() {
+    public static void getLinkedInS(){
         Decrypter a = new Decrypter();
         try {
             secret = a.getLinkedInS();
@@ -143,9 +139,8 @@ public class Oauth2Client {
                 StringBuilder responseStrBuilder = new StringBuilder();
 
                 String inputStr;
-                while ((inputStr = streamReader.readLine()) != null) {
+                while ((inputStr = streamReader.readLine()) != null)
                     responseStrBuilder.append(inputStr);
-                }
                 logger.info("Login to LinkedIn Successful" + responseStrBuilder.toString());
                 //Output is the access token
                 //Login Successful
@@ -171,7 +166,7 @@ public class Oauth2Client {
             logger.info("RECEIVED A RESPONSE FROM THE SERVER: " + t.getRequestURI().getQuery());
 
             String authorizationCodeandState = t.getRequestURI().getQuery();
-            authorizationCode = authorizationCodeandState.substring(5, authorizationCodeandState.length() - 10);
+            authorizationCode = authorizationCodeandState.substring(5, authorizationCodeandState.length() -10);
             logger.info("Auth code is: " + authorizationCode);
             //t.getRequestURI().getQuery() receives the response from the server. Need to parse it
             EventsCenter.getInstance().post(new HideBrowserRequestEvent());
