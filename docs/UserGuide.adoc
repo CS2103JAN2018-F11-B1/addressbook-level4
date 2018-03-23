@@ -134,6 +134,7 @@ Edits the name of the 2nd person to be `Betsy Crower` and clears all existing ta
 * `e 2 p/99990000 e/johndoe@example.com` +
 Edits the phone number and email address of the 1st person to be `99990000` and `johndoe@example.com` respectively.
 
+=======
 === Converting a person : `convert`
 
 Converts an existing Lead in the address book. +
@@ -151,7 +152,7 @@ Converts the second person in the list to a Contact.
 === Locating persons by name: `f or find` [in progress]
 
 Finds persons whose names contain any of the given keywords. +
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `f KEYWORD [MORE_KEYWORDS]`, `find KEYWORD [MORE_KEYWORDS]`
 
 ****
 * The search is case insensitive. e.g `hans` will match `Hans`
@@ -167,6 +168,9 @@ Examples:
 Returns `john` and `John Doe`
 * `find Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
+* `f Henry Kathy` +
+Returns any person having names `Henry` or `Kathy`
+
 
 === Deleting a person : `delete`
 
@@ -296,16 +300,15 @@ _{explain how the user can enable/disable data encryption}_
 
 == Command Summary
 
-* *Add* `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` or `a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` +
+* *Add* `a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`, `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` +
 e.g. `a n/John Tan p/99991111 e/johntan@example.com a/123, Tampines Rd, 54321 t/colleague`
 * *Clear* : `c` or `clear`
 * *Delete* : `d INDEX` or `delete INDEX` +
 e.g. `d 5`, `delete 3`
 * *Edit* : `e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` or `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
 e.g: `e 1 n/John Tan e/johntan@example.com`
-e.g. `edit 2 n/James Lee e/jameslee@example.com`
-* *Find* : `find KEYWORD [MORE_KEYWORDS]` +
-e.g. `find James Jake`
+* *Find* : `f KEYWORD [MORE_KEYWORDS]`, `find KEYWORD [MORE_KEYWORDS]` +
+e.g. `find James Jake`, `find Harry`
 * *List* : `list`, l`
 * *Help* : `help`
 * *Select* : `select INDEX` +
