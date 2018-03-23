@@ -9,6 +9,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
  */
 public class LinkedInLoginCommand extends UndoableCommand{
     public static final String COMMAND_WORD = "linkedin_login";
+    public static final String COMMAND_ALIAS = "linklog";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Logs in to your LinkedIn account ";
 
     public static final String MESSAGE_SUCCESS = "Browser Opened for LinkedIn Authentication";
