@@ -50,7 +50,7 @@ Responsibilities: Remark Command + Bulk Import
 image::LiuYiming.jpg[width="150", align="left"]
 {empty}[http://github.com/zhuleyan[github]]
 
-Role: Developer + UI designer
+Role: Developer + UI designer +
 Responsibilities: Color tag + Auto Complete + Change Theme
 
 '''
