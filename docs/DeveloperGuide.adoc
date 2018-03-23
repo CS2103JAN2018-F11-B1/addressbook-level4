@@ -358,12 +358,131 @@ image::UndoRedoActivityDiagram.png[width="650"]
 ** Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two * different things.
 // end::undoredo[]
 
-// tag::dataencryption[]
-=== [Proposed] Data Encryption
 
-_{Explain here how the data encryption feature will be implemented}_
+// tag::remark[]
+=== Remark feature
+==== Current Implementation
 
-// end::dataencryption[]
+To record more detailed information of a person, a new command `RemarkCommand` is implemented.
+
+The `RemarkCommand` inherits from `UndoableCommands` since it is reasonable to make remark command execute in an _undoable_ way.
+
+`RemarkCommand` which is undoable is implemented this way:
+[source,java]
+----
+public class RemarkCommand extends UndoableCommand {
+    @Override
+    public CommandResult executeUndoableCommand() {
+        // ... remark logic ...
+    }
+}
+----
+
+The model `Person` is modified to have a new field `Remark`.
+
+The default value of the remark field of a person is an empty string.
+A user is not able to assign a remark to a person when adding the person. Therefore, all people in the CRM is originally without any remark by default.
+
+The implementation of this command is much like the `EditCommand`.
+For example, when a user type `remark 2 r\Likes to swim`. Then the remark field of the 2nd person in the current list will be changed to `Likes to swim`. It’s similar to editing a person’s phone number or address.
+
+==== Design Considerations
+
+===== Aspect: Implementation of `RemarkCommand`
+
+* **Alternative 1 (current choice):** Add a new `remark` command
+** Pros: Treat it as a command may be easy to understand. Only a few people needs a remark.
+** Cons: Cannot add a person with remark.
+* **Alternative 2:** Just make it a part of `EditCommand` and `AddCommand`
+** Pros: Only need to add remark field to every related class. We can add a person with remark.
+** Cons: We may have to type too many things when adding a person. Also, some people don’t have any remark.
+// end::remark[]
+
+// tag::colortag[]
+=== Color Tag feature
+==== Current Implementation
+
+To allow easy identification of different tags, a color tag feature is introduced.
+
+A string array is declared in PersonCard.java to include all the different colors for tags. These colors are defined, with their backgroud color and text color spelled out, in the the DarkTheme.css file.
+
+A hash code of the tag name is used to select a color for the tag such that it would remain consistent between different runs of the software.
+
+==== Design Considerations
+
+===== Aspect: Implementation of color tags
+
+* **Alternative 1 (current choice):** Assign a color from a predefined list based on tag name
+** Pros: No additional commands are needed to generate a color for the tags.
+** Cons: User cannot choose a color for the tag.
+* **Alternative 2:** Allow user to set a color for the tag
+** Pros: Allows more freedom for user customization.
+** Cons: Takes more time to implement color tags.
+// end::remark[]
+
+// tag::leadcontact[]
+=== Leads and Contacts feature
+==== Current Implementation
+
+People in the address book were stored under a single class with no options for differentiating between two types of classes.
+
+To implement a CRM, Leads and Contacts must be differentiated so that they can each hold different fields like a proper CRM. To do so, they currently extend the Person class so that all existing functionality associated with Persons will work with both Leads an Contacts. Unique fields will be given their own classes like the original generic fields like Name and Address.
+
+In a CRM, users start by adding Leads, who are people they have not sold to yet. As they begin selling, the people who they have sold to become Contacts.
+
+Many existing commands like AddCommand have been modified to fit the new paradigm so that it only adds Leads.
+
+A new conversion command ConvertCommand has been added to convert Leads into Contacts
+
+==== Design Considerations
+
+===== Aspect: Implementation of Leads and Contacts
+
+* **Alternative 1 (current choice):** Extend the existing Person class
+** Pros: We will not lose any functionality associated with the Person class.
+** Cons: Declarations of Person variables may confuse new developers even as a general class for Leads an Contacts.
+* **Alternative 2:** Create two new classes Leads and Contacts
+** Pros: Clearly differentiates Leads and Contacts throughout the codebase.
+** Cons: We would have to rewrite most objects to take into account the two new classes.
+
+
+===== Aspect: How conversion will work
+
+* **Alternative 1:** Just convert the basic information. Let user fill in other fields themselves.
+** Pros: Easy to implement.
+** Cons: User must do extra work.
+* **Alternative 2:** Smartly detect which fields can be converted and then do so.
+** Pros: User will only need to fix some mistakes in the conversion.
+** Cons: Smart detection and conversion needs work to do.
+// end::leadcontact[]
+
+// tag::linkedinlogin[]
+=== LinkedIn Login Feature
+==== Current Implementation
+
+The linkedInLogin mechanism is handled largely by the oAuth2Client interacting with the browser window, which the user will interact with in order to give LinkedIn their username, password, as well as granting the application permission for use.
+
+When the `linkedIn_login` command is called, a `ShowBrowserRequestEvent` will be fired by `LinkedInLoginCommand(Class)` and picked up by the MainWindow. The MainWindow in turn will call the `OAuth2Client(Class)` which will fire up the browser awaiting an authorization code from LinkedIn that will be sent after the user has successfully logged in and granted the CRM Book permission.
+
+Once this has happened, we fire a `HideBrowserRequestEvent` in order to close the browser properly.
+
+The `Decrypter` will then be fired so that we do not store the app secret in plain text. This decision is explained more in the design considerations below.
+
+After the CRM Book has received the authorization code and the app secret from the decrypter, they are sent back to LinkedIn to request for an AccessToken. Once the AccessToken has been received, the user is considered to be successfully logged in, and the accessToken can be used by the CRM Book to make requests to LinkedIn on behalf of the user.
+
+
+==== Design Considerations
+===== Aspect: Storing the LinkedIn App Secret
+
+* **Alternative 1 (current choice):** Slightly encrypting the App Secret
+** Pros: Easy to implement, not trivial for attackers to get by scanning the source code.
+** Cons: App secret can be derived if the attacker runs the source code
+* **Alternative 2:** Store the App Secret in another server, and requesting it with an authentication code
+** Pros: Higher security, app secret not stored on GitHub
+** Cons: Significantly harder to implement. Requires user to have a username and password for the server not stored on GitHub.
+**Additional Info:** See comments on Decrypter class for full argument
+
+// end::linkedinlogin[]
 
 === Logging
 
@@ -882,6 +1001,22 @@ Woody Lau: +
 
 * Allows Contacts to belong to Accounts.
 
+Liu Yiming: +
+**Major Feature** : Change Theme
+
+* Allows user to change color theme +
+* This allows user to read the CRM Book easily under different settings
+
+
+**Major Feature** : Auto Completion of commands
+
+* Allows user to key in commands more efficiently.
+
+**Minor feature** : Color tags
+
+*Each type of tag has a unique color +
+*Allows easy identification of different tags
+
 
 [appendix]
 == User Stories
@@ -910,6 +1045,10 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* * *` |salesperson |login to LinkedIn|Sync my LinkedIn contacts
 
 |`* * *` |salesperson |sync with LinkedIn|Know which of my contacts has changed companies
+
+|`* * *` |busy salesperson |autocomplete my commands|use CRM Book more efficiently
+
+|`* *` |health-conscious salesperson |change the color theme|prevent eye fatigue
 
 |`* *` |new salesperson |bulk import leads|populate my CRM-Book
 
