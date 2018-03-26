@@ -29,8 +29,6 @@ import seedu.address.model.UserPrefs;
  */
 public class MainWindow extends UiPart<Stage> {
 
-    private static final String FXML = "MainWindow.fxml";
-
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
     private Stage primaryStage;
@@ -41,6 +39,8 @@ public class MainWindow extends UiPart<Stage> {
     private PersonListPanel personListPanel;
     private Config config;
     private UserPrefs prefs;
+
+
 
     @FXML
     private StackPane browserPlaceholder;
@@ -61,7 +61,7 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane statusbarPlaceholder;
 
     public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic) {
-        super(FXML, primaryStage);
+        super(prefs.getMainWindowFile(), primaryStage);
 
         // Set dependencies
         this.primaryStage = primaryStage;

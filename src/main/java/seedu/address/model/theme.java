@@ -1,59 +1,57 @@
-package seedu.address.model.person;
+package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Person's name in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
+ * Represents a theme in the address book.
+ * Guarantees: immutable; is valid as declared in {@link #isValidTheme(String)}
  */
-public class theme {
+public class Theme {
 
-    public static final String MESSAGE_NAME_CONSTRAINTS =
-            "Person names should only contain alphanumeric characters and spaces, and it should not be blank";
+    public static final String MESSAGE_THEME_CONSTRAINTS =
+            "Theme should be either light or dark";
 
-    /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    public static final String NAME_VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
-
-    public final String fullName;
+    public final String theme;
 
     /**
-     * Constructs a {@code Name}.
+     * Constructs a {@code Theme}.
      *
-     * @param name A valid name.
+     * @param theme A valid theme.
      */
-    public Name(String name) {
-        requireNonNull(name);
-        checkArgument(isValidName(name), MESSAGE_NAME_CONSTRAINTS);
-        this.fullName = name;
+    public Theme(String theme) {
+        requireNonNull(theme);
+        checkArgument(isValidTheme(theme), MESSAGE_THEME_CONSTRAINTS);
+        this.theme = theme;
     }
 
     /**
-     * Returns true if a given string is a valid person name.
+     * Returns true if a given string is a valid theme.
      */
-    public static boolean isValidName(String test) {
-        return test.matches(NAME_VALIDATION_REGEX);
+    public static boolean isValidTheme(String test) {
+        if (test.equals("light") || test.equals("dark")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
     @Override
     public String toString() {
-        return fullName;
+        return theme;
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Name // instanceof handles nulls
-                && this.fullName.equals(((Name) other).fullName)); // state check
+                || (other instanceof Theme // instanceof handles nulls
+                && this.theme.equals(((Theme) other).theme)); // state check
     }
 
     @Override
     public int hashCode() {
-        return fullName.hashCode();
+        return theme.hashCode();
     }
 
 }

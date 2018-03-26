@@ -9,6 +9,7 @@ import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.events.ui.ShowHelpRequestEvent;
+import seedu.address.model.Theme;
 
 
 /**
@@ -22,17 +23,19 @@ public class ChangeThemeCommand extends Command {
             + ": Changes to the specified theme.\n"
             + "Example: " + COMMAND_WORD + " light";
 
-    public static final String MESSAGE_CHANGE_THEME_SUCCESS = "Theme changed to %1$s";
+    public static final String MESSAGE_CHANGE_THEME_SUCCESS =
+            "Theme changed to %1$s. Please restart to effect the change.";
 
-    private final String targetTheme;
+    private final Theme targetTheme;
 
-    public ChangeThemeCommand(String targetTheme) {
+    public ChangeThemeCommand(Theme targetTheme) {
         this.targetTheme = targetTheme;
     }
 
     @Override
     public CommandResult execute() {
         requireNonNull(targetTheme);
+        model.updateTheme(targetTheme.theme);
         return new CommandResult(String.format(MESSAGE_CHANGE_THEME_SUCCESS, targetTheme));
     }
 }

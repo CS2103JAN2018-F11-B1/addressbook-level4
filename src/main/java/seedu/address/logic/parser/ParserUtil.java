@@ -10,6 +10,7 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.model.Theme;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -64,13 +65,13 @@ public class ParserUtil {
      *
      * @throws IllegalValueException if the given {@code name} is invalid.
      */
-    public static String parseTheme(String theme) throws IllegalValueException {
+    public static Theme parseTheme(String theme) throws IllegalValueException {
         requireNonNull(theme);
-        String trimmedName = theme.trim();
-        if (!Name.isValidName(trimmedName)) {
-            throw new IllegalValueException(Name.MESSAGE_NAME_CONSTRAINTS);
+        String trimmedTheme = theme.trim();
+        if (!Theme.isValidTheme(trimmedTheme)) {
+            throw new IllegalValueException(Theme.MESSAGE_THEME_CONSTRAINTS);
         }
-        return new Name(trimmedName);
+        return new Theme(trimmedTheme);
     }
 
     /**

@@ -2,10 +2,10 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
-import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.ChangeThemeCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.Theme;
 
 /**
  * Parses input arguments and creates a new ChangeThemeCommand object
@@ -19,11 +19,11 @@ public class ChangeThemeCommandParser implements Parser<ChangeThemeCommand> {
      */
     public ChangeThemeCommand parse(String args) throws ParseException {
         try {
-            String theme = ParserUtil.parseIndex(args);
+            Theme theme = ParserUtil.parseTheme(args);
             return new ChangeThemeCommand(theme);
         } catch (IllegalValueException ive) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, ChangeThemeCommand.MESSAGE_USAGE));
         }
     }
 

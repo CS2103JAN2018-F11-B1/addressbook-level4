@@ -12,6 +12,7 @@ public class UserPrefs {
     private GuiSettings guiSettings;
     private String addressBookFilePath = "data/addressbook.xml";
     private String addressBookName = "MyAddressBook";
+    private String mainWindowFilePath = "MainWindowLight.fxml";
 
     public UserPrefs() {
         this.setGuiSettings(500, 500, 0, 0);
@@ -27,6 +28,14 @@ public class UserPrefs {
 
     public void setGuiSettings(double width, double height, int x, int y) {
         guiSettings = new GuiSettings(width, height, x, y);
+    }
+
+    public String getMainWindowFile() {
+        return mainWindowFilePath;
+    }
+
+    public void setMainWindowFilePath(String newFilePath) {
+        this.mainWindowFilePath = newFilePath;
     }
 
     public String getAddressBookFilePath() {

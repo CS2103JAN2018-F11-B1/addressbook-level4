@@ -28,6 +28,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     private final AddressBook addressBook;
     private final FilteredList<Person> filteredPersons;
+    private UserPrefs userPrefs;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -39,6 +40,7 @@ public class ModelManager extends ComponentManager implements Model {
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
+        this.userPrefs = userPrefs;
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
     }
 
@@ -127,4 +129,13 @@ public class ModelManager extends ComponentManager implements Model {
                 && filteredPersons.equals(other.filteredPersons);
     }
 
+    @Override
+    public void updateTheme(String theme) {
+        if (theme.equals("light")) {
+            this.userPrefs.setMainWindowFilePath("MainWindowLight.fxml");
+        } else {
+            this.userPrefs.setMainWindowFilePath("MainWindow.fxml");
+        }
+
+    }
 }
