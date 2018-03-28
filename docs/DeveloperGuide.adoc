@@ -1218,8 +1218,7 @@ Use case resumes at step 4.
 1. User requests a list of Leads and Contacts
 2. CRM Book shows the requested list
 3. User finds and selects the Lead to convert
-4. CRM Book determines if Lead can be converted
-5. CRM Book converts the Lead to a Contact
+4. CRM Book determines if Lead can be converted and converts if possible
 
 +
 Use case ends.
