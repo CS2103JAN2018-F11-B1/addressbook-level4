@@ -429,9 +429,29 @@ To implement a CRM, Leads and Contacts must be differentiated so that they can e
 
 In a CRM, users start by adding Leads, who are people they have not sold to yet. As they begin selling, the people who they have sold to become Contacts.
 
-Many existing commands like AddCommand have been modified to fit the new paradigm so that it only adds Leads.
+Many existing commands like `AddCommand` have been modified to fit the new paradigm so that it only adds Leads.
 
-A new conversion command ConvertCommand has been added to convert Leads into Contacts
+A new conversion command `ConvertCommand` has been added to convert Leads into Contacts. The Sequence Diagram is shown:
+
+image::ConvertSequenceDiagram1.png[width="650"]
+
+When the user has selected a Contact instead of a Lead, an error is thrown with this code:
+
+[source,java]
+----
+public class ConvertCommand extends UndoableCommand {
+    @Override
+    protected void preprocessUndoableCommand() throws CommandException {
+        // ... get list of Persons ...
+        try {
+            oldLead = (Lead) lastShownList.get(index.getZeroBased());
+        } catch (ClassCastException cce) {
+            throw new CommandException(MESSAGE_NOT_CONVERTED);
+        }
+        newContact = createContact(oldLead);
+    }
+}
+----
 
 ==== Design Considerations
 
@@ -993,7 +1013,8 @@ Woody Lau: +
 **Major Feature** : Lead and Contact Creation
 
 * Breaks apart the Person class into Leads and Contacts +
-* Each will have their own functions and fields
+* Each will have their own functions and fields +
+* Conversion between Leads and Contacts will be supported.
 
 
 **Major Feature** : Account Creation
