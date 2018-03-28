@@ -13,6 +13,8 @@ import seedu.address.model.person.Person;
 public class PersonCard extends UiPart<Region> {
 
     private static final String FXML = "PersonListCard.fxml";
+    private static final String[] TAG_COLORS =
+        { "blue", "cyan", "green", "magenta", "orange", "pink", "red", "yellow", "teal", "brown" };
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -53,9 +55,31 @@ public class PersonCard extends UiPart<Region> {
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         remark.setText(person.getRemark().value);
-        person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        initTags(person);
     }
 
+    //@@author Liu Yiming {A0155428B}
+    /**
+     *Returns the color for {@code tagName}'s label
+     */
+    private String getTagColorFor(String tagName) {
+        //Uses the hash code of the tag name to generate a color, such that each run of the program
+        //produce the same color for that tag name
+        return TAG_COLORS[Math.abs(tagName.hashCode()) % TAG_COLORS.length];
+    }
+
+    /**
+     *Creates tag labels for {@code person}.
+     */
+    private void initTags(Person person) {
+        person.getTags().forEach(tag -> {
+            Label tagLabel = new Label(tag.tagName);
+            tagLabel.getStyleClass().add(getTagColorFor(tag.tagName));
+            tags.getChildren().add(tagLabel);
+        });
+    }
+
+    //@author
     @Override
     public boolean equals(Object other) {
         // short circuit if same object
