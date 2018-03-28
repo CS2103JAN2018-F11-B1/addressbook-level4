@@ -1197,6 +1197,7 @@ Use case ends.
 
 *Extensions*
 
+[none]
 * 1a. User is already logged in.
 [none]
 ** 1a1. CRM book tells user that he is already logged in
