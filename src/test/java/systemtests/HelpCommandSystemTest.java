@@ -59,6 +59,7 @@ public class HelpCommandSystemTest extends AddressBookSystemTest {
         executeCommand(HelpCommand.COMMAND_WORD);
         getMainWindowHandle().focus();
 
+        //@@author Sheikh-Umar
         // open help window and give it focus using help alias
         executeCommand(HelpCommand.COMMAND_ALIAS);
         getMainWindowHandle().focus();
