@@ -208,7 +208,7 @@ public class ParserUtil {
      * Parses a {@code String rating}.
      * Leading and trailing whitespaces will be trimmed.
      */
-    public static int parseRating(String rating) throws IllegalValueException{
+    public static int parseRating(String rating) throws IllegalValueException {
         requireNonNull(rating);
         int intRating = 0;
         try {
@@ -223,7 +223,7 @@ public class ParserUtil {
      * Parses a {@code Optional<String> rating} into an {@code OptionalInt} if {@code rating} is present.
      * See header comment of this class regarding the use of {@code Optional} parameters.
      */
-    public static OptionalInt parseRating(Optional<String> rating) throws IllegalValueException{
+    public static OptionalInt parseRating(Optional<String> rating) throws IllegalValueException {
         requireNonNull(rating);
         return rating.isPresent() ? OptionalInt.of(parseRating(rating.get())) : OptionalInt.empty();
     }

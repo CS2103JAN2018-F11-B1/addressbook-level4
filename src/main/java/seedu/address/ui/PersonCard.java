@@ -53,12 +53,10 @@ public class PersonCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         if (person instanceof Lead && ((Lead) person).getTitle() != null) {
             name.setText(((Lead) person).getTitle() + " " + person.getName().fullName);
-        }
-        else if (person instanceof Contact && ((Contact) person).getTitle() != null) {
+        } else if (person instanceof Contact && ((Contact) person).getTitle() != null) {
             String text = ((Contact) person).getTitle() + " " + person.getName().fullName;
             name.setText(text);
-        }
-        else {
+        } else {
             name.setText(person.getName().fullName);
         }
         type.setText(person.getType().value);

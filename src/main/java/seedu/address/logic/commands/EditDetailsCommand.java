@@ -85,8 +85,7 @@ public class EditDetailsCommand extends UndoableCommand {
         if (personToEdit instanceof Lead) {
             if (!editLeadDescriptor.isAnyFieldEdited()) {
                 throw new CommandException(MESSAGE_NOT_EDITED_FOR_LEAD);
-            }
-            ((Lead) personToEdit).setCompany(editLeadDescriptor.getCompany()
+            } ((Lead) personToEdit).setCompany(editLeadDescriptor.getCompany()
                     .orElse(((Lead) personToEdit).getCompany()));
             ((Lead) personToEdit).setIndustry(editLeadDescriptor.getIndustry()
                     .orElse(((Lead) personToEdit).getIndustry()));
@@ -112,8 +111,7 @@ public class EditDetailsCommand extends UndoableCommand {
         } else {
             if (!editContactDescriptor.isAnyFieldEdited()) {
                 throw new CommandException(MESSAGE_NOT_EDITED_FOR_CONTACT);
-            }
-            ((Contact) personToEdit).setCompany(editContactDescriptor.getCompany()
+            } ((Contact) personToEdit).setCompany(editContactDescriptor.getCompany()
                     .orElse(((Contact) personToEdit).getCompany()));
             ((Contact) personToEdit).setDepartment(editContactDescriptor.getDepartment()
                     .orElse(((Contact) personToEdit).getDepartment()));
