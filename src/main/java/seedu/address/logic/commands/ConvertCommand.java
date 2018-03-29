@@ -99,7 +99,8 @@ public class ConvertCommand extends UndoableCommand {
         Remark updatedRemark = oldLead.getRemark();
         Set<Tag> updatedTags = oldLead.getTags();
 
-        Contact contact = new Contact(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRemark, updatedTags);
+        Contact contact = new Contact(updatedName, updatedPhone,
+                updatedEmail, updatedAddress, updatedRemark, updatedTags);
 
         contact.setCompany(oldLead.getCompany());
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");

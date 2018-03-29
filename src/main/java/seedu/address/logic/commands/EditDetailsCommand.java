@@ -3,16 +3,17 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DEPARTMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INDUSTRY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_WEBSITE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DEPARTMENT;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.OptionalInt;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
@@ -95,8 +96,9 @@ public class EditDetailsCommand extends UndoableCommand {
                     .orElse(((Lead) personToEdit).getTitle()));
             ((Lead) personToEdit).setWebsite(editLeadDescriptor.getWebsite()
                     .orElse(((Lead) personToEdit).getWebsite()));
-            if (editLeadDescriptor.getRating().isPresent() &&
-                    (editLeadDescriptor.getRating().getAsInt() < 1 || editLeadDescriptor.getRating().getAsInt() > 5)) {
+            if (editLeadDescriptor.getRating().isPresent()
+                    && (editLeadDescriptor.getRating().getAsInt() < 1
+                    || editLeadDescriptor.getRating().getAsInt() > 5)) {
                 throw new CommandException("Rating only goes from 1 to 5. Rating was not updated");
             }
             try {
@@ -107,8 +109,7 @@ public class EditDetailsCommand extends UndoableCommand {
                 throw new AssertionError("The target person cannot be missing");
             }
             return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, personToEdit));
-        }
-        else {
+        } else {
             if (!editContactDescriptor.isAnyFieldEdited()) {
                 throw new CommandException(MESSAGE_NOT_EDITED_FOR_CONTACT);
             }

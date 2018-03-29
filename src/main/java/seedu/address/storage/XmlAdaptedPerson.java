@@ -101,8 +101,7 @@ public class XmlAdaptedPerson {
             rating = ((Lead) source).getRating();
             title = ((Lead) source).getTitle();
             website = ((Lead) source).getWebsite();
-        }
-        else if (source instanceof Contact) {
+        } else if (source instanceof Contact) {
             company = ((Contact) source).getCompany();
             department = ((Contact) source).getDepartment();
             title = ((Contact) source).getTitle();

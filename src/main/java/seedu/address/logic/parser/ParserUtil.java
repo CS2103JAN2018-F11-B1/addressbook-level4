@@ -172,7 +172,7 @@ public class ParserUtil {
      * Parses a {@code String company}.
      * Leading and trailing whitespaces will be trimmed.
      */
-    public static String parseCompany(String company){
+    public static String parseCompany(String company) {
         requireNonNull(company);
         return company.trim();
     }
@@ -181,7 +181,7 @@ public class ParserUtil {
      * Parses a {@code Optional<String> company} into an {@code Optional<String>} if {@code company} is present.
      * See header comment of this class regarding the use of {@code Optional} parameters.
      */
-    public static Optional<String> parseCompany(Optional<String> company){
+    public static Optional<String> parseCompany(Optional<String> company) {
         requireNonNull(company);
         return company.isPresent() ? Optional.of(parseCompany(company.get())) : Optional.empty();
     }
@@ -190,7 +190,7 @@ public class ParserUtil {
      * Parses a {@code String industry}.
      * Leading and trailing whitespaces will be trimmed.
      */
-    public static String parseIndustry(String industry){
+    public static String parseIndustry(String industry) {
         requireNonNull(industry);
         return industry.trim();
     }
@@ -199,7 +199,7 @@ public class ParserUtil {
      * Parses a {@code Optional<String> industry} into an {@code Optional<String>} if {@code industry} is present.
      * See header comment of this class regarding the use of {@code Optional} parameters.
      */
-    public static Optional<String> parseIndustry(Optional<String> industry){
+    public static Optional<String> parseIndustry(Optional<String> industry) {
         requireNonNull(industry);
         return industry.isPresent() ? Optional.of(parseIndustry(industry.get())) : Optional.empty();
     }
@@ -232,7 +232,7 @@ public class ParserUtil {
      * Parses a {@code String title}.
      * Leading and trailing whitespaces will be trimmed.
      */
-    public static String parseTitle(String title){
+    public static String parseTitle(String title) {
         requireNonNull(title);
         return title.trim();
     }
@@ -241,7 +241,7 @@ public class ParserUtil {
      * Parses a {@code Optional<String> title} into an {@code Optional<String>} if {@code title} is present.
      * See header comment of this class regarding the use of {@code Optional} parameters.
      */
-    public static Optional<String> parseTitle(Optional<String> title){
+    public static Optional<String> parseTitle(Optional<String> title) {
         requireNonNull(title);
         return title.isPresent() ? Optional.of(parseTitle(title.get())) : Optional.empty();
     }
@@ -250,7 +250,7 @@ public class ParserUtil {
      * Parses a {@code String website}.
      * Leading and trailing whitespaces will be trimmed.
      */
-    public static String parseWebsite(String website){
+    public static String parseWebsite(String website) {
         requireNonNull(website);
         return website.trim();
     }
@@ -259,7 +259,7 @@ public class ParserUtil {
      * Parses a {@code Optional<String> website} into an {@code Optional<String>} if {@code website} is present.
      * See header comment of this class regarding the use of {@code Optional} parameters.
      */
-    public static Optional<String> parseWebsite(Optional<String> website){
+    public static Optional<String> parseWebsite(Optional<String> website) {
         requireNonNull(website);
         return website.isPresent() ? Optional.of(parseWebsite(website.get())) : Optional.empty();
     }
@@ -268,7 +268,7 @@ public class ParserUtil {
      * Parses a {@code String department}.
      * Leading and trailing whitespaces will be trimmed.
      */
-    public static String parseDepartment(String department){
+    public static String parseDepartment(String department) {
         requireNonNull(department);
         return department.trim();
     }
@@ -277,7 +277,7 @@ public class ParserUtil {
      * Parses a {@code Optional<String> department} into an {@code Optional<String>} if {@code department} is present.
      * See header comment of this class regarding the use of {@code Optional} parameters.
      */
-    public static Optional<String> parseDepartment(Optional<String> department){
+    public static Optional<String> parseDepartment(Optional<String> department) {
         requireNonNull(department);
         return department.isPresent() ? Optional.of(parseDepartment(department.get())) : Optional.empty();
     }
