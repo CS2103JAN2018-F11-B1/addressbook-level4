@@ -86,21 +86,19 @@ public class EditDetailsCommand extends UndoableCommand {
             if (!editLeadDescriptor.isAnyFieldEdited()) {
                 throw new CommandException(MESSAGE_NOT_EDITED_FOR_LEAD);
             }
-            ((Lead) personToEdit)
-                    .setCompany(editLeadDescriptor.getCompany().orElse(((Lead) personToEdit).getCompany()));
-            ((Lead) personToEdit)
-                    .setIndustry(editLeadDescriptor.getIndustry().orElse(((Lead) personToEdit).getIndustry()));
-            ((Lead) personToEdit).setRating(editLeadDescriptor.getRating().orElse(((Lead) personToEdit).getRating()));
-            ((Lead) personToEdit).setTitle(editLeadDescriptor.getTitle().orElse(((Lead) personToEdit).getTitle()));
-            ((Lead) personToEdit)
-                    .setWebsite(editLeadDescriptor.getWebsite().orElse(((Lead) personToEdit).getWebsite()));
+            Lead editedPerson = (Lead) personToEdit;
+            editedPerson.setCompany(editLeadDescriptor.getCompany().orElse(((Lead) personToEdit).getCompany()));
+            editedPerson.setIndustry(editLeadDescriptor.getIndustry().orElse(((Lead) personToEdit).getIndustry()));
+            editedPerson.setRating(editLeadDescriptor.getRating().orElse(((Lead) personToEdit).getRating()));
+            editedPerson.setTitle(editLeadDescriptor.getTitle().orElse(((Lead) personToEdit).getTitle()));
+            editedPerson.setWebsite(editLeadDescriptor.getWebsite().orElse(((Lead) personToEdit).getWebsite()));
             if (editLeadDescriptor.getRating().isPresent()
                     && (editLeadDescriptor.getRating().getAsInt() < 1
                     || editLeadDescriptor.getRating().getAsInt() > 5)) {
                 throw new CommandException("Rating only goes from 1 to 5. Rating was not updated");
             }
             try {
-                model.updatePerson(personToEdit, personToEdit);
+                model.updatePerson(editedPerson, editedPerson);
             } catch (DuplicatePersonException dpe) {
                 throw new CommandException(MESSAGE_DUPLICATE_PERSON);
             } catch (PersonNotFoundException pnfe) {
@@ -111,15 +109,13 @@ public class EditDetailsCommand extends UndoableCommand {
             if (!editContactDescriptor.isAnyFieldEdited()) {
                 throw new CommandException(MESSAGE_NOT_EDITED_FOR_CONTACT);
             }
-            ((Contact) personToEdit)
-                    .setCompany(editContactDescriptor.getCompany().orElse(((Contact) personToEdit).getCompany()));
-            ((Contact) personToEdit)
-                    .setDepartment(editContactDescriptor.getDepartment()
+            Contact editedPerson = (Contact) personToEdit;
+            editedPerson.setCompany(editContactDescriptor.getCompany().orElse(((Contact) personToEdit).getCompany()));
+            editedPerson.setDepartment(editContactDescriptor.getDepartment()
                             .orElse(((Contact) personToEdit).getDepartment()));
-            ((Contact) personToEdit)
-                    .setTitle(editContactDescriptor.getTitle().orElse(((Contact) personToEdit).getTitle()));
+            editedPerson.setTitle(editContactDescriptor.getTitle().orElse(((Contact) personToEdit).getTitle()));
             try {
-                model.updatePerson(personToEdit, personToEdit);
+                model.updatePerson(editedPerson, editedPerson);
             } catch (DuplicatePersonException dpe) {
                 throw new CommandException(MESSAGE_DUPLICATE_PERSON);
             } catch (PersonNotFoundException pnfe) {
