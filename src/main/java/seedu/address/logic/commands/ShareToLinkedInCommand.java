@@ -45,6 +45,9 @@ public class ShareToLinkedInCommand extends Command {
 
     }
 
+    /**
+     * Constructor to accept a post
+     */
     public ShareToLinkedInCommand(String post) {
         this.post = post;
     }
@@ -57,7 +60,10 @@ public class ShareToLinkedInCommand extends Command {
         return new CommandResult(MESSAGE_SUCCESS);
     }
 
-    //called by main because of the evnet
+    /**
+     * Called by an event. This method takes in the config to get the access_token
+     * This method posts the post to LinkedIn.
+     */
     public static void postToLinkedIn(Config config) {
         Logger logger = LogsCenter.getLogger(Oauth2Client.class);
         String accessToken = config.getAppSecret();
