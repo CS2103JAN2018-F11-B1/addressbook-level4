@@ -23,7 +23,7 @@ public class ShareToLinkedInCommandParser implements Parser<ShareToLinkedInComma
      */
     public ShareToLinkedInCommand parse(String args) throws ParseException {
         if (args == null || args.length() == 0) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, 
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
             	ShareToLinkedInCommand.MESSAGE_USAGE));
         }
         Logger logger = LogsCenter.getLogger(Oauth2Client.class);
