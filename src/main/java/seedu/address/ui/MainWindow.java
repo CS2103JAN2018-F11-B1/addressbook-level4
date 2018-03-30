@@ -17,11 +17,9 @@ import seedu.address.commons.core.Config;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.Oauth2Client;
-import seedu.address.commons.events.ui.ExitAppRequestEvent;
-import seedu.address.commons.events.ui.HideBrowserRequestEvent;
-import seedu.address.commons.events.ui.ShowBrowserRequestEvent;
-import seedu.address.commons.events.ui.ShowHelpRequestEvent;
+import seedu.address.commons.events.ui.*;
 import seedu.address.logic.Logic;
+import seedu.address.logic.commands.ShareToLinkedInCommand;
 import seedu.address.model.UserPrefs;
 
 
@@ -175,6 +173,14 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Sends the config to shareToLinkedIn Command
+     */
+    public void shareToLinkedIn() {
+        ShareToLinkedInCommand newShare = new ShareToLinkedInCommand();
+        newShare.postToLinkedIn(config);
+    }
+
+    /**
      * Opens the linkedin authentication window.
      */
     public void handleLinkedInAuthentication() {
@@ -230,4 +236,11 @@ public class MainWindow extends UiPart<Stage> {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         handleHelp();
     }
+
+    @Subscribe
+    private void handleShareToLinkedInEvent(ShareToLinkedInEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        shareToLinkedIn();
+    }
+
 }
