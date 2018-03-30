@@ -211,7 +211,8 @@ public class MainWindow extends UiPart<Stage> {
      * Closes the application.
      */
     @FXML
-    private void handleExit() {raise(new ExitAppRequestEvent());
+    private void handleExit() { 
+        raise(new ExitAppRequestEvent());
     }
 
     public PersonListPanel getPersonListPanel() {

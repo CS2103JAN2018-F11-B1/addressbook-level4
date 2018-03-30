@@ -26,7 +26,6 @@ import seedu.address.commons.events.ui.ShareToLinkedInEvent;
  * Shares a post to the logged in LinkedIn accountx
  */
 public class ShareToLinkedInCommand extends Command {
-    private static String post;
     public static final String COMMAND_WORD = "linkedin_share";
 
     public static final String COMMAND_ALIAS = "linkshare";
@@ -37,6 +36,7 @@ public class ShareToLinkedInCommand extends Command {
             + " I think www.google.com is a great search engine";
 
     public static final String MESSAGE_SUCCESS = "Post shared to your linkedIn account";
+    private static String post;
 
     /**
      * Default constructor
