@@ -1,5 +1,9 @@
 package seedu.address.logic.commands;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.logging.Logger;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -10,22 +14,19 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import seedu.address.commons.core.Config;
 import org.json.JSONObject;
+
+import seedu.address.commons.core.Config;
 import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.Oauth2Client;
 import seedu.address.commons.events.ui.ShareToLinkedInEvent;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.logging.Logger;
-
 /**
  * Shares a post to the logged in LinkedIn accountx
  */
 public class ShareToLinkedInCommand extends Command {
-    public static String post;
+    private static String post;
     public static final String COMMAND_WORD = "linkedin_share";
 
     public static final String COMMAND_ALIAS = "linkshare";
@@ -40,11 +41,11 @@ public class ShareToLinkedInCommand extends Command {
     /**
      * Default constructor
      */
-    public ShareToLinkedInCommand(){
+    public ShareToLinkedInCommand() {
 
     }
 
-    public ShareToLinkedInCommand(String post){
+    public ShareToLinkedInCommand(String post) {
         this.post = post;
     }
 
@@ -57,7 +58,7 @@ public class ShareToLinkedInCommand extends Command {
     }
 
     //called by main because of the evnet
-    public static void postToLinkedIn(Config config){
+    public static void postToLinkedIn(Config config) {
         Logger logger = LogsCenter.getLogger(Oauth2Client.class);
         String accessToken = config.getAppSecret();
 
@@ -68,7 +69,7 @@ public class ShareToLinkedInCommand extends Command {
                                 .build();
         HttpPost httppost = new HttpPost("https://api.linkedin.com/v1/people/~/shares?format=json");
 
-        JSONObject visibilityJsonObj= new JSONObject();
+        JSONObject visibilityJsonObj = new JSONObject();
         visibilityJsonObj.put("code", new String("anyone"));
 
         JSONObject mainJsonObj = new JSONObject();
@@ -79,7 +80,7 @@ public class ShareToLinkedInCommand extends Command {
         logger.info("SENDING TO THE SERVER: " + jsonToSend);
 
         try {
-            StringEntity params =new StringEntity(jsonToSend);
+            StringEntity params = new StringEntity(jsonToSend);
             httppost.addHeader("Content-Type", "application/json");
             httppost.addHeader("x-li-format", "json");
             httppost.addHeader("Authorization", "Bearer " + config.getAppSecret());

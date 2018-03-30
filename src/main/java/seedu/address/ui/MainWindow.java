@@ -17,7 +17,11 @@ import seedu.address.commons.core.Config;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.Oauth2Client;
-import seedu.address.commons.events.ui.*;
+import seedu.address.commons.events.ui.ExitAppRequestEvent;
+import seedu.address.commons.events.ui.HideBrowserRequestEvent;
+import seedu.address.commons.events.ui.ShareToLinkedInEvent;
+import seedu.address.commons.events.ui.ShowBrowserRequestEvent;
+import seedu.address.commons.events.ui.ShowHelpRequestEvent;
 import seedu.address.logic.Logic;
 import seedu.address.logic.commands.ShareToLinkedInCommand;
 import seedu.address.model.UserPrefs;
@@ -207,8 +211,7 @@ public class MainWindow extends UiPart<Stage> {
      * Closes the application.
      */
     @FXML
-    private void handleExit() {
-        raise(new ExitAppRequestEvent());
+    private void handleExit() {raise(new ExitAppRequestEvent());
     }
 
     public PersonListPanel getPersonListPanel() {
