@@ -20,7 +20,7 @@ public class ConfigTest {
                 //@@author davidten
                 + "App Id: 78ameftoz7yvk4\n"
                 + "App Secret: null";
-                //@@author
+        //@@author
         assertEquals(defaultConfigAsString, new Config().toString());
     }
 
