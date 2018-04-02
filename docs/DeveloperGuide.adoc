@@ -580,7 +580,9 @@ public class ImportCommand extends Command {
 }
 ----
 
-When an `ImportCommand` is called, the corresponding CSV file will be processed. Then persons will be added to CRM Book automatically like what a `AddCommand` can do but without manual typing.
+When an `ImportCommand` is called, the corresponding CSV file will be processed.
+All the information will be stored in a list of `Person` object.
+Then all `Persons` in the list will be added to CRM Book one by one automatically like what a `AddCommand` can do but without manual typing.
 
 ==== Design Considerations
 
@@ -1233,7 +1235,7 @@ Use case ends.
 *Extensions*
 
 [none]
-* 1a. User enters an non-existent file.
+* 1a. User enters an invalid file path.
 +
 [none]
 ** 1a1. CRM Book displays error message.
