@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
+import seedu.address.model.Exception.InputThemeEqualsCurrentThemeException;
 import seedu.address.model.person.Contact;
 import seedu.address.model.person.Lead;
 import seedu.address.model.person.Person;
@@ -129,11 +130,18 @@ public class ModelManager extends ComponentManager implements Model {
                 && filteredPersons.equals(other.filteredPersons);
     }
 
+    //@@author A0155428B
     @Override
-    public void updateTheme(String theme) {
+    public void updateTheme(String theme) throws InputThemeEqualsCurrentThemeException {
         if (theme.equals("light")) {
+            if (this.userPrefs.getMainWindowFile().equals("MainWindowLight.fxml")) {
+                throw new InputThemeEqualsCurrentThemeException();
+            }
             this.userPrefs.setMainWindowFilePath("MainWindowLight.fxml");
         } else {
+            if (this.userPrefs.getMainWindowFile().equals("MainWindow.fxml")) {
+                throw new InputThemeEqualsCurrentThemeException();
+            }
             this.userPrefs.setMainWindowFilePath("MainWindow.fxml");
         }
 

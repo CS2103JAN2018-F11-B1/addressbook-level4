@@ -3,6 +3,7 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+//@@author A0155428B
 /**
  * Represents a theme in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidTheme(String)}

@@ -30,6 +30,7 @@ public class UserPrefs {
         guiSettings = new GuiSettings(width, height, x, y);
     }
 
+    //@@author A0155428B
     public String getMainWindowFile() {
         return mainWindowFilePath;
     }
@@ -38,6 +39,7 @@ public class UserPrefs {
         this.mainWindowFilePath = newFilePath;
     }
 
+    //@@author
     public String getAddressBookFilePath() {
         return addressBookFilePath;
     }

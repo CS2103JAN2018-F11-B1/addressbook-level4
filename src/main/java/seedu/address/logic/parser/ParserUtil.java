@@ -59,6 +59,7 @@ public class ParserUtil {
         return new Name(trimmedName);
     }
 
+    //@@author A0155428B
     /**
      * Parses a {@code String name} into a {@code Name}.
      * Leading and trailing whitespaces will be trimmed.
@@ -74,6 +75,7 @@ public class ParserUtil {
         return new Theme(trimmedTheme);
     }
 
+    //@@author
     /**
      * Parses a {@code Optional<String> name} into an {@code Optional<Name>} if {@code name} is present.
      * See header comment of this class regarding the use of {@code Optional} parameters.

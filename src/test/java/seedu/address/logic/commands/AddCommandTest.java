@@ -19,6 +19,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
+import seedu.address.model.Exception.InputThemeEqualsCurrentThemeException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.person.Contact;
@@ -142,6 +143,11 @@ public class AddCommandTest {
         public void updateFilteredPersonList(Predicate<Person> predicate) {
             fail("This method should not be called.");
         }
+
+        @Override
+        public void updateTheme(String theme) throws InputThemeEqualsCurrentThemeException {
+            fail("This method should not be called.");
+        };
     }
 
     /**
