@@ -2,8 +2,8 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import seedu.address.model.exception.InputThemeEqualsCurrentThemeException;
 import seedu.address.model.Theme;
+import seedu.address.model.exception.InputThemeEqualsCurrentThemeException;
 
 //@@author A0155428B
 /**
