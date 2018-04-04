@@ -144,6 +144,5 @@ public class ModelManager extends ComponentManager implements Model {
             }
             this.userPrefs.setMainWindowFilePath("MainWindow.fxml");
         }
-
     }
 }
