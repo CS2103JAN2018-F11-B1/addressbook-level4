@@ -59,6 +59,15 @@ public class ParserUtil {
         return new Name(trimmedName);
     }
 
+    /**
+     * Parses a {@code Optional<String> name} into an {@code Optional<Name>} if {@code name} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<Name> parseName(Optional<String> name) throws IllegalValueException {
+        requireNonNull(name);
+        return name.isPresent() ? Optional.of(parseName(name.get())) : Optional.empty();
+    }
+
     //@@author A0155428B
     /**
      * Parses a {@code String name} into a {@code Name}.
@@ -76,15 +85,6 @@ public class ParserUtil {
     }
 
     //@@author
-    /**
-     * Parses a {@code Optional<String> name} into an {@code Optional<Name>} if {@code name} is present.
-     * See header comment of this class regarding the use of {@code Optional} parameters.
-     */
-    public static Optional<Name> parseName(Optional<String> name) throws IllegalValueException {
-        requireNonNull(name);
-        return name.isPresent() ? Optional.of(parseName(name.get())) : Optional.empty();
-    }
-
     /**
      * Parses a {@code String phone} into a {@code Phone}.
      * Leading and trailing whitespaces will be trimmed.

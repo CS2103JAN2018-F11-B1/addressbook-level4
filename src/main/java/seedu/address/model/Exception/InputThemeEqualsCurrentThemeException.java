@@ -1,4 +1,4 @@
-package seedu.address.model.Exception;
+package seedu.address.model.exception;
 
 //@@author A0155428B
 /**

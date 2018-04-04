@@ -19,7 +19,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
-import seedu.address.model.Exception.InputThemeEqualsCurrentThemeException;
+import seedu.address.model.exception.InputThemeEqualsCurrentThemeException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.person.Contact;
