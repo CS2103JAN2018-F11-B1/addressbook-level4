@@ -199,8 +199,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     //@@author WoodyLau
     /**
      *  Updates the master account list to include account in {@code person} that is not in the list.
-     *  @return a copy of this {@code person} such that every account in this person points to an Account object in the
-     *  master list.
+     *  Updates the person to point to an Account object in the master list.
      */
     private void syncWithMasterAccountList(Contact person) {
         final UniqueAccountList personAccounts = new UniqueAccountList(person.getCompany());

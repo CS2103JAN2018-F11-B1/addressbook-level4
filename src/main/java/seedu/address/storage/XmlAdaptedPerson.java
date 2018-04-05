@@ -102,7 +102,7 @@ public class XmlAdaptedPerson {
             title = ((Lead) source).getTitle();
             website = ((Lead) source).getWebsite();
         } else if (source instanceof Contact) {
-            if (((Contact) source).getCompany() != null){
+            if (((Contact) source).getCompany() != null) {
                 company = ((Contact) source).getCompany().toString();
             }
             department = ((Contact) source).getDepartment();
