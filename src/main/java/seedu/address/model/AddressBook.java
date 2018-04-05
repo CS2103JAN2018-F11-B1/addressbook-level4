@@ -126,7 +126,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(editedPerson);
 
         Person syncedEditedPerson = syncWithMasterTagList(editedPerson);
-        if (syncedEditedPerson instanceof Contact) {
+        if (syncedEditedPerson instanceof Contact && ((Contact) syncedEditedPerson).getCompany() != null) {
             syncWithMasterAccountList((Contact) syncedEditedPerson);
         }
         // TODO: the tags master list will be updated even though the below line fails.
@@ -150,7 +150,9 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(editedPerson);
 
         Person syncedEditedPerson = syncWithMasterTagList(editedPerson);
-        syncWithMasterAccountList((Contact) syncedEditedPerson);
+        if (((Contact) syncedEditedPerson).getCompany() != null) {
+            syncWithMasterAccountList((Contact) syncedEditedPerson);
+        }
         // TODO: the tags master list will be updated even though the below line fails.
         // This can cause the tags master list to have additional tags that are not tagged to any person
         // in the person list.
