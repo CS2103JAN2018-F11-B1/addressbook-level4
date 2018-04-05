@@ -79,7 +79,7 @@ public class Oauth2Client {
             server.createContext("/test", new MyHandler());
             server.setExecutor(null);
             server.start();
-        } catch(IOException e) {
+        } catch (IOException e) {
             logger.info("Server likely to have been started already " + e.toString());
         }
     }
