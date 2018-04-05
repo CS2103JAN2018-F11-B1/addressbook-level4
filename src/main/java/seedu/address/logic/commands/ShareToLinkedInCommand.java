@@ -58,7 +58,7 @@ public class ShareToLinkedInCommand extends Command {
         //send event To Main to obtain the configuration file.
         EventsCenter.getInstance().post(new ShareToLinkedInEvent());
         //post success
-        if(postSuccess) {
+        if (postSuccess) {
             return new CommandResult(MESSAGE_SUCCESS);
         } else {
             return new CommandResult("Failed to post to LinkedIn");
@@ -75,7 +75,7 @@ public class ShareToLinkedInCommand extends Command {
         postSuccess = false;
         Logger logger = LogsCenter.getLogger(Oauth2Client.class);
         String accessToken = config.getAppSecret();
-        if(accessToken == null || accessToken.length() == 0){
+        if (accessToken == null || accessToken.length() == 0) {
             //was unable to share..
             return;
         }

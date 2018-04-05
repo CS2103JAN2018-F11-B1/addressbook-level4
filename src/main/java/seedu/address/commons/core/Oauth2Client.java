@@ -73,15 +73,15 @@ public class Oauth2Client {
      * Starts a webserver and allows it to expect a response at the context specified
      */
     public static void startServer() {
-            try{
-                int port = 13370;
-                HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
-                server.createContext("/test", new MyHandler());
-                server.setExecutor(null);
-                server.start();
-            } catch(IOException e){
-                logger.info("Server likely to have been started already " + e.toString());
-            }
+        try {
+            int port = 13370;
+            HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
+            server.createContext("/test", new MyHandler());
+            server.setExecutor(null);
+            server.start();
+        } catch(IOException e) {
+            logger.info("Server likely to have been started already " + e.toString());
+        }
     }
 
     /**

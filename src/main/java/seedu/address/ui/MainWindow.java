@@ -227,10 +227,10 @@ public class MainWindow extends UiPart<Stage> {
     //@@author davidten
     @Subscribe
     private void handleCloseBrowserEvent(HideBrowserRequestEvent event) {
-        try{
+        try {
             logger.info(LogsCenter.getEventHandlingLogMessage(event));
             handleHideBrowser();
-        } catch(Exception e){
+        } catch(Exception e) {
             logger.info(e.toString());
             EventsCenter.getInstance().post(new NewResultAvailableEvent("Login Failed."));
         }
