@@ -132,7 +132,7 @@ public class PersonCard extends UiPart<Region> {
         }
     }
 
-    //@@author Liu Yiming {A0155428B}
+    //@@author A0155428B
     /**
      *Returns the color for {@code tagName}'s label
      */
