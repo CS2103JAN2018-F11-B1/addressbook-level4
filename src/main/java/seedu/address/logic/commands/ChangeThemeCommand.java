@@ -2,6 +2,8 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Objects;
+
 import seedu.address.model.Theme;
 import seedu.address.model.exception.InputThemeEqualsCurrentThemeException;
 
@@ -35,5 +37,12 @@ public class ChangeThemeCommand extends Command {
             return new CommandResult(String.format(MESSAGE_CHANGE_THEME_FAIL, targetTheme));
         }
         return new CommandResult(String.format(MESSAGE_CHANGE_THEME_SUCCESS, targetTheme));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof ChangeThemeCommand // instanceof handles nulls
+                && this.targetTheme.equals(((ChangeThemeCommand) other).targetTheme)); // state check
     }
 }
