@@ -152,4 +152,9 @@ public class ModelManager extends ComponentManager implements Model {
             this.userPrefs.setMainWindowFilePath("MainWindow.fxml");
         }
     }
+
+    @Override
+    public String getThemeFilePath() {
+        return this.userPrefs.getGuiSettings().getThemeFilePath();
+    }
 }
