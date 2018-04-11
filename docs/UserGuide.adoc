@@ -167,7 +167,7 @@ For the first person, changes the company to Macrosoft and sets the rating to 4.
 Edits the department of the 2nd person to be `IT` and sets the title to `Mr.`. This person must be a Contact.
 //end::editdetails[]
 
-//end::convert[]
+//tag::convert[]
 === Converting a person : `con`, `convert`
 
 Converts an existing Lead in the address book to a Contact. For further description of Leads and Contacts, see the Introduction +

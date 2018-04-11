@@ -1,4 +1,4 @@
-= John Doe - Project Portfolio
+= Woody Lau - Project Portfolio
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
@@ -43,9 +43,9 @@ This application allows salespeople to organize their Leads, Contacts, and Accou
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-<<../UserGuide.adoc#38-editing-nonessential-details-of-a-person--editdetails,Edit Details>>
+<<../UserGuide.adoc#38-editing-nonessential-details-of-a-person\--editdetails,Edit Details>>
 
-<<../UserGuide.adoc#39-converting-a-person--con-convert,Convert>>
+<<../UserGuide.adoc#39-converting-a-person\--con-convert,Convert>>
 
 == Contributions to the Developer Guide
 
