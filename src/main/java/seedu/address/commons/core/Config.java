@@ -19,11 +19,11 @@ public class Config {
     private String appSecret;
     private String userLocation;
 
-    public String getUserLocation(){
+    public String getUserLocation() {
         return userLocation;
     }
 
-    public void setUserLocation(String address){
+    public void setUserLocation(String address) {
         userLocation = address;
     }
 

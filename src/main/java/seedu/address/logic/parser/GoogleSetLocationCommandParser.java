@@ -26,7 +26,8 @@ public class GoogleSetLocationCommandParser implements Parser<GoogleSetLocationC
 
         if (!arePrefixesPresent(argMultimap, PREFIX_ADDRESS)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, GoogleSetLocationCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, 
+                GoogleSetLocationCommand.MESSAGE_USAGE));
         }
 
         try {
@@ -37,7 +38,7 @@ public class GoogleSetLocationCommandParser implements Parser<GoogleSetLocationC
             throw new ParseException(ive.getMessage(), ive);
         }
     }
-//@@author
+    //@@author
     /**
      * Returns true if none of the prefixes contains empty {@code Optional} values in the given
      * {@code ArgumentMultimap}.

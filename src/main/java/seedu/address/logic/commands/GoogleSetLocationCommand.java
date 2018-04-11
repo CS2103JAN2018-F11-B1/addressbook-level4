@@ -1,15 +1,15 @@
 //@@author davidten
 package seedu.address.logic.commands;
 
+import java.io.IOException;
+import java.util.Optional;
+import java.util.logging.Logger;
+
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.util.ConfigUtil;
 import seedu.address.model.person.Address;
-
-import java.io.IOException;
-import java.util.Optional;
-import java.util.logging.Logger;
 
 import static java.util.Objects.requireNonNull;
 
@@ -27,7 +27,7 @@ public class GoogleSetLocationCommand extends Command {
     /**
      * Default constructor
      */
-    public GoogleSetLocationCommand(Address address){
+    public GoogleSetLocationCommand(Address address) {
         requireNonNull(address);
         this.address = address;
     }
