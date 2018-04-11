@@ -1276,7 +1276,7 @@ Woody Lau: +
 * Conversion between Leads and Contacts will be supported.
 
 
-**Major Feature** : Account Creation
+**Minor Feature** : Account Creation
 
 * Allows Contacts to belong to Accounts.
 

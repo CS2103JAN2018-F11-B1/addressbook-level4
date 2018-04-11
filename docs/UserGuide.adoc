@@ -145,6 +145,7 @@ Edits the name of the 2nd person to be `Betsy Crower` and clears all existing ta
 * `e 2 p/99990000 e/johndoe@example.com` +
 Edits the phone number and email address of the 1st person to be `99990000` and `johndoe@example.com` respectively.
 
+//tag::editdetails[]
 === Editing nonessential details of a person : `editdetails`
 
 Edits an existing person in the address book. +
@@ -164,7 +165,9 @@ Examples:
 For the first person, changes the company to Macrosoft and sets the rating to 4. This person must be a Lead.
 * `editdetails 2 d/IT t/Mr.` +
 Edits the department of the 2nd person to be `IT` and sets the title to `Mr.`. This person must be a Contact.
+//end::editdetails[]
 
+//end::convert[]
 === Converting a person : `con`, `convert`
 
 Converts an existing Lead in the address book to a Contact. For further description of Leads and Contacts, see the Introduction +
@@ -183,6 +186,7 @@ Converts the 2nd person in the list to a Contact.
 
 * `con 4` +
 Converts the 4th person in the list to a Contact.
+//end::convert[]
 
 === Adding an Account to a Contact : `account`
 
