@@ -384,7 +384,7 @@ Format: `st`, `sort`
 //tag::changetheme[]
 === Change theme: `changetheme`  [since v1.4]
 
-Changes color theme of CRM Book to the user specified theme. Currently, there are only two themes, `dark` and `light`. +
+Changes color theme of CRM Book to the user specified theme. Currently, there are three themes, `dark`, `light` and `blue`. +
 Format: `changetheme THEME`
 //end::changetheme[]
 
