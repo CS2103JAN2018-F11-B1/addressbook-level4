@@ -39,12 +39,6 @@ public class ChangeThemeCommand extends Command {
 
     private boolean isCurrentThemeEqualToTargetTheme() {
         return targetTheme.convertThemeToFilePath().equals(model.getThemeFilePath());
-
-    @Override
-    public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof ChangeThemeCommand // instanceof handles nulls
-                && this.targetTheme.equals(((ChangeThemeCommand) other).targetTheme)); // state check
     }
 
     @Override
