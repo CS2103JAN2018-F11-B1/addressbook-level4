@@ -26,7 +26,7 @@ public class GoogleSetLocationCommandParser implements Parser<GoogleSetLocationC
 
         if (!arePrefixesPresent(argMultimap, PREFIX_ADDRESS)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, 
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 GoogleSetLocationCommand.MESSAGE_USAGE));
         }
 
