@@ -496,6 +496,10 @@ A new conversion command `ConvertCommand` has been added to convert Leads into C
 
 image::ConvertSequenceDiagram1.png[width="650"]
 
+The `ConvertCommand` class calls the `convertPerson method` in the `ModelManager` class and the Sequence Diagram for the resulting steps are shown below.
+
+image::ConvertSequenceDiagram2.png[width="650"]
+
 When the user has selected a Contact instead of a Lead, an error is thrown with this code:
 
 [source,java]
