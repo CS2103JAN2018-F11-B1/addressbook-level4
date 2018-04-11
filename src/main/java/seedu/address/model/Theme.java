@@ -44,6 +44,9 @@ public class Theme {
         }
     }
 
+    /**
+     * Converts theme string to file path
+     */
     public String convertThemeToFilePath() {
         switch (this.theme) {
         case DARK_THEME:

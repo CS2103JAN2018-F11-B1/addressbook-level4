@@ -53,7 +53,9 @@ public class GuiSettings implements Serializable {
         return windowCoordinates;
     }
 
-    public String getThemeFilePath() { return themeFilePath; }
+    public String getThemeFilePath() {
+        return themeFilePath;
+    }
 
     public void setThemeFilePath(String theme) {
         this.themeFilePath = theme;

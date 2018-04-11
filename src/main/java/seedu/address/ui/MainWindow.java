@@ -26,7 +26,6 @@ import seedu.address.commons.events.ui.ShareToLinkedInEvent;
 import seedu.address.commons.events.ui.ShowBrowserRequestEvent;
 import seedu.address.commons.events.ui.ShowHelpRequestEvent;
 import seedu.address.logic.Logic;
-import seedu.address.logic.commands.ChangeThemeCommand;
 import seedu.address.logic.commands.ShareToLinkedInCommand;
 import seedu.address.model.Theme;
 import seedu.address.model.UserPrefs;
