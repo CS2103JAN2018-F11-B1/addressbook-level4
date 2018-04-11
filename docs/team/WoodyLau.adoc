@@ -36,8 +36,6 @@ This application allows salespeople to organize their Leads, Contacts, and Accou
 ** Tools:
 *** Integrated Travis to the team repo
 
-_{you can add/remove categories in the list above}_
-
 == Contributions to the User Guide
 
 
@@ -45,9 +43,9 @@ _{you can add/remove categories in the list above}_
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-include::../UserGuide.adoc#editdetails[Edit Details]
+include::../UserGuide.adoc[tag=editdetails]
 
-include::../UserGuide.adoc#convert[Convert]
+include::../UserGuide.adoc[tag=convert]
 
 == Contributions to the Developer Guide
 
@@ -55,4 +53,4 @@ include::../UserGuide.adoc#convert[Convert]
 |_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
 |===
 
-include::../DeveloperGuide.adoc#leadcontact[Leads and Contacts]
+include::../DeveloperGuide.adoc[tag=leadcontact]
