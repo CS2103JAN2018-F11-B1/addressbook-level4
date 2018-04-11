@@ -43,9 +43,9 @@ This application allows salespeople to organize their Leads, Contacts, and Accou
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-include::../UserGuide.adoc[tag=editdetails]
+include::../UserGuide.adoc#38-editing-nonessential-details-of-a-person--editdetails,Edit Details
 
-include::../UserGuide.adoc[tag=convert]
+include::../UserGuide.adoc#39-converting-a-person--con-convert,Convert
 
 == Contributions to the Developer Guide
 
@@ -53,4 +53,4 @@ include::../UserGuide.adoc[tag=convert]
 |_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
 |===
 
-include::../DeveloperGuide.adoc[tag=leadcontact]
+include::../DeveloperGuide.adoc#35-leads-and-contacts-feature,Leads and Contacts
