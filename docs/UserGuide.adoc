@@ -16,13 +16,17 @@ By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
 
 == Introduction
 
-CRM Book application aims to assist salespeople in managing the information of Leads and Contacts more optimally for future sales decisions.
-Leads are people that salespeople want to sell to. Contacts are people that salespeople have sold to.
-Unique features of this application include identifying if a Lead to be added in is a duplicate,
-scheduling appointments with Leads through the Calander, converting a Lead to a Contact after a sales transaction, and integrating LinkedIn to allow
-a salesperson to know if one of their Contacts changed companies.
-*More importantly, CRM Book is optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast,
-CRM Book can get your contact management tasks done faster than traditional GUI apps.
+A CRM System is a Customer Relationship Management system, mainly used in the real world by Sales and Marketing teams to manage their business-customer relationships, as well as to manage business contacts, employees, clients, contract wins and sales leads. Some examples of popular CRMs include Salesforce, SAP, and Microsoft Dynamics CRM.
+
+A common complaint against such traditional CRMs is that they are large, contain too much functionalities, and in some cases even require additional training before using. (Search for: Salesforce Trailhead)
+
+The CRM Book application aims to assist Salespeople by implementing the most important functionality of a CRM System, that is, managing their business contacts and clients. In a CRM, buisness contacts are seperated into two categories, Leads and Contacts. Leads are people that the salesperson has sold to in the past, while Contacts are people whom the salesperson has sold to before, even if the company they represent may no longer purchase the product.
+
+Some unique features of this CRM in v1.5 that benefits the individual Salesperson even more is an enhanced detection of duplicates through fields such as email and phone number, importing of a CSV file of leads that the salesperson may have bought through a mailing list or obtained through a tradeshow, sharing of posts about their company through LinkedIn, as well as seeing directions to their Lead's office through Google Maps. It is important to note that these features all enhance the experience of the salesperson, and does not distract from the core functionality of managing their relationship with their leads and contacts.
+
+Future releases of the CRM Book would include the ability to schedule meetings through a Calandar, integration with other Social Media networks to post company related news, allowing a client to choose a meeting slot among a few that the salesperson has specified.
+
+*More importantly, CRM Book is optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, CRM Book can get your contact management tasks done faster than traditional GUI apps.
 Interested? Jump to the <<Quick Start>> to get started. Enjoy!
 
 == Quick Start
