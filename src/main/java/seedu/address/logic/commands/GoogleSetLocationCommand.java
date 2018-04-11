@@ -38,7 +38,7 @@ public class GoogleSetLocationCommand extends Command {
         Logger logger = LogsCenter.getLogger(GoogleSetLocationCommand.class);
         String configFilePathUsed = Config.DEFAULT_CONFIG_FILE;
         Config initializedConfig;
-        
+
         try {
             Optional<Config> configOptional = ConfigUtil.readConfig(configFilePathUsed);
             initializedConfig = configOptional.orElse(new Config());
