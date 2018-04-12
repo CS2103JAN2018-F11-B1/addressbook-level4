@@ -71,7 +71,10 @@ public class Oauth2Client {
         bWindow.show();
     }
 
-    public static void setupConfig(){
+    /**
+     * Called to start reading the configuration file so that we get the most updated values
+     */
+    public static void setupConfig() {
         Config initializedConfig;
         String configFilePathUsed = Config.DEFAULT_CONFIG_FILE;
         try {
@@ -85,7 +88,10 @@ public class Oauth2Client {
         config = initializedConfig;
     }
 
-    public static void saveConfig(){
+    /**
+     * Called to save whatever config we write into the config file
+     */
+    public static void saveConfig() {
         try {
             ConfigUtil.saveConfig(config, config.DEFAULT_CONFIG_FILE);
         } catch (IOException e) {
