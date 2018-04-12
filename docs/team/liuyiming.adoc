@@ -1,0 +1,54 @@
+= Liu Yiming - Project Portfolio
+ :imagesDir: ../images
+ :stylesDir: ../stylesheets
+
+== PROJECT: CRM Book
+
+---
+
+== Overview
+
+CRM Book is a desktop application targeted for salespeople. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC. +
+This application allows salespeople to organize their Leads, Contacts, and Accounts that suits their liking, as well as address problems that symptomatic in the sales industry, such as identifying duplicates.
+
+== Summary of contributions
+
+ * *Major enhancement*: added the ability to change the theme of CRM Book
+ ** What it does: allows the user to change the color theme of CRM Book according to his preference. CRM Book will save this change in user preference and display the chosen theme in subsequent runs.
+ ** Justification: This feature improves the user experience significantly because the user can change the color theme to adapt to different light intensity of the surrounding. For example, change to dark theme when the room is dark. This would prevent eye fatigue. Alternatively, the user can choose to use a theme based on his own likings.
+ ** Highlights: This enhancement affects all parts of UI. It required an in-depth understanding of CSS and FXML. In addition, the feature is implemented in such a way that it would be very easy for future developers to include more themes.
+ ** Credits: The new themes are built based on the dark theme of AddressBook - Level 4.
+
+* *Minor enhancement*: added 10 different color styles for tags.
+
+* *Minor enhancement*: enabled auto-complete of command keywords.
+
+* *Code contributed*: [https://github.com/CS2103JAN2018-F11-B1/main/blob/master/collated/functional/A0155428B.md[Functional code]] [https://github.com/CS2103JAN2018-F11-B1/main/blob/master/collated/test/A0155428B.md[Test code]]
+
+* *Other contributions*:
+
+** Enhancements to existing features:
+*** Created and updated the icon of CRM Book (Pull requests https://github.com/CS2103JAN2018-F11-B1/main/pull/32[#32])
+*** Updated the header of CRM Book (Pull requests https://github.com/CS2103JAN2018-F11-B1/main/pull/31[#31])
+*** Updated UI to include a welcome page (Pull requests https://github.com/CS2103JAN2018-F11-B1/main/pull/158[#158])
+
+** Community:
+*** Reported bugs and suggestions for other teams in the class (examples: https://github.com/CS2103JAN2018-W14-B4/main/issues/154[Issue #154], https://github.com/CS2103JAN2018-W14-B4/main/issues/162[Issue #162], https://github.com/CS2103JAN2018-W14-B4/main/issues/165[Issue #165])
+
+== Contributions to the User Guide
+
+|===
+|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
+|===
+
+include::../UserGuide.adoc[tag=changetheme]
+
+|===
+|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+|===
+
+include::../DeveloperGuide.adoc[tag=autocomplete]
+
+include::../DeveloperGuide.adoc[tag=colortag]
+
+include::../DeveloperGuide.adoc[tag=changeTheme]

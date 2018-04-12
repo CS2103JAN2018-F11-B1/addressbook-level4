@@ -1287,7 +1287,7 @@ Liu Yiming: +
 * This allows user to read the CRM Book easily under different settings
 
 
-**Major Feature** : Auto Completion of commands
+**Minor Feature** : Auto Completion of commands
 
 * Allows user to key in commands more efficiently.
 
@@ -1540,8 +1540,7 @@ Use case ends.
 *MSS*
 
 1.  User requests to change theme
-2.  CRM Book changes theme setting
-3.  User restart CRM Book to effect the change
+2.  CRM Book changes the theme setting to display the chosen theme
 +
 Use case ends.
 
@@ -1554,6 +1553,12 @@ Use case ends.
 +
 Use case ends.
 
+* 2b. The input theme is invalid.
++
+[none]
+** 2b1. CRM Book shows an error message.
++
+Use case ends.
 
 [appendix]
 == Non Functional Requirements
