@@ -106,8 +106,7 @@ public class AccountCommand extends UndoableCommand {
     }
 
     /**
-     * Stores the details to edit the person with. Each non-empty field value will replace the
-     * corresponding field value of the person.
+     * Stores the Account to edit the person with. It will replace the existing Account of the person.
      */
     public static class AccountDescriptor {
         private Account account = null;
@@ -116,7 +115,6 @@ public class AccountCommand extends UndoableCommand {
 
         /**
          * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
          */
         public AccountDescriptor(AccountDescriptor toCopy) {
             setAccount(toCopy.account);
