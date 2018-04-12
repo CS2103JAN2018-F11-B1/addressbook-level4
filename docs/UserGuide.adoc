@@ -79,6 +79,7 @@ Example: Leads from Skype and Nokia can be categorised under a group called Micr
 
 Format: `h`, `help`
 
+//tag::linkedinLogin[]
 === Log in to LinkedIn : 'linklog', 'linkedin_login'
 
 Format: 'linklog', 'linkedin_login'
@@ -92,6 +93,7 @@ Format: 'linkshare [content]', 'linkedin_share [content]'
 
 [TIP]
 This command will allow you to share a post on LinkedIn to all your connections. This will allow you to share any interesting marketing materials your company may be involved in quickly.
+//end::linkedinLogin[]
 
 === Adding a Lead: `a`, `add`
 
