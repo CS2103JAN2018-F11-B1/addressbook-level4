@@ -31,6 +31,7 @@ Future releases of the CRM Book would include the ability to schedule meetings t
 
 Interested? Jump to the <<Quick Start>> to get started. Enjoy!
 //end::description[]
+
 == Quick Start
 
 .  Ensure you have Java version `1.8.0_60` or later installed in your Computer.
