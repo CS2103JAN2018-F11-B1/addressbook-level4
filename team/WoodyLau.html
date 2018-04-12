@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Woody Lau - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Woody Lau - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-crm-book"><a class="link" href="#project-crm-book">PROJECT: CRM Book</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>CRM Book is a desktop application targeted for salespeople. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+This application allows salespeople to organize their Leads, Contacts, and Accounts that suits their liking, as well as address problems that symptomatic in the sales industry, such as identifying duplicates.
+== Summary of contributions</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: Separated out <strong>Leads and Contacts</strong> from Persons</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: supports the rest of the CRM Book by having separate classes for commands.</p>
+</li>
+<li>
+<p>Justification: This feature is core for a CRM as Leads and Contacts are the primary types of people in the CRM.</p>
+</li>
+<li>
+<p>Highlights: This enhancement affects all commands and classes that accessed Persons. It required researching which commands would need to be modified to target a specific type, or could be generalized for both. The implementation too was challenging as it required discovering the many existing classes that needed changing.</p>
+</li>
+<li>
+<p>Credits: The original Person class from which Leads and Contacts were extended.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Added <strong>Accounts</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: gives Contact a special class for companies.</p>
+</li>
+<li>
+<p>Justification: Accounts are important for existing CRMs as they hold contracts and other aspects when connected to Contacts. These other features are not implemented in CRM Book.</p>
+</li>
+<li>
+<p>Credits: The Tag class as it provided inspiration for saving Accounts into the AddressBook and XML save file.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Created a <strong>convert command</strong> to change Leads into Contacts</p>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Created an <strong>editdetails command</strong> that adds fields that are unique to Leads or Contacts, and created fields in the UI that reflects the changes.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-F11-B1/main/blob/master/collated/functional/WoodyLau.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-F11-B1/main/blob/master/collated/test/WoodyLau.md">Test code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reported bugs and suggestions for other teams in the class</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated Travis to the team repo</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><a href="../UserGuide.html#39-editing-nonessential-details-of-a-person--editdetails">Edit Details</a></p>
+</div>
+<div class="paragraph">
+<p><a href="../UserGuide.html#310-converting-a-person--con-convert">Convert</a></p>
+</div>
+<div class="paragraph">
+<p><a href="../UserGuide.html#311-adding-an-account-to-a-contact--account">Account</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><a href="../DeveloperGuide.html#35-leads-and-contacts-feature">Leads and Contacts</a></p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-04-12 20:25:45 UTC
+</div>
+</div>
+</body>
+</html>

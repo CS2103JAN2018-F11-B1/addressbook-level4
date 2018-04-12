@@ -5,20 +5,20 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>AddressBook Level 4 - Developer Guide</title>
+<title>CRM Book - Developer Guide</title>
 <link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css">
 </head>
 <body class="article">
 <div id="header">
-<h1>AddressBook Level 4 - Developer Guide</h1>
+<h1>CRM Book - Developer Guide</h1>
 </div>
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>CS2103-F11-B1</code>      Since: <code>Jan 2018</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -45,9 +45,19 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
+<li><a href="#remark-feature">3.2. Remark feature</a></li>
+<li><a href="#color-tag-feature">3.3. Color Tag feature</a></li>
+<li><a href="#auto-complete-feature">3.4. Auto-Complete feature</a></li>
+<li><a href="#leads-and-contacts-feature">3.5. Leads and Contacts feature</a></li>
+<li><a href="#linkedin-login-feature">3.6. LinkedIn Login Feature</a></li>
+<li><a href="#bulk-import-feature">3.7. Bulk Import Feature</a></li>
+<li><a href="#logging">3.8. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
+<li><a href="#alias-commands-feature">3.10. Alias Commands feature</a></li>
+<li><a href="#identifying-a-duplicate-feature">3.11. Identifying a Duplicate feature</a></li>
+<li><a href="#displaying-lead-list-and-contact-list-feature">3.12. Displaying Lead list and Contact list feature</a></li>
+<li><a href="#enhancement-of-find-command-feature">3.13. Enhancement of Find Command feature</a></li>
+<li><a href="#change-theme-feature">3.14. Change Theme feature</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -80,16 +90,31 @@
 <li><a href="#GetStartedProgramming-RemarkCommand">A.2. Creating a new command: <code>remark</code></a></li>
 </ul>
 </li>
-<li><a href="#product-scope">Appendix B: Product Scope</a></li>
+<li><a href="#product-scope">Appendix B: Product Scope</a>
+<ul class="sectlevel2">
+<li><a href="#feature-contributions">B.1. Feature contributions:</a></li>
+</ul>
+</li>
 <li><a href="#user-stories">Appendix C: User Stories</a></li>
-<li><a href="#use-cases">Appendix D: Use Cases</a></li>
+<li><a href="#use-cases">Appendix D: Use Cases</a>
+<ul class="sectlevel2">
+<li><a href="#use-case-user-requests-to-import-a-csv-file-to-crm-book">D.1. Use case: User requests to import a CSV file to CRM Book</a></li>
+<li><a href="#use-case-user-seeks-lead-list-or-contact-list">D.2. Use case: User seeks Lead list or Contact list</a></li>
+<li><a href="#use-case-user-enters-phone-numbers-and-or-email-addresses-to-find">D.3. Use case: User enters phone numbers and/or email addresses to find</a></li>
+<li><a href="#use-case-user-posts-to-linkedin">D.4. Use case: User posts to LinkedIn</a></li>
+<li><a href="#use-case-auto-complete">D.5. Use case: Auto-complete</a></li>
+<li><a href="#use-case-convert-a-lead-to-a-contact">D.6. Use case: Convert a Lead to a Contact</a></li>
+<li><a href="#use-case-color-tag">D.7. Use case: Color tag</a></li>
+<li><a href="#use-case-change-theme">D.8. Use case: Change theme</a></li>
+</ul>
+</li>
 <li><a href="#non-functional-requirements">Appendix E: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix F: Glossary</a></li>
 <li><a href="#product-survey">Appendix G: Product Survey</a></li>
 <li><a href="#instructions-for-manual-testing">Appendix H: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person">H.2. Deleting a person</a></li>
+<li><a href="#deleting-a-lead-or-contact">H.2. Deleting a Lead or Contact</a></li>
 <li><a href="#saving-data">H.3. Saving data</a></li>
 </ul>
 </li>
@@ -309,13 +334,13 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The <code>.pptx</code> files used to create diagrams in this document can be found in the <a href="https://github.com/se-edu/addressbook-level4/tree/master/docs/diagrams/">diagrams</a> folder. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose <code>Save as picture</code>.
+The <code>.pptx</code> files used to create diagrams in this document can be found in the <a href="https://github.com/CS2103JAN2018-F11-B1/main/docs/diagrams/">diagrams</a> folder. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose <code>Save as picture</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has only one class called <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has only one class called <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -398,7 +423,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Note how the <code>Model</code> simply raises a <code>AddressBookChangedEvent</code> when the Address Book data are changed, instead of asking the <code>Storage</code> to save the updates to the hard disk.
+Note how the <code>Model</code> simply raises a <code>AddressBookChangedEvent</code> when the CRM Book data are changed, instead of asking the <code>Storage</code> to save the updates to the hard disk.
 </td>
 </tr>
 </table>
@@ -437,13 +462,13 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="title">Figure 5. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -478,7 +503,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -515,7 +540,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="title">Figure 9. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -546,7 +571,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="title">Figure 10. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -804,7 +829,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Only include commands that modifies the address book (<code>add</code>, <code>clear</code>, <code>edit</code>).</p>
+<p><strong>Alternative 1 (current choice):</strong> Only include commands that modifies the CRM Book (<code>add</code>, <code>clear</code>, <code>edit</code>).</p>
 <div class="ulist">
 <ul>
 <li>
@@ -869,20 +894,568 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></h3>
+<h3 id="remark-feature"><a class="link" href="#remark-feature">3.2. Remark feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
+<p>To record more detailed information of a person, a new command <code>RemarkCommand</code> is implemented.</p>
+</div>
+<div class="paragraph">
+<p>The <code>RemarkCommand</code> inherits from <code>UndoableCommands</code> since it is reasonable to make remark command execute in an <em>undoable</em> way.</p>
+</div>
+<div class="paragraph">
+<p><code>RemarkCommand</code> which is undoable is implemented this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">RemarkCommand</span> <span class="directive">extends</span> UndoableCommand {
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult executeUndoableCommand() {
+        <span class="comment">// ... remark logic ...</span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following diagram shows the inheritance diagram for <code>RemarkCommand</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RemarkCommandDiagram.png" alt="RemarkCommandDiagram" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>The model <code>Person</code> is modified to have a new field <code>Remark</code>.</p>
+</div>
+<div class="paragraph">
+<p>The default value of the remark field of a person is an empty string.
+A user is not able to assign a remark to a person when adding the person. Therefore, all people in the CRM Book is originally without any remark by default.</p>
+</div>
+<div class="paragraph">
+<p>The implementation of this command is much like the <code>EditCommand</code>.
+For example, when a user type <code>remark 2 r\Likes to swim</code>. Then the remark field of the 2nd person in the current list will be changed to <code>Likes to swim</code>. It’s similar to editing a person’s phone number or address.</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram is shown below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RemarkCommandSequenceDiagram.png" alt="RemarkCommandSequenceDiagram" width="1000">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-remarkcommand-code"><a class="link" href="#aspect-implementation-of-code-remarkcommand-code">Aspect: Implementation of <code>RemarkCommand</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Add a new <code>remark</code> command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Treat it as a command may be easy to understand. Only a few people needs a remark.</p>
+</li>
+<li>
+<p>Cons: Cannot add a person with remark.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Just make it a part of <code>EditCommand</code> and <code>AddCommand</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Only need to add remark field to every related class. We can add a person with remark.</p>
+</li>
+<li>
+<p>Cons: We may have to type too many things when adding a person. Also, some people don’t have any remark.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="color-tag-feature"><a class="link" href="#color-tag-feature">3.3. Color Tag feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>To allow easy identification of different tags, a color tag feature is introduced.</p>
+</div>
+<div class="paragraph">
+<p>A string array is declared in PersonCard.java to include a set of colors for tags.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span><span class="type">[]</span> TAG_COLORS =
+        { <span class="string"><span class="delimiter">&quot;</span><span class="content">blue</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">cyan</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">green</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">magenta</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">orange</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">pink</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">red</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">yellow</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">teal</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">brown</span><span class="delimiter">&quot;</span></span> };</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These colors are defined, with their background color and text color spelled out, in the the DarkTheme.css file.</p>
+</div>
+<div class="paragraph">
+<p>A hash code of the tag name is used to select a color for the tag such that it would remain consistent between different runs of the software.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="predefined-type">String</span> getTagColorFor(<span class="predefined-type">String</span> tagName) {
+    <span class="keyword">return</span> TAG_COLORS[<span class="predefined-type">Math</span>.abs(tagName.hashCode()) % TAG_COLORS.length];
+}
+
+<span class="directive">private</span> <span class="type">void</span> initTags(Person person) {
+    person.getTags().forEach(tag -&gt; {
+        <span class="predefined-type">Label</span> tagLabel = <span class="keyword">new</span> <span class="predefined-type">Label</span>(tag.tagName);
+        tagLabel.getStyleClass().add(getTagColorFor(tag.tagName));
+        tags.getChildren().add(tagLabel);
+    });
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-color-tags"><a class="link" href="#aspect-implementation-of-color-tags">Aspect: Implementation of color tags</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Assign a color from a predefined list based on tag name</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: No additional commands are needed to generate a color for the tags.</p>
+</li>
+<li>
+<p>Cons: User cannot choose a color for the tag.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Allow user to set a color for the tag</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows more freedom for user customization.</p>
+</li>
+<li>
+<p>Cons: Takes more time to implement color tags.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="auto-complete-feature"><a class="link" href="#auto-complete-feature">3.4. Auto-Complete feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>To allow fast typing of commands, auto-complete of commands is implemented.</p>
+</div>
+<div class="paragraph">
+<p>Auto-complete is implemented through the TextFields feature of ControlsFX.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">TextFields.bindAutoCompletion(commandTextField, Messages.AUTOCOMPLETE_FIELD);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>All the command words are included in the AUTOCOMPLETE_FIELD string.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span><span class="type">[]</span> AUTOCOMPLETE_FIELD = { AddCommand.COMMAND_WORD, ClearCommand.COMMAND_WORD,
+    ConvertCommand.COMMAND_WORD, DeleteCommand.COMMAND_WORD, EditCommand.COMMAND_WORD, ExitCommand.COMMAND_WORD,
+    FindCommand.COMMAND_WORD, HelpCommand.COMMAND_WORD, HistoryCommand.COMMAND_WORD,
+    LinkedInLoginCommand.COMMAND_WORD, ListCommand.COMMAND_WORD, RedoCommand.COMMAND_WORD,
+    SelectCommand.COMMAND_WORD, UndoCommand.COMMAND_WORD, AddCommand.COMMAND_AUTO_COMPLETE};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to all the command words, a COMMAND_AUTO_COMPLETE string, with both command word and prefixes, is also included for add command.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> COMMAND_AUTO_COMPLETE = COMMAND_WORD + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + PREFIX_NAME + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span>
+        + PREFIX_PHONE + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + PREFIX_EMAIL + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + PREFIX_ADDRESS + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + PREFIX_TAG;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-auto-complete"><a class="link" href="#aspect-implementation-of-auto-complete">Aspect: Implementation of Auto-complete</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> All the commands that contain the typed input are shown. ie. When "a" is typed, both "add" and "clear" will be shown.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allow new user to quickly learn the different command words.</p>
+</li>
+<li>
+<p>Cons: When there are a lot of commands, efficiency of auto-complete decreases as user would have too many options to choose from.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Only commands with the same sequence as the typed input are shown. ie. When "a" is typed, only "add" will be shown.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Higher efficiency of auto-complete.</p>
+</li>
+<li>
+<p>Cons: New user might find this difficult to use as they are unfamillar with the command words.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="leads-and-contacts-feature"><a class="link" href="#leads-and-contacts-feature">3.5. Leads and Contacts feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.5.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>People in the address book were stored under a single class with no options for differentiating between two types of classes.</p>
+</div>
+<div class="paragraph">
+<p>To implement a CRM Book, Leads and Contacts must be differentiated so that they can each hold different fields like a proper CRM Book. To do so, they currently extend the Person class so that all existing functionality associated with Persons will work with both Leads an Contacts. Unique fields will be given their own classes like the original generic fields like Name and Address.</p>
+</div>
+<div class="paragraph">
+<p>In a CRM Book, users start by adding Leads, who are people they have not sold to yet. As they begin selling, the people who they have sold to become Contacts.</p>
+</div>
+<div class="paragraph">
+<p>Many existing commands like <code>AddCommand</code> have been modified to fit the new paradigm so that it only adds Leads.</p>
+</div>
+<div class="paragraph">
+<p>A new conversion command <code>ConvertCommand</code> has been added to convert Leads into Contacts. The Sequence Diagram is shown:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ConvertSequenceDiagram1.png" alt="ConvertSequenceDiagram1" width="650">
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>ConvertCommand</code> class calls the <code>convertPerson method</code> in the <code>ModelManager</code> class and the Sequence Diagram for the resulting steps are shown below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ConvertSequenceDiagram2.png" alt="ConvertSequenceDiagram2" width="650">
+</div>
+</div>
+<div class="paragraph">
+<p>When the user has selected a Contact instead of a Lead, an error is thrown with this code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ConvertCommand</span> <span class="directive">extends</span> UndoableCommand {
+    <span class="annotation">@Override</span>
+    <span class="directive">protected</span> <span class="type">void</span> preprocessUndoableCommand() <span class="directive">throws</span> CommandException {
+        <span class="comment">// ... get list of Persons ...</span>
+        <span class="keyword">try</span> {
+            oldLead = (Lead) lastShownList.get(index.getZeroBased());
+        } <span class="keyword">catch</span> (<span class="exception">ClassCastException</span> cce) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_NOT_CONVERTED);
+        }
+        newContact = createContact(oldLead);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It keeps the name, phone, email, address, remarks and tags through the conversion. The company is converted if it exists into an Account. The converted date is set in the Contact.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-leads-and-contacts"><a class="link" href="#aspect-implementation-of-leads-and-contacts">Aspect: Implementation of Leads and Contacts</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Extend the existing Person class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: We will not lose any functionality associated with the Person class.</p>
+</li>
+<li>
+<p>Cons: Declarations of Person variables may confuse new developers even as a general class for Leads and Contacts.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create two new classes Leads and Contacts</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Clearly differentiates Leads and Contacts throughout the codebase.</p>
+</li>
+<li>
+<p>Cons: We would have to rewrite most objects to take into account the two new classes.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-how-conversion-will-work"><a class="link" href="#aspect-how-conversion-will-work">Aspect: How conversion will work</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1:</strong> Just convert the basic information. Let user fill in other fields themselves.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: User must do extra work.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Smartly detect which fields can be converted and then do so.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User will only need to fix some mistakes in the conversion.</p>
+</li>
+<li>
+<p>Cons: Smart detection and conversion needs work to do.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="linkedin-login-feature"><a class="link" href="#linkedin-login-feature">3.6. LinkedIn Login Feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.6.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The linkedInLogin mechanism is handled largely by the oAuth2Client interacting with the browser window, which the user will interact with in order to give LinkedIn their username, password, as well as granting the application permission for use.</p>
+</div>
+<div class="paragraph">
+<p>When the <code>linkedIn_login</code> command is called, a <code>ShowBrowserRequestEvent</code> will be fired by <code>LinkedInLoginCommand(Class)</code> and picked up by the MainWindow.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult execute() {
+        EventsCenter.getInstance().post(<span class="keyword">new</span> ShowBrowserRequestEvent());
+        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(MESSAGE_SUCCESS);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The MainWindow in turn will call the <code>OAuth2Client(Class)</code> which will fire up the browser awaiting an authorization code from LinkedIn that will be sent after the user has successfully logged in and granted the CRM Book permission.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Subscribe</span>
+    <span class="directive">private</span> <span class="type">void</span> handleLinkedInAuthenticationEvent(ShowBrowserRequestEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        handleLinkedInAuthentication();
+    }</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> handleLinkedInAuthentication() {
+    <span class="keyword">try</span> {
+        Oauth2Client.authenticateWithLinkedIn(config);
+    } <span class="keyword">catch</span> (<span class="exception">IOException</span> e) {
+        e.printStackTrace();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> authenticateWithLinkedIn(Config configuration) <span class="directive">throws</span> <span class="exception">IOException</span> {
+    ...
+    String urlString = <span class="string"><span class="delimiter">&quot;</span><span class="content">https://www.linkedin.com/oauth/v2/authorization?response_type=code&amp;client_id=</span><span class="delimiter">&quot;</span></span>
+        + clientId + <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;redirect_uri=</span><span class="delimiter">&quot;</span></span> + redirectUri + <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;state=...</span><span class="delimiter">&quot;</span></span>;
+    bWindow = <span class="keyword">new</span> BrowserWindow(urlString);
+    bWindow.show();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once this has happened, we fire a <code>HideBrowserRequestEvent</code> in order to close the browser properly.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Decrypter</code> will then be fired so that we do not store the app secret in plain text. This decision is explained more in the design considerations below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> handleHideBrowser() {
+    Oauth2Client.closeBrowser();
+    Oauth2Client.getLinkedInS();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After the CRM Book has received the authorization code and the app secret from the decrypter, they are sent back to LinkedIn to request for an AccessToken. Once the AccessToken has been received, the user is considered to be successfully logged in, and the accessToken can be used by the CRM Book to make requests to LinkedIn on behalf of the user. The accessToken is also stored in the config.json file for future usage.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">config.setAppSecret(accessToken);
+ConfigUtil.saveConfig(config, config.DEFAULT_CONFIG_FILE);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the linkedIn_login feature works. As seen, it is an events-driven design.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LinkedInLoginSequenceDiagram.png" alt="LinkedInLoginSequenceDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.6.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-storing-the-linkedin-app-secret"><a class="link" href="#aspect-storing-the-linkedin-app-secret">Aspect: Storing the LinkedIn App Secret</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Slightly encrypting the App Secret</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement, not trivial for attackers to get by scanning the source code.</p>
+</li>
+<li>
+<p>Cons: App secret can be derived if the attacker runs the source code</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Store the App Secret in another server, and requesting it with an authentication code</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Higher security, app secret not stored on GitHub</p>
+</li>
+<li>
+<p>Cons: Significantly harder to implement. Requires user to have a username and password for the server not stored on GitHub.
+<strong>Additional Info:</strong> See comments on Decrypter class for full argument</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="bulk-import-feature"><a class="link" href="#bulk-import-feature">3.7. Bulk Import Feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">3.7.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>To add a large number of persons to the CRM Book at the same time, a new command <code>ImportCommand</code> is implemented.</p>
+</div>
+<div class="paragraph">
+<p>The <code>ImportCommand</code> inherits from <code>Command</code>. It is implemented this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ImportCommand</span> <span class="directive">extends</span> Command {
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult execute() {
+        <span class="comment">// … import logic …</span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When an <code>ImportCommand</code> is called, the corresponding CSV file will be processed. Then persons will be added to CRM Book automatically like what a <code>AddCommand</code> can do but without manual typing.</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram is shown below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ImportCommandSequenceDiagram.png" alt="ImportCommandSequenceDiagram" width="1000">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">3.7.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-csv-file-format"><a class="link" href="#aspect-csv-file-format">Aspect: CSV file format</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Requires the CSV file to follow the given format</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement. No need to analyze too much about the file.</p>
+</li>
+<li>
+<p>Cons: More work for users.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Allow attributes not in order and allow different names for attributes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Hard to detect and implement.</p>
+</li>
+<li>
+<p>Cons: More flexible to users. Can help users save time.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -913,9 +1486,326 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="alias-commands-feature"><a class="link" href="#alias-commands-feature">3.10. Alias Commands feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">3.10.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>A command can be performed by typing in its alias rather than the word.<br>
+The following is an example of implementing the alias command for the list command:<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ListCommand</span> <span class="directive">extends</span> Command {
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> COMMAND_WORD = <span class="string"><span class="delimiter">&quot;</span><span class="content">list</span><span class="delimiter">&quot;</span></span>;
+    <span class="comment">//@@author Sheikh-Umar</span>
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> COMMAND_ALIAS = <span class="string"><span class="delimiter">&quot;</span><span class="content">l</span><span class="delimiter">&quot;</span></span>;
+    <span class="comment">//@@author</span>
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_SUCCESS = <span class="string"><span class="delimiter">&quot;</span><span class="content">Listed all Leads and Contacts</span><span class="delimiter">&quot;</span></span>;
+
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult execute() {
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(MESSAGE_SUCCESS);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The alias command for all other commands will follow a similar implementation.<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">3.10.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-implement-the-alias-command-for-all-commands"><a class="link" href="#aspect-how-to-implement-the-alias-command-for-all-commands">Aspect: How to implement the alias command for all commands</a></h5>
+<div class="paragraph">
+<p>The feature is implemented by adding the alias of the command into its respective java document, and updating the AddressBookParser java document.<br>
+The feature is implemented this way to utilise the command java documents that are available as opposed to creating a new java document for a certain alias.<br></p>
+</div>
+<div class="paragraph">
+<p>This feature is implemented to allow a user to enter a command without specifying the entire word of the command.<br></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="identifying-a-duplicate-feature"><a class="link" href="#identifying-a-duplicate-feature">3.11. Identifying a Duplicate feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">3.11.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The CRM Book will ensure that every Lead and Contact stored is a non-duplicate.<br></p>
+</div>
+<div class="paragraph">
+<p>The feature is implemented by checking the phone number and email address of a new Lead with all of the phone numbers and email addresses of all leads and contacts currently in the CRM-Book.<br></p>
+</div>
+<div class="paragraph">
+<p>The feature will be implemented on the add command because the current application detects duplicates at the add command.<br>
+The following is how the feature will be implemented:<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">boolean</span> contains(Person toCheck) {
+        requireNonNull(toCheck);
+        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="integer">0</span>; i &lt; internalList.size(); i++) {
+            Person current = internalList.get(i);
+            <span class="keyword">if</span> (current.getPhone().equals(toCheck.getPhone())
+                    || current.getEmail().equals(toCheck.getEmail())) {
+                <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+            }
+        }
+        <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The phone number and email address of a Lead will be checked in the list of all Leads and Contacts.
+If either the phone number of email address of the Lead to be added is found in the list,
+the CRM application will display a message that the lead is a duplicate and will reject this lead.</p>
+</div>
+<div class="paragraph">
+<p>The following action diagram shows how the operation of identifying a duplicate lead works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DetectDuplicateActivityDiagram.png" alt="DetectDuplicateActivityDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-9"><a class="link" href="#design-considerations-9">3.11.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-implement-identifying-a-duplicate"><a class="link" href="#aspect-how-to-implement-identifying-a-duplicate">Aspect: How to implement identifying a duplicate</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Iterate through all Leads and Contacts in CRM-Book.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Search will be performed in linear time, and enhances an existing portion of code.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="displaying-lead-list-and-contact-list-feature"><a class="link" href="#displaying-lead-list-and-contact-list-feature">3.12. Displaying Lead list and Contact list feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-10"><a class="link" href="#current-implementation-10">3.12.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The CRM Book will be able to list out all Leads and Contacts separately.</p>
+</div>
+<div class="paragraph">
+<p>The feature is implemented by checking on the type of the persons already stored in the CRM, and displaying all persons that match the keyword (either Lead or Contact) that the user enters.<br></p>
+</div>
+<div class="paragraph">
+<p>The feature is implemented through the DisplayCommand, which is based on FindCommand.
+Hence, the DisplayCommand will operate similarly as the FindCommand, with the only difference being the DisplayCommand searches for all Leads or Contacts already in the CRM Book.<br></p>
+</div>
+<div class="paragraph">
+<p>The <code>DisplayCommand</code> inherits from <code>Command</code>. It is implemented this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">DisplayCommand</span> <span class="directive">extends</span> Command {
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult execute() {
+        <span class="comment">// … import logic …</span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following action diagram shows how the operation of displaying the Leads or Contacts list works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DisplayListOfACertainTypeActionDiagram.png" alt="DisplayListOfACertainTypeActionDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-10"><a class="link" href="#design-considerations-10">3.12.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-displaying-lead-list-and-contact-list-works"><a class="link" href="#aspect-how-displaying-lead-list-and-contact-list-works">Aspect: How displaying Lead list and Contact list works</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Iterate through the CRM Book for persons that match the keyword that user entered just like the FindCommand.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Iteration will be performed in linear time, and utilises the functionality of the FindCommand.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-of-find-command-feature"><a class="link" href="#enhancement-of-find-command-feature">3.13. Enhancement of Find Command feature</a></h3>
+<div class="sect3">
+<h4 id="reason-for-implementation"><a class="link" href="#reason-for-implementation">3.13.1. Reason for Implementation</a></h4>
+<div class="paragraph">
+<p>The user may want to search for Leads and Contacts based on phone numbers and email addresses rather than names.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-11"><a class="link" href="#current-implementation-11">3.13.2. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The CRM Book currently searches for a Lead or Contact based on their name.</p>
+</div>
+<div class="paragraph">
+<p>This command can be further improved by being able to find phone numbers and email addresses.<br></p>
+</div>
+<div class="paragraph">
+<p>The following is how the feature will be implemented:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">boolean</span> test(Person person) {
+         <span class="keyword">return</span> keywords.stream().anyMatch(keyword -&gt; StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword)                .anyMatch(keyword -&gt; StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword)
+                        || StringUtil.containsWordIgnoreCase(person.getPhone().value, keyword)
+                        || StringUtil.containsWordIgnoreCase(person.getEmail().value, keyword));
+     }
+ }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The phone number and email address that the user entered will be checked in the list of all Leads and Contacts.
+If either the phone number of email address is found in the list,
+the CRM Book will display the Leads and/or Contacts that match the keywords entered.
+If not, the CRM Book will display zero Leads and Contacts found.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-11"><a class="link" href="#design-considerations-11">3.13.3. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-implement-finding-phone-numbers-and-email-addresses"><a class="link" href="#aspect-how-to-implement-finding-phone-numbers-and-email-addresses">Aspect: How to implement finding phone numbers and email addresses</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Edit the current search implementation to include finding phone numbers and email addresses.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Search will be performed in linear time, and utilises an existing portion of code.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="change-theme-feature"><a class="link" href="#change-theme-feature">3.14. Change Theme feature</a></h3>
+<div class="sect3">
+<h4 id="reason-for-implementation-2"><a class="link" href="#reason-for-implementation-2">3.14.1. Reason for implementation</a></h4>
+<div class="paragraph">
+<p>CRM Book users are expected to spent long period of time on the software and under different light settings. Change theme allows users to switch between light and dark theme. This would prevent eye fatigue.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-12"><a class="link" href="#current-implementation-12">3.14.2. Current implementation</a></h4>
+<div class="paragraph">
+<p>Currently, different themes are referenced in different FXML files which uses different CSS files.
+The following piece of code demonstrates how CSS files are referenced in FXML files:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>//in MainWindow.fxml
+&lt;Scene&gt;
+  &lt;stylesheets&gt;
+    &lt;URL value="@DarkTheme.css" /&gt;
+    &lt;URL value="@Extensions.css" /&gt;
+  &lt;/stylesheets&gt;
+  ...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, the default dark theme uses "MainWindow.fxml" to config its main window while the light theme uses "MainWindowLight.fxml".
+In "MainWindow.fxml", "DarkTheme.css" and "Extensions.css" are referenced as the stylesheets of the scene.
+Similarly, "MainWindowLight.fxml" uses "LightTheme.css" and "Extensions.css" as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>//in MainWindowLight.fxml
+&lt;Scene&gt;
+  &lt;stylesheets&gt;
+    &lt;URL value="@LightTheme.css" /&gt;
+    &lt;URL value="@ExtensionsLight.css" /&gt;
+  &lt;/stylesheets&gt;
+  ...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since the main window FXML file path is stored in the UserPrefs class, we can get the file path in ModelManager class by
+UserPrefs::getMainWindowFile() method.
+In addition, UserPrefs::setMainWindowFilePath(String newFilePath) method will change the file path of the FXML file, and
+the "mainWindowFilePath" field in "preferences.json" will change accordingly.</p>
+</div>
+<div class="paragraph">
+<p>Users can use the command "changetheme THEME" where THEME can only be "light" and "dark" currently. More themes will be added in v2.0.
+The following piece of code shows how ChangeThemeCommand is implemented:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>//in ChangeThemeCommand.java
+public CommandResult execute() {
+    requireNonNull(targetTheme);
+    try {
+        model.updateTheme(targetTheme.theme);
+    } catch (InputThemeEqualsCurrentThemeException e) {
+        return new CommandResult(String.format(MESSAGE_CHANGE_THEME_FAIL, targetTheme));
+    }
+    return new CommandResult(String.format(MESSAGE_CHANGE_THEME_SUCCESS, targetTheme));
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, when the command "changetheme light" is triggered, it checks whether the input theme is the same as the current theme.
+If they are equal, the message of command failure is returned. The code below shows how updateTheme(String newTheme) is implemented.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>//in ModelManager.java
+public void updateTheme(String theme) throws InputThemeEqualsCurrentThemeException {
+    if (theme.equals("light")) {
+        if (this.userPrefs.getMainWindowFile().equals("MainWindowLight.fxml")) {
+            throw new InputThemeEqualsCurrentThemeException();
+        }
+        this.userPrefs.setMainWindowFilePath("MainWindowLight.fxml");
+    } else {
+        if (this.userPrefs.getMainWindowFile().equals("MainWindow.fxml")) {
+            throw new InputThemeEqualsCurrentThemeException();
+        }
+        this.userPrefs.setMainWindowFilePath("MainWindow.fxml");
+    }
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Upon command success, users have to restart the app in order to see the change in theme.
+This is because the current implementation cannot dynamically change the settings of the main window.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1144,7 +2034,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Update the version number in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/MainApp.java"><code>MainApp.java</code></a>.</p>
+<p>Update the version number in <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/MainApp.java"><code>MainApp.java</code></a>.</p>
 </li>
 <li>
 <p>Generate a JAR file <a href="UsingGradle.html#creating-the-jar-file">using Gradle</a>.</p>
@@ -1218,10 +2108,10 @@ Do take a look at <a href="#Design-Logic">Section 2.3, &#8220;Logic component&#8
 <div class="ulist">
 <ul>
 <li>
-<p>Just like we store each individual command word constant <code>COMMAND_WORD</code> inside <code>*Command.java</code> (e.g.  <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/logic/commands/FindCommand.java"><code>FindCommand#COMMAND_WORD</code></a>, <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/logic/commands/DeleteCommand.java"><code>DeleteCommand#COMMAND_WORD</code></a>), you need a new constant for aliases as well (e.g. <code>FindCommand#COMMAND_ALIAS</code>).</p>
+<p>Just like we store each individual command word constant <code>COMMAND_WORD</code> inside <code>*Command.java</code> (e.g.  <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/logic/commands/FindCommand.java"><code>FindCommand#COMMAND_WORD</code></a>, <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/logic/commands/DeleteCommand.java"><code>DeleteCommand#COMMAND_WORD</code></a>), you need a new constant for aliases as well (e.g. <code>FindCommand#COMMAND_ALIAS</code>).</p>
 </li>
 <li>
-<p><a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> is responsible for analyzing command words.</p>
+<p><a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> is responsible for analyzing command words.</p>
 </li>
 </ul>
 </div>
@@ -1231,7 +2121,7 @@ Do take a look at <a href="#Design-Logic">Section 2.3, &#8220;Logic component&#8
 <div class="ulist">
 <ul>
 <li>
-<p>Modify the switch statement in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser#parseCommand(String)</code></a> such that both the proper command word and alias can be used to execute the same intended command.</p>
+<p>Modify the switch statement in <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser#parseCommand(String)</code></a> such that both the proper command word and alias can be used to execute the same intended command.</p>
 </li>
 <li>
 <p>Add new tests for each of the aliases that you have added.</p>
@@ -1281,13 +2171,13 @@ Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8
 <div class="ulist">
 <ul>
 <li>
-<p>The <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model</code></a> and the <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> API need to be updated.</p>
+<p>The <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/model/Model.java"><code>Model</code></a> and the <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> API need to be updated.</p>
 </li>
 <li>
 <p>Think about how you can use SLAP to design the method. Where should we place the main logic of deleting tags?</p>
 </li>
 <li>
-<p>Find out which of the existing API methods in  <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> and <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> classes can be used to implement the tag removal logic. <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> allows you to update a person, and <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> allows you to update the tags.</p>
+<p>Find out which of the existing API methods in  <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> and <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> classes can be used to implement the tag removal logic. <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> allows you to update a person, and <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> allows you to update the tags.</p>
 </li>
 </ul>
 </div>
@@ -1297,10 +2187,10 @@ Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8
 <div class="ulist">
 <ul>
 <li>
-<p>Implement a <code>removeTag(Tag)</code> method in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a>. Loop through each person, and remove the <code>tag</code> from each person.</p>
+<p>Implement a <code>removeTag(Tag)</code> method in <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a>. Loop through each person, and remove the <code>tag</code> from each person.</p>
 </li>
 <li>
-<p>Add a new API method <code>deleteTag(Tag)</code> in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a>. Your <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a> should call <code>AddressBook#removeTag(Tag)</code>.</p>
+<p>Add a new API method <code>deleteTag(Tag)</code> in <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a>. Your <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a> should call <code>AddressBook#removeTag(Tag)</code>.</p>
 </li>
 <li>
 <p>Add new tests for each of the new public methods that you have added.</p>
@@ -1310,7 +2200,7 @@ Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8
 <div class="ulist">
 <ul>
 <li>
-<p>The current codebase has a flaw in tags management. Tags no longer in use by anyone may still exist on the <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a>. This may cause some tests to fail. See issue  <a href="https://github.com/se-edu/addressbook-level4/issues/753"><code>#753</code></a> for more information about this flaw.</p>
+<p>The current codebase has a flaw in tags management. Tags no longer in use by anyone may still exist on the <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a>. This may cause some tests to fail. See issue  <a href="https://github.com/se-edu/addressbook-level4/issues/753"><code>#753</code></a> for more information about this flaw.</p>
 </li>
 <li>
 <p>The solution PR has a temporary fix for the flaw mentioned above in its first commit.</p>
@@ -1373,13 +2263,13 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="ulist">
 <ul>
 <li>
-<p>The tag labels are created inside <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/PersonCard.java">the <code>PersonCard</code> constructor</a> (<code>new Label(tag.tagName)</code>). <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Label.html">JavaFX&#8217;s <code>Label</code> class</a> allows you to modify the style of each Label, such as changing its color.</p>
+<p>The tag labels are created inside <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/ui/PersonCard.java">the <code>PersonCard</code> constructor</a> (<code>new Label(tag.tagName)</code>). <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Label.html">JavaFX&#8217;s <code>Label</code> class</a> allows you to modify the style of each Label, such as changing its color.</p>
 </li>
 <li>
 <p>Use the .css attribute <code>-fx-background-color</code> to add a color.</p>
 </li>
 <li>
-<p>You may wish to modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/resources/view/DarkTheme.css"><code>DarkTheme.css</code></a> to include some pre-defined colors using css, especially if you have experience with web-based css.</p>
+<p>You may wish to modify <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/resources/view/DarkTheme.css"><code>DarkTheme.css</code></a> to include some pre-defined colors using css, especially if you have experience with web-based css.</p>
 </li>
 </ul>
 </div>
@@ -1410,7 +2300,7 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 </div>
 </li>
 <li>
-<p>Modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> such that <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay</code></a> can show a different style on error (currently it shows the same regardless of errors).</p>
+<p>Modify <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> such that <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay</code></a> can show a different style on error (currently it shows the same regardless of errors).</p>
 <div class="paragraph">
 <p><strong>Before</strong></p>
 </div>
@@ -1436,10 +2326,10 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> is raised by <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/CommandBox.java"><code>CommandBox</code></a> which also knows whether the result is a success or failure, and is caught by <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay</code></a> which is where we want to change the style to.</p>
+<p><a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> is raised by <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/ui/CommandBox.java"><code>CommandBox</code></a> which also knows whether the result is a success or failure, and is caught by <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay</code></a> which is where we want to change the style to.</p>
 </li>
 <li>
-<p>Refer to <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/CommandBox.java"><code>CommandBox</code></a> for an example on how to display an error.</p>
+<p>Refer to <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/ui/CommandBox.java"><code>CommandBox</code></a> for an example on how to display an error.</p>
 </li>
 </ul>
 </div>
@@ -1449,10 +2339,10 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="ulist">
 <ul>
 <li>
-<p>Modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> 's constructor so that users of the event can indicate whether an error has occurred.</p>
+<p>Modify <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> 's constructor so that users of the event can indicate whether an error has occurred.</p>
 </li>
 <li>
-<p>Modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay#handleNewResultAvailableEvent(NewResultAvailableEvent)</code></a> to react to this event appropriately.</p>
+<p>Modify <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay#handleNewResultAvailableEvent(NewResultAvailableEvent)</code></a> to react to this event appropriately.</p>
 </li>
 <li>
 <p>You can write two different kinds of tests to ensure that the functionality works:</p>
@@ -1462,7 +2352,7 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <p>The unit tests for <code>ResultDisplay</code> can be modified to include verification of the color.</p>
 </li>
 <li>
-<p>The system tests <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest#assertCommandBoxShowsDefaultStyle() and AddressBookSystemTest#assertCommandBoxShowsErrorStyle()</code></a> to include verification for <code>ResultDisplay</code> as well.</p>
+<p>The system tests <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest#assertCommandBoxShowsDefaultStyle() and AddressBookSystemTest#assertCommandBoxShowsErrorStyle()</code></a> to include verification for <code>ResultDisplay</code> as well.</p>
 </li>
 </ul>
 </div>
@@ -1486,7 +2376,7 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 </div>
 </li>
 <li>
-<p>Modify the <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to show the total number of people in the address book.</p>
+<p>Modify the <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to show the total number of people in the address book.</p>
 <div class="paragraph">
 <p><strong>Before</strong></p>
 </div>
@@ -1512,10 +2402,10 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/resources/view/StatusBarFooter.fxml"><code>StatusBarFooter.fxml</code></a> will need a new <code>StatusBar</code>. Be sure to set the <code>GridPane.columnIndex</code> properly for each <code>StatusBar</code> to avoid misalignment!</p>
+<p><a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/resources/view/StatusBarFooter.fxml"><code>StatusBarFooter.fxml</code></a> will need a new <code>StatusBar</code>. Be sure to set the <code>GridPane.columnIndex</code> properly for each <code>StatusBar</code> to avoid misalignment!</p>
 </li>
 <li>
-<p><a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> needs to initialize the status bar on application start, and to update it accordingly whenever the address book is updated.</p>
+<p><a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> needs to initialize the status bar on application start, and to update it accordingly whenever the address book is updated.</p>
 </li>
 </ul>
 </div>
@@ -1525,16 +2415,16 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="ulist">
 <ul>
 <li>
-<p>Modify the constructor of <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to take in the number of persons when the application just started.</p>
+<p>Modify the constructor of <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to take in the number of persons when the application just started.</p>
 </li>
 <li>
-<p>Use <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter#handleAddressBookChangedEvent(AddressBookChangedEvent)</code></a> to update the number of persons whenever there are new changes to the addressbook.</p>
+<p>Use <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter#handleAddressBookChangedEvent(AddressBookChangedEvent)</code></a> to update the number of persons whenever there are new changes to the addressbook.</p>
 </li>
 <li>
-<p>For tests, modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/guitests/guihandles/StatusBarFooterHandle.java"><code>StatusBarFooterHandle</code></a> by adding a state-saving functionality for the total number of people status, just like what we did for save location and sync status.</p>
+<p>For tests, modify <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/test/java/guitests/guihandles/StatusBarFooterHandle.java"><code>StatusBarFooterHandle</code></a> by adding a state-saving functionality for the total number of people status, just like what we did for save location and sync status.</p>
 </li>
 <li>
-<p>For system tests, modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest</code></a> to also verify the new total number of persons status bar.</p>
+<p>For system tests, modify <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest</code></a> to also verify the new total number of persons status bar.</p>
 </li>
 <li>
 <p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/803">PR</a> for the full solution.</p>
@@ -1578,10 +2468,10 @@ Do take a look at <a href="#Design-Storage">Section 2.5, &#8220;Storage componen
 <div class="ulist">
 <ul>
 <li>
-<p>Add the API method in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/storage/AddressBookStorage.java"><code>AddressBookStorage</code></a> interface.</p>
+<p>Add the API method in <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/storage/AddressBookStorage.java"><code>AddressBookStorage</code></a> interface.</p>
 </li>
 <li>
-<p>Implement the logic in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/storage/StorageManager.java"><code>StorageManager</code></a> and <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/storage/XmlAddressBookStorage.java"><code>XmlAddressBookStorage</code></a> class.</p>
+<p>Implement the logic in <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/storage/StorageManager.java"><code>StorageManager</code></a> and <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/storage/XmlAddressBookStorage.java"><code>XmlAddressBookStorage</code></a> class.</p>
 </li>
 </ul>
 </div>
@@ -1647,10 +2537,10 @@ Removes the remark for the first person.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add a <code>RemarkCommand</code> that extends <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/logic/commands/UndoableCommand.java"><code>UndoableCommand</code></a>. Upon execution, it should just throw an <code>Exception</code>.</p>
+<p>Add a <code>RemarkCommand</code> that extends <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/logic/commands/UndoableCommand.java"><code>UndoableCommand</code></a>. Upon execution, it should just throw an <code>Exception</code>.</p>
 </li>
 <li>
-<p>Modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> to accept a <code>RemarkCommand</code>.</p>
+<p>Modify <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> to accept a <code>RemarkCommand</code>.</p>
 </li>
 </ol>
 </div>
@@ -1663,7 +2553,7 @@ Removes the remark for the first person.</p>
 <p>Add <code>RemarkCommandTest</code> that tests that <code>executeUndoableCommand()</code> throws an Exception.</p>
 </li>
 <li>
-<p>Add new test method to <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/seedu/address/logic/parser/AddressBookParserTest.java"><code>AddressBookParserTest</code></a>, which tests that typing "remark" returns an instance of <code>RemarkCommand</code>.</p>
+<p>Add new test method to <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/test/java/seedu/address/logic/parser/AddressBookParserTest.java"><code>AddressBookParserTest</code></a>, which tests that typing "remark" returns an instance of <code>RemarkCommand</code>.</p>
 </li>
 </ol>
 </div>
@@ -1685,7 +2575,7 @@ Removes the remark for the first person.</p>
 <p>Add <code>RemarkCommandParser</code> that knows how to parse two arguments, one index and one with prefix 'r/'.</p>
 </li>
 <li>
-<p>Modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> to use the newly implemented <code>RemarkCommandParser</code>.</p>
+<p>Modify <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> to use the newly implemented <code>RemarkCommandParser</code>.</p>
 </li>
 </ol>
 </div>
@@ -1702,7 +2592,7 @@ Removes the remark for the first person.</p>
 for <code>RemarkCommandParser</code>.</p>
 </li>
 <li>
-<p>Modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/seedu/address/logic/parser/AddressBookParserTest.java"><code>AddressBookParserTest</code></a> to test that the correct command is generated according to the user input.</p>
+<p>Modify <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/test/java/seedu/address/logic/parser/AddressBookParserTest.java"><code>AddressBookParserTest</code></a> to test that the correct command is generated according to the user input.</p>
 </li>
 </ol>
 </div>
@@ -1710,7 +2600,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-3-ui-add-a-placeholder-for-remark-in-code-personcard-code"><a class="link" href="#step-3-ui-add-a-placeholder-for-remark-in-code-personcard-code">[Step 3] Ui: Add a placeholder for remark in <code>PersonCard</code></a></h5>
 <div class="paragraph">
-<p>Let&#8217;s add a placeholder on all our <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> s to display a remark for each person later.</p>
+<p>Let&#8217;s add a placeholder on all our <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> s to display a remark for each person later.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -1718,10 +2608,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add a <code>Label</code> with any random text inside <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/resources/view/PersonListCard.fxml"><code>PersonListCard.fxml</code></a>.</p>
+<p>Add a <code>Label</code> with any random text inside <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/resources/view/PersonListCard.fxml"><code>PersonListCard.fxml</code></a>.</p>
 </li>
 <li>
-<p>Add FXML annotation in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> to tie the variable to the actual label.</p>
+<p>Add FXML annotation in <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> to tie the variable to the actual label.</p>
 </li>
 </ol>
 </div>
@@ -1731,7 +2621,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/guitests/guihandles/PersonCardHandle.java"><code>PersonCardHandle</code></a> so that future tests can read the contents of the remark label.</p>
+<p>Modify <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/test/java/guitests/guihandles/PersonCardHandle.java"><code>PersonCardHandle</code></a> so that future tests can read the contents of the remark label.</p>
 </li>
 </ol>
 </div>
@@ -1739,7 +2629,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-4-model-add-code-remark-code-class"><a class="link" href="#step-4-model-add-code-remark-code-class">[Step 4] Model: Add <code>Remark</code> class</a></h5>
 <div class="paragraph">
-<p>We have to properly encapsulate the remark in our <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> class. Instead of just using a <code>String</code>, let&#8217;s follow the conventional class structure that the codebase already uses by adding a <code>Remark</code> class.</p>
+<p>We have to properly encapsulate the remark in our <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> class. Instead of just using a <code>String</code>, let&#8217;s follow the conventional class structure that the codebase already uses by adding a <code>Remark</code> class.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -1747,7 +2637,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add <code>Remark</code> to model component (you can copy from <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/person/Address.java"><code>Address</code></a>, remove the regex and change the names accordingly).</p>
+<p>Add <code>Remark</code> to model component (you can copy from <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/model/person/Address.java"><code>Address</code></a>, remove the regex and change the names accordingly).</p>
 </li>
 <li>
 <p>Modify <code>RemarkCommand</code> to now take in a <code>Remark</code> instead of a <code>String</code>.</p>
@@ -1768,7 +2658,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-5-model-modify-code-person-code-to-support-a-code-remark-code-field"><a class="link" href="#step-5-model-modify-code-person-code-to-support-a-code-remark-code-field">[Step 5] Model: Modify <code>Person</code> to support a <code>Remark</code> field</a></h5>
 <div class="paragraph">
-<p>Now we have the <code>Remark</code> class, we need to actually use it inside <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
+<p>Now we have the <code>Remark</code> class, we need to actually use it inside <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -1776,13 +2666,13 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add <code>getRemark()</code> in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
+<p>Add <code>getRemark()</code> in <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
 </li>
 <li>
 <p>You may assume that the user will not be able to use the <code>add</code> and <code>edit</code> commands to modify the remarks field (i.e. the person will be created without a remark).</p>
 </li>
 <li>
-<p>Modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/util/SampleDataUtil.java/"><code>SampleDataUtil</code></a> to add remarks for the sample data (delete your <code>addressBook.xml</code> so that the application will load the sample data when you launch it.)</p>
+<p>Modify <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/model/util/SampleDataUtil.java/"><code>SampleDataUtil</code></a> to add remarks for the sample data (delete your <code>addressBook.xml</code> so that the application will load the sample data when you launch it.)</p>
 </li>
 </ol>
 </div>
@@ -1790,7 +2680,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-6-storage-add-code-remark-code-field-to-code-xmladaptedperson-code-class"><a class="link" href="#step-6-storage-add-code-remark-code-field-to-code-xmladaptedperson-code-class">[Step 6] Storage: Add <code>Remark</code> field to <code>XmlAdaptedPerson</code> class</a></h5>
 <div class="paragraph">
-<p>We now have <code>Remark</code> s for <code>Person</code> s, but they will be gone when we exit the application. Let&#8217;s modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/storage/XmlAdaptedPerson.java"><code>XmlAdaptedPerson</code></a> to include a <code>Remark</code> field so that it will be saved.</p>
+<p>We now have <code>Remark</code> s for <code>Person</code> s, but they will be gone when we exit the application. Let&#8217;s modify <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/storage/XmlAdaptedPerson.java"><code>XmlAdaptedPerson</code></a> to include a <code>Remark</code> field so that it will be saved.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -1816,7 +2706,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-6b-test-add-withremark-for-code-personbuilder-code"><a class="link" href="#step-6b-test-add-withremark-for-code-personbuilder-code">[Step 6b] Test: Add withRemark() for <code>PersonBuilder</code></a></h5>
 <div class="paragraph">
-<p>Since <code>Person</code> can now have a <code>Remark</code>, we should add a helper method to <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>, so that users are able to create remarks when building a <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
+<p>Since <code>Person</code> can now have a <code>Remark</code>, we should add a helper method to <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>, so that users are able to create remarks when building a <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Tests:</strong></p>
@@ -1824,10 +2714,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add a new method <code>withRemark()</code> for <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>. This method will create a new <code>Remark</code> for the person that it is currently building.</p>
+<p>Add a new method <code>withRemark()</code> for <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>. This method will create a new <code>Remark</code> for the person that it is currently building.</p>
 </li>
 <li>
-<p>Try and use the method on any sample <code>Person</code> in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/seedu/address/testutil/TypicalPersons.java"><code>TypicalPersons</code></a>.</p>
+<p>Try and use the method on any sample <code>Person</code> in <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/test/java/seedu/address/testutil/TypicalPersons.java"><code>TypicalPersons</code></a>.</p>
 </li>
 </ol>
 </div>
@@ -1835,7 +2725,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-7-ui-connect-code-remark-code-field-to-code-personcard-code"><a class="link" href="#step-7-ui-connect-code-remark-code-field-to-code-personcard-code">[Step 7] Ui: Connect <code>Remark</code> field to <code>PersonCard</code></a></h5>
 <div class="paragraph">
-<p>Our remark label in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> is still a placeholder. Let&#8217;s bring it to life by binding it with the actual <code>remark</code> field.</p>
+<p>Our remark label in <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> is still a placeholder. Let&#8217;s bring it to life by binding it with the actual <code>remark</code> field.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -1843,7 +2733,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a>'s constructor to bind the <code>Remark</code> field to the <code>Person</code> 's remark.</p>
+<p>Modify <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a>'s constructor to bind the <code>Remark</code> field to the <code>Person</code> 's remark.</p>
 </li>
 </ol>
 </div>
@@ -1853,7 +2743,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/seedu/address/ui/testutil/GuiTestAssert.java"><code>GuiTestAssert#assertCardDisplaysPerson(&#8230;&#8203;)</code></a> so that it will compare the now-functioning remark label.</p>
+<p>Modify <a href="https://github.com/CS2103JAN2018-F11-B1/main/src/test/java/seedu/address/ui/testutil/GuiTestAssert.java"><code>GuiTestAssert#assertCardDisplaysPerson(&#8230;&#8203;)</code></a> so that it will compare the now-functioning remark label.</p>
 </li>
 </ol>
 </div>
@@ -1903,7 +2793,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>has a need to manage a significant number of contacts</p>
+<p>Salespeople</p>
+</li>
+<li>
+<p>has a need to manage a significant number of people into either Leads or Contacts</p>
 </li>
 <li>
 <p>prefer desktop apps over other types</p>
@@ -1919,8 +2812,149 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
+<div class="sect2">
+<h3 id="feature-contributions"><a class="link" href="#feature-contributions">B.1. Feature contributions:</a></h3>
 <div class="paragraph">
-<p><strong>Value proposition</strong>: manage contacts faster than a typical mouse/GUI driven app</p>
+<p>David Ten:<br>
+<strong>Major Feature</strong> : LinkedIn Synchronize</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Allows a Salesperson to connect his LinkedIn account to the application<br></p>
+</li>
+<li>
+<p>Allows Contacts to be connected to their respective LinkedIn account</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Major Feature</strong> : Alert for change of Account</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Allows a Salesperson to be alerted when one of their Contacts move companies<br></p>
+</li>
+<li>
+<p>This allows them to sell to a new account using their old Contact.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Umar:<br>
+<strong>Major feature</strong> : Added duplicate detection and display list of Leads and Contacts</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Implement duplicate detection by verifying the whether the phone number or email address of a Lead to be entered matches any of the phone numbers or email addresses
+currently stored in the CRM Book.</p>
+</li>
+<li>
+<p>Implement the display of Leads list and Contacts list separately at the salesperson&#8217;s request.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Minor feature</strong> : Command Alias</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ensures that commands can be performed using its alias.<br></p>
+</li>
+<li>
+<p>In the sales industry, a person may type fast and would want to execute a command quickly.
+Hence, doing a command using its alias will ensure he/she can do a certain command quicker.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>ZHU Leyan:<br>
+<strong>Major Feature</strong> : Bulk Import of Leads</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Allows a salesperson to import a CSV file into the CRM Book<br></p>
+</li>
+<li>
+<p>Allows a salesperson to sort all persons by name.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Minor Feature</strong> : Remark Command</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Allows a salesperson to add/remove/edit a remark of a person in the CRM Book<br></p>
+</li>
+<li>
+<p>This allows them to record some special information of a customer.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Woody Lau:<br>
+<strong>Major Feature</strong> : Lead and Contact Creation</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Breaks apart the Person class into Leads and Contacts<br></p>
+</li>
+<li>
+<p>Each will have their own functions and fields<br></p>
+</li>
+<li>
+<p>Conversion between Leads and Contacts will be supported.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Minor Feature</strong> : Account Creation</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Allows Contacts to belong to Accounts.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Liu Yiming:<br>
+<strong>Major Feature</strong> : Change Theme</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Allows user to change color theme<br></p>
+</li>
+<li>
+<p>This allows user to read the CRM Book easily under different settings</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Major Feature</strong> : Auto Completion of commands</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Allows user to key in commands more efficiently.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Minor feature</strong> : Color tags</p>
+</div>
+<div class="paragraph">
+<p>*Each type of tag has a unique color<br>
+*Allows easy identification of different tags</p>
+</div>
 </div>
 </div>
 </div>
@@ -1948,52 +2982,181 @@ for <code>RemarkCommandParser</code>.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">new user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">new salesperson</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">see usage instructions</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">refer to instructions when I forget how to use the App</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add a new person</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add a new Lead</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of who I am selling to</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">delete a person</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remove entries that I no longer need</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add a new Account</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of my accounts</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">find a person by name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">convert a Lead to a Contact</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know who I have successfully sold to in the past</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">determine if a lead to be added is already a contact</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">not have redundant data in my CRM</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">identify duplicates</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">not have redundant data in my CRM</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">share posts to my LinkedIn feed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">share more about my company&#8217;s product</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">schedule appointments with Leads via Google Calendar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sell to them</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">busy salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">autocomplete my commands</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use CRM Book more efficiently</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">new salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bulk import leads</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quickly populate my CRM-Book</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">obtain list solely on either Leads or Contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">identify who to promote an item to and who has bought an item from me</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view commute directions to appointment location</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know how to get there quickly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">send emails from a standard email template</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quickly cold-email for lead generation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">busy salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have different colors for my tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">identify the tags easily</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">execute a command with as few types as possible</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use my CRM Book quickly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">health-conscious salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">change the color theme</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">prevent eye fatigue</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">analyze a CSV file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know how much of that file is duplicated in my CRM</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">export a CSV file of an account with related leads and contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">handover an account to a colleague</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">new salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bulk import leads</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">populate my CRM-Book</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find a lead or contact by name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">locate details of persons without having to go through the entire list</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find an account by name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">locate details of accounts without having to go through the entire list</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">hide <a href="#private-contact-detail">private contact details</a> by default</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">minimize chance of someone else seeing them by accident</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see my calendar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">schedule meetings without conflicting</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be reminded when a contract is expiring</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">contact my contact for renewal</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add a remark to a Lead or Contact</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">record detailed information about them</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson with many entries in the CRM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sort people by name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">search for them easily</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">schedule a meeting using Google Hangouts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meet my leads online more efficiently</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user with many persons in the address book</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sort persons by name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">locate a person easily</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see the type of marketing materials an account is interacting with</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know what other materials to send to them</p></td>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="use-cases"><a class="link" href="#use-cases">Appendix D: Use Cases</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is the <code>AddressBook</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+<p>(For all use cases below, the <strong>System</strong> is the <code>CRM Book</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
 <h3 id="use-case-delete-person" class="discrete">Use case: Delete person</h3>
 <div class="paragraph">
@@ -2002,16 +3165,16 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to list persons</p>
+<p>User requests to list of all Leads and Contacts</p>
 </li>
 <li>
-<p>AddressBook shows a list of persons</p>
+<p>CRM Book shows a list of all Leads and Contacts</p>
 </li>
 <li>
-<p>User requests to delete a specific person in the list</p>
+<p>User requests to delete a specific Lead/Contact in the list</p>
 </li>
 <li>
-<p>AddressBook deletes the person</p>
+<p>CRM Book deletes the person</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2034,7 +3197,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. AddressBook shows an error message.</p>
+<p>3a1. CRM Book shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
 </div>
@@ -2044,8 +3207,401 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
+<div class="sect2">
+<h3 id="use-case-user-requests-to-import-a-csv-file-to-crm-book"><a class="link" href="#use-case-user-requests-to-import-a-csv-file-to-crm-book">D.1. Use case: User requests to import a CSV file to CRM Book</a></h3>
 <div class="paragraph">
-<p><em>{More to be added}</em></p>
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters command for importing file.</p>
+</li>
+<li>
+<p>CRM Book processes the corresponding CSV file and lists all persons including newly added ones.</p>
+</li>
+<li>
+<p>User requests to sort all persons by name.</p>
+</li>
+<li>
+<p>CRM sorts all persons and lists them.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User enters an non-existent file.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. CRM Book displays error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. The file is not a CSV file.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. CRM Book displays error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3a. The CSV file is in wrong format.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. CRM Book displays error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-user-seeks-lead-list-or-contact-list"><a class="link" href="#use-case-user-seeks-lead-list-or-contact-list">D.2. Use case: User seeks Lead list or Contact list</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters command for Lead list or Contact list.</p>
+</li>
+<li>
+<p>CRM retrieves the Lead list or Contact list.</p>
+</li>
+<li>
+<p>User sees the Lead list or Contact list.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User enters a keyword that is neither Lead nor Contact.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. CRM Book displays an empty list.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-user-enters-phone-numbers-and-or-email-addresses-to-find"><a class="link" href="#use-case-user-enters-phone-numbers-and-or-email-addresses-to-find">D.3. Use case: User enters phone numbers and/or email addresses to find</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters keywords (phone numbers and/or email addresses) for find command.</p>
+</li>
+<li>
+<p>CRM searches for Leads and/or Contacts that match with the keywords.</p>
+</li>
+<li>
+<p>User sees the Leads and/or Contacts that match with the keywords.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User enters find command incorrectly.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. CRM Book displays error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2a. CRM Book is unable to find Leads and/or Contacts that match with the keywords.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. User sees an empty list.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-user-posts-to-linkedin"><a class="link" href="#use-case-user-posts-to-linkedin">D.4. Use case: User posts to LinkedIn</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters command to login to LinkedIn</p>
+</li>
+<li>
+<p>CRM book opens browser for LinkedIn login</p>
+</li>
+<li>
+<p>User enters username and password</p>
+</li>
+<li>
+<p>CRM book completes oAuth2 process and gets api key</p>
+</li>
+<li>
+<p>User enters command to post to linkedIn</p>
+</li>
+<li>
+<p>CRM book prompts user to enter a post</p>
+</li>
+<li>
+<p>User enters post to share to LinkedIn</p>
+</li>
+<li>
+<p>CRM book posts post to user&#8217;s LinkedIn</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User is already logged in.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. CRM book tells user that he is already logged in</p>
+<div class="paragraph">
+<p>Use case resumes at step 5.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. User enters invalid credentials.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. CRM book tells user to reenter credentials</p>
+<div class="paragraph">
+<p>Use case resumes at step 4.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-auto-complete"><a class="link" href="#use-case-auto-complete">D.5. Use case: Auto-complete</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters a letter.</p>
+</li>
+<li>
+<p>CRM book shows a drop down textfield with all the commands containing the typed letter.</p>
+</li>
+<li>
+<p>User selects the command he desires.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. No commands contain the typed letter.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-convert-a-lead-to-a-contact"><a class="link" href="#use-case-convert-a-lead-to-a-contact">D.6. Use case: Convert a Lead to a Contact</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests a list of Leads and Contacts</p>
+</li>
+<li>
+<p>CRM Book shows the requested list</p>
+</li>
+<li>
+<p>User finds and selects the Lead to convert</p>
+</li>
+<li>
+<p>CRM Book determines if Lead can be converted and converts if possible</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. List is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+<li>
+<p>3a. User selected a Contact, not a Lead.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. CRM Book displays an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3a. The given index is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3a1. CRM Book displays an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-color-tag"><a class="link" href="#use-case-color-tag">D.7. Use case: Color tag</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User request to add a lead with a tag.</p>
+</li>
+<li>
+<p>CRM book assign a color to the tag.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-change-theme"><a class="link" href="#use-case-change-theme">D.8. Use case: Change theme</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to change theme</p>
+</li>
+<li>
+<p>CRM Book changes theme setting</p>
+</li>
+<li>
+<p>User restart CRM Book to effect the change</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. The input theme is same as current theme.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. CRM Book shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -2063,10 +3619,13 @@ for <code>RemarkCommandParser</code>.</p>
 <li>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
 </li>
+<li>
+<p>Should process a query and respond within 3 seconds.</p>
+</li>
+<li>
+<p>Should be compatible across Linux, Windows, and MacOS operating systems.</p>
+</li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
 </div>
 </div>
 </div>
@@ -2176,40 +3735,34 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">H.2. Deleting a person</a></h3>
+<h3 id="deleting-a-lead-or-contact"><a class="link" href="#deleting-a-lead-or-contact">H.2. Deleting a Lead or Contact</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting a person while all persons are listed</p>
+<p>Deleting a Lead or Contact while all Leads and Contacts are listed</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
+<p>Prerequisites: List all Leads and Contacts using the <code>list</code> command. Multiple persons in the list.</p>
 </li>
 <li>
 <p>Test case: <code>delete 1</code><br>
-Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
+Expected: First Lead/Contact is deleted from the list. Details of the deleted Lead/Contact shown in the status message. Timestamp in the status bar is updated.</p>
 </li>
 <li>
 <p>Test case: <code>delete 0</code><br>
-Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
+Expected: No Lead/Contact is deleted. Error details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size)<br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
 <div class="sect2">
@@ -2237,7 +3790,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-21 14:13:38 UTC
+Last updated 2018-04-12 20:25:45 UTC
 </div>
 </div>
 </body>
