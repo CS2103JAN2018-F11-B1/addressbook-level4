@@ -73,14 +73,14 @@ public class BrowserPanel extends UiPart<Region> {
     /**
      * Gets configuration to be used when showing google maps
      */
-    public static void getConfig(){
+    public static void getConfig() {
        config = Oauth2Client.setupConfig();
     }
 
     /**
      * Generates the google maps url to be shown in the browser
      */
-    public static String generateURL(String from, String to){
+    public static String generateURL(String from, String to) {
         String url = "https://www.google.com/maps/dir/?api=1&origin=";
         String encodedUserLocation = "";
         String encodedDestinationLocation = "";
