@@ -69,7 +69,7 @@ public class BrowserPanel extends UiPart<Region> {
     public void freeResources() {
         browser = null;
     }
-
+    //@@author davidten
     /**
      * Gets configuration to be used when showing google maps
      */
