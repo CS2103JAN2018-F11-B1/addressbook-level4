@@ -2,19 +2,17 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ACCOUNT;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalInt;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.account.Account;
 import seedu.address.model.person.Contact;
-import seedu.address.model.person.Lead;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
@@ -31,7 +29,7 @@ public class AccountCommand extends UndoableCommand {
             + "Existing Account will be overwritten by the input.\n"
             + "The parameters are: INDEX (must be a positive integer) "
             + "ACCOUNT...\n"
-            + "Example: " + COMMAND_WORD + " Macrosoft Inc";
+            + "Example: " + COMMAND_WORD + " 1 " + PREFIX_ACCOUNT + "Macrosoft Inc";
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Added Account to Contact: %1$s";
     public static final String MESSAGE_NOT_EDITED = "An Account must be provided.";
