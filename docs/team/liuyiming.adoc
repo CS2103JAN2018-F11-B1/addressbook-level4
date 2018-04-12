@@ -27,6 +27,9 @@ This application allows salespeople to organize their Leads, Contacts, and Accou
 
 * *Other contributions*:
 
+** Documentation:
+*** Enabled auto-publishing of docs
+
 ** Enhancements to existing features:
 *** Created and updated the icon of CRM Book (Pull requests https://github.com/CS2103JAN2018-F11-B1/main/pull/32[#32])
 *** Updated the header of CRM Book (Pull requests https://github.com/CS2103JAN2018-F11-B1/main/pull/31[#31])
