@@ -19,7 +19,7 @@ By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
 
 A CRM System is a Customer Relationship Management system, mainly used in the real world by Sales and Marketing teams to manage their business-customer relationships, as well as to manage business contacts, employees, clients, contract wins and sales leads. Some examples of popular CRMs include Salesforce, SAP, and Microsoft Dynamics CRM.
 
-A common complaint against such traditional CRMs is that they are large, contain too much functionalities, and in some cases even require additional training before using. (Search for: Salesforce Trailhead)
+A common complaint against such traditional CRMs is that they are large, contain too many functionalities, and in some cases even require additional training before using. (Search for: Salesforce Trailhead)
 
 The CRM Book application aims to assist Salespeople by implementing the most important functionality of a CRM System, that is, managing their business contacts and clients. In a CRM, business contacts are seperated into two categories, Leads and Contacts. Leads are people that the salesperson has sold to in the past, while Contacts are people whom the salesperson has sold to before, even if the company they represent may no longer purchase the product. Also, accounts represent Companies.
 
