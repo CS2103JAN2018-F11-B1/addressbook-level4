@@ -47,6 +47,8 @@ This application allows salespeople to organize their Leads, Contacts, and Accou
 
 <<../UserGuide.adoc#39-converting-a-person\--con-convert,Convert>>
 
+<<../UserGuide.adoc#211-adding-an-account-to-a-contact\--account,Account>>
+
 == Contributions to the Developer Guide
 
 |===
