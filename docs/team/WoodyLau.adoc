@@ -14,7 +14,7 @@ This application allows salespeople to organize their Leads, Contacts, and Accou
 
 * *Major enhancement*: Separated out *Leads and Contacts* from Persons
 ** What it does: supports the rest of the CRM Book by having separate classes for commands.
-** Justification: This feature is core for a CRM as Leads and Contacts are the primary types of people in the CRM. 
+** Justification: This feature is core for a CRM as Leads and Contacts are the primary types of people in the CRM.
 ** Highlights: This enhancement affects all commands and classes that accessed Persons. It required researching which commands would need to be modified to target a specific type, or could be generalized for both. The implementation too was challenging as it required discovering the many existing classes that needed changing.
 ** Credits: The original Person class from which Leads and Contacts were extended.
 
