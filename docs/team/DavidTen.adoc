@@ -45,7 +45,7 @@ The user interacts with CRM Book using a CLI, and it has a GUI created with Java
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-<<../UserGuide.adoc#32-log-in-to-linkedin[x-]`--`linklog-linkedin_login, LinkedIn Login>>
+<<../UserGuide.adoc#32-log-in-to-linkedin&#8211;&#8211;linklog-linkedin_login, LinkedIn Login>>
 
 <<../UserGuide.adoc#33-share-a-post-on-linkedin+--+linkshare-linkedin_share, LinkedIn Share>>
 
