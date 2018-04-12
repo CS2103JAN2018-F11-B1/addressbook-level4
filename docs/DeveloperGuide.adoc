@@ -522,6 +522,9 @@ public class ConvertCommand extends UndoableCommand {
 }
 ----
 
+It keeps the name, phone, email, address, remarks and tags through the conversion. The company is converted if it exists into an Account. The converted date is set in the Contact.
+
+
 ==== Design Considerations
 
 ===== Aspect: Implementation of Leads and Contacts
