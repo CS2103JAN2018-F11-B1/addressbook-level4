@@ -28,7 +28,7 @@ public class AccountCommand extends UndoableCommand {
             + "by the index number used in the last Leads-Contacts listing. "
             + "Existing Account will be overwritten by the input.\n"
             + "The parameters are: INDEX (must be a positive integer) "
-            + "ACCOUNT...\n"
+            + PREFIX_ACCOUNT + "ACCOUNT...\n"
             + "Example: " + COMMAND_WORD + " 1 " + PREFIX_ACCOUNT + "Macrosoft Inc";
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Added Account to Contact: %1$s";
