@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import seedu.address.logic.commands.AccountCommand;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ChangeThemeCommand;
 import seedu.address.logic.commands.ClearCommand;
@@ -59,6 +60,7 @@ public class AddressBookParser {
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
         switch (commandWord) {
+        //@@author zhuleyan
         case RemarkCommand.COMMAND_WORD:
         case RemarkCommand.COMMAND_ALIAS:
             return new RemarkCommandParser().parse(arguments);
@@ -83,12 +85,18 @@ public class AddressBookParser {
         case EditCommand.COMMAND_ALIAS:
             return new EditCommandParser().parse(arguments);
 
+        //@@author WoodyLau
         case EditDetailsCommand.COMMAND_WORD:
+        case EditDetailsCommand.COMMAND_ALIAS:
             return new EditDetailsCommandParser().parse(arguments);
 
         case ConvertCommand.COMMAND_WORD:
         case ConvertCommand.COMMAND_ALIAS:
             return new ConvertCommandParser().parse(arguments);
+
+        case AccountCommand.COMMAND_WORD:
+            return new AccountCommandParser().parse(arguments);
+        //@@author
 
         case SelectCommand.COMMAND_WORD:
         case SelectCommand.COMMAND_ALIAS:
@@ -138,7 +146,7 @@ public class AddressBookParser {
         case RedoCommand.COMMAND_WORD:
         case RedoCommand.COMMAND_ALIAS:
             return new RedoCommand();
-
+        //@@author zhuleyan
         case SortCommand.COMMAND_WORD:
         case SortCommand.COMMAND_ALIAS:
             return new SortCommand();
@@ -146,7 +154,7 @@ public class AddressBookParser {
         case ImportCommand.COMMAND_WORD:
         case ImportCommand.COMMAND_ALIAS:
             return new ImportCommandParser().parse(arguments);
-
+        //@@author
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
