@@ -29,7 +29,7 @@ public class BrowserPanel extends UiPart<Region> {
             "https://www.google.com.sg/search?ei=EmypWtGyJsiEvQSsnbGwDQ&q=";
 
     private static final String FXML = "BrowserPanel.fxml";
-    
+
     private static Config config;
 
     private final Logger logger = LogsCenter.getLogger(this.getClass());
@@ -102,7 +102,7 @@ public class BrowserPanel extends UiPart<Region> {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         //if person has no home location set
         if(config.getUserLocation() == null || config.getUserLocation().length() == 0){
-            loadPersonPage(event.getNewSelection().person);    
+            loadPersonPage(event.getNewSelection().person);
         } else {
             //also need to check that URL is limited to 2048 characters
             //person has home location set up
