@@ -74,13 +74,13 @@ public class BrowserPanel extends UiPart<Region> {
      * Gets configuration to be used when showing google maps
      */
     public static void getConfig() {
-       config = Oauth2Client.setupConfig();
+        config = Oauth2Client.setupConfig();
     }
 
     /**
      * Generates the google maps url to be shown in the browser
      */
-    public static String generateURL(String from, String to) {
+    public static String generateUrl(String from, String to) {
         String url = "https://www.google.com/maps/dir/?api=1&origin=";
         String encodedUserLocation = "";
         String encodedDestinationLocation = "";
@@ -101,12 +101,12 @@ public class BrowserPanel extends UiPart<Region> {
         getConfig();
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         //if person has no home location set
-        if(config.getUserLocation() == null || config.getUserLocation().length() == 0){
+        if (config.getUserLocation() == null || config.getUserLocation().length() == 0) {
             loadPersonPage(event.getNewSelection().person);
         } else {
             //also need to check that URL is limited to 2048 characters
             //person has home location set up
-            String url = generateURL(config.getUserLocation(), event.getNewSelection().person.getAddress().toString());
+            String url = generateUrl(config.getUserLocation(), event.getNewSelection().person.getAddress().toString());
             logger.info("URL IS " + url);
             loadPage(url);
         }
