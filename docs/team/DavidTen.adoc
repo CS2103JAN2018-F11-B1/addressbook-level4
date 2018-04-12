@@ -32,10 +32,11 @@ The user interacts with CRM Book using a CLI, and it has a GUI created with Java
 
 * *Other contributions*:
 
+** Project management:
+*** Managed releases `v1.2` - `v1.5rc` (5 releases) on GitHub
 ** Community:
-*** Reported bugs and suggestions for other teams in the class
-** Tools:
-*** Integrated Travis to the team repo
+*** Reported bugs and suggestions for other teams in the class (examples: https://github.com/CS2103JAN2018-W13-B3/main/issues/157[Issue #157], https://github.com/CS2103JAN2018-W13-B3/main/issues/132[Issue #132], https://github.com/CS2103JAN2018-W13-B3/main/issues/133[Issue #133], https://github.com/CS2103JAN2018-W13-B3/main/issues/134[Issue #134], https://github.com/CS2103JAN2018-W13-B3/main/issues/136[Issue #136], https://github.com/CS2103JAN2018-W13-B3/main/issues/139[Issue #139], https://github.com/CS2103JAN2018-W13-B3/main/issues/140[Issue #140], https://github.com/CS2103JAN2018-W13-B3/main/issues/141[Issue #141], https://github.com/CS2103JAN2018-W13-B3/main/issues/145[Issue #145], https://github.com/CS2103JAN2018-W13-B3/main/issues/149[Issue #149])
+*** Contributed to forum discussions (examples:  https://nus-cs2103-ay1718s2.slack.com/archives/C8K2W5WTH/p1523377709000303[1], https://nus-cs2103-ay1718s2.slack.com/archives/C8K2W5WTH/p1521906587000027[2], https://nus-cs2103-ay1718s2.slack.com/archives/C8K2W5WTH/p1521473983000781[3])
 
 == Contributions to the User Guide
 
@@ -44,11 +45,11 @@ The user interacts with CRM Book using a CLI, and it has a GUI created with Java
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-<<../UserGuide.adoc#38-editing-nonessential-details-of-a-person\--editdetails,Edit Details>>
+<<../UserGuide.adoc#22-log-in-to-linkedin--linklog-linkedin_login,LinkedIn Login>>
 
-<<../UserGuide.adoc#39-converting-a-person\--con-convert,Convert>>
+<<../UserGuide.adoc#23-share-a-post-on-linkedin--linkshare-linkedin_share,LinkedIn Share>>
 
-<<../UserGuide.adoc#211-adding-an-account-to-a-contact\--account,Account>>
+<<../UserGuide.adoc#1-introduction,Introduction>>
 
 == Contributions to the Developer Guide
 
