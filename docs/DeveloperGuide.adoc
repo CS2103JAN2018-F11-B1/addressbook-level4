@@ -457,17 +457,15 @@ Auto-complete is implemented through the TextFields feature of ControlsFX.
 //In CommandBox.java
 TextFields.bindAutoCompletion(commandTextField, Messages.AUTOCOMPLETE_FIELD);
 ----
-All the command words are included in the AUTOCOMPLETE_FIELD string.
+All the command keywords are included in the AUTOCOMPLETE_FIELD string array.
 [source,java]
 ----
 //In Messages.java
-public static final String[] AUTOCOMPLETE_FIELD = { AddCommand.COMMAND_WORD, ClearCommand.COMMAND_WORD,
-    ConvertCommand.COMMAND_WORD, DeleteCommand.COMMAND_WORD, EditCommand.COMMAND_WORD, ExitCommand.COMMAND_WORD,
-    FindCommand.COMMAND_WORD, HelpCommand.COMMAND_WORD, HistoryCommand.COMMAND_WORD,
-    LinkedInLoginCommand.COMMAND_WORD, ListCommand.COMMAND_WORD, RedoCommand.COMMAND_WORD,
-    SelectCommand.COMMAND_WORD, UndoCommand.COMMAND_WORD, AddCommand.COMMAND_AUTO_COMPLETE};
+public static final String[] AUTOCOMPLETE_FIELD = {
+    //all command keywords
+    };
 ----
-In addition to all the command words, a COMMAND_AUTO_COMPLETE string, with both command word and prefixes, is also included for add command.
+In addition to all the command keywords, a COMMAND_AUTO_COMPLETE string, with both command word and prefixes, is also included for add command.
 [source,java]
 ----
 //In AddCommand.java
