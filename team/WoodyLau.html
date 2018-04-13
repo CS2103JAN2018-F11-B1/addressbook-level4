@@ -26,9 +26,13 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>CRM Book is a desktop application targeted for salespeople. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
-This application allows salespeople to organize their Leads, Contacts, and Accounts that suits their liking, as well as address problems that symptomatic in the sales industry, such as identifying duplicates.
-== Summary of contributions</p>
+This application allows salespeople to organize their Leads, Contacts, and Accounts that suits their liking, as well as address problems that symptomatic in the sales industry, such as identifying duplicates.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
@@ -119,14 +123,119 @@ This application allows salespeople to organize their Leads, Contacts, and Accou
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="editing-nonessential-details-of-a-person-code-editdetails-code"><a class="link" href="#editing-nonessential-details-of-a-person-code-editdetails-code">Editing nonessential details of a person : <code>editdetails</code></a></h3>
 <div class="paragraph">
-<p><a href="../UserGuide.html#39-editing-nonessential-details-of-a-person--editdetails">Edit Details</a></p>
+<p>Edits an existing person in the address book.<br>
+For Leads, format: <code>editdetails INDEX [c/COMPANY] [i/INDUSTRY] [r/RATING (number from 1 to 5)] [t/TITLE] [w/WEBSITE]</code>
+For Contacts, format: <code>editdetails INDEX [c/COMPANY] [d/DEPARTMENT] [t/TITLE]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>Currently, only Title is shown in the UI, others are coming in V1.4</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
-<p><a href="../UserGuide.html#310-converting-a-person--con-convert">Convert</a></p>
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editdetails 1 c/Macrosoft r/4</code><br>
+For the first person, changes the company to Macrosoft and sets the rating to 4. This person must be a Lead.</p>
+</li>
+<li>
+<p><code>editdetails 2 d/IT t/Mr.</code><br>
+Edits the department of the 2nd person to be <code>IT</code> and sets the title to <code>Mr.</code>. This person must be a Contact.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="converting-a-person-code-con-code-code-convert-code"><a class="link" href="#converting-a-person-code-con-code-code-convert-code">Converting a person : <code>con</code>, <code>convert</code></a></h3>
+<div class="paragraph">
+<p>Converts an existing Lead in the address book to a Contact. For further description of Leads and Contacts, see the Introduction<br>
+Format: <code>con INDEX</code>, <code>convert INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Converts the person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>If the indicated person is a Contact, an error is thrown</p>
+</li>
+<li>
+<p>This command can be undone and redone as necessary</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
-<p><a href="../UserGuide.html#311-adding-an-account-to-a-contact--account">Account</a></p>
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>convert 2</code><br>
+Converts the 2nd person in the list to a Contact.</p>
+</li>
+<li>
+<p><code>con 4</code><br>
+Converts the 4th person in the list to a Contact.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-an-account-to-a-contact-code-account-code"><a class="link" href="#adding-an-account-to-a-contact-code-account-code">Adding an Account to a Contact : <code>account</code></a></h3>
+<div class="paragraph">
+<p>Adds an Account to a Contact.<br>
+Format: <code>account INDEX an/ACCOUNTNAME</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Adds an Account <code>ACCOUNTNAME</code> to the Contact at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>Contacts can only have one Account. If the Contact already has an Account, it will be replaced.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>account 2 an/Macrosoft</code><br>
+Adds the Account Macrosoft to the 2nd person in the list</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -143,15 +252,137 @@ This application allows salespeople to organize their Leads, Contacts, and Accou
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="leads-and-contacts-feature"><a class="link" href="#leads-and-contacts-feature">Leads and Contacts feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p><a href="../DeveloperGuide.html#35-leads-and-contacts-feature">Leads and Contacts</a></p>
+<p>People in the address book were stored under a single class with no options for differentiating between two types of classes.</p>
+</div>
+<div class="paragraph">
+<p>To implement a CRM Book, Leads and Contacts must be differentiated so that they can each hold different fields like a proper CRM Book. To do so, they currently extend the Person class so that all existing functionality associated with Persons will work with both Leads an Contacts. Unique fields will be given their own classes like the original generic fields like Name and Address.</p>
+</div>
+<div class="paragraph">
+<p>In a CRM Book, users start by adding Leads, who are people they have not sold to yet. As they begin selling, the people who they have sold to become Contacts.</p>
+</div>
+<div class="paragraph">
+<p>Many existing commands like <code>AddCommand</code> have been modified to fit the new paradigm so that it only adds Leads.</p>
+</div>
+<div class="paragraph">
+<p>A new conversion command <code>ConvertCommand</code> has been added to convert Leads into Contacts. The Sequence Diagram is shown:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ConvertSequenceDiagram1.png" alt="ConvertSequenceDiagram1" width="650">
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>ConvertCommand</code> class calls the <code>convertPerson method</code> in the <code>ModelManager</code> class and the Sequence Diagram for the resulting steps are shown below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ConvertSequenceDiagram2.png" alt="ConvertSequenceDiagram2" width="650">
+</div>
+</div>
+<div class="paragraph">
+<p>When the user has selected a Contact instead of a Lead, an error is thrown with this code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ConvertCommand</span> <span class="directive">extends</span> UndoableCommand {
+    <span class="annotation">@Override</span>
+    <span class="directive">protected</span> <span class="type">void</span> preprocessUndoableCommand() <span class="directive">throws</span> CommandException {
+        <span class="comment">// ... get list of Persons ...</span>
+        <span class="keyword">try</span> {
+            oldLead = (Lead) lastShownList.get(index.getZeroBased());
+        } <span class="keyword">catch</span> (<span class="exception">ClassCastException</span> cce) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_NOT_CONVERTED);
+        }
+        newContact = createContact(oldLead);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It keeps the name, phone, email, address, remarks and tags through the conversion. The company is converted if it exists into an Account. The converted date is set in the Contact.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-leads-and-contacts"><a class="link" href="#aspect-implementation-of-leads-and-contacts">Aspect: Implementation of Leads and Contacts</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Extend the existing Person class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: We will not lose any functionality associated with the Person class.</p>
+</li>
+<li>
+<p>Cons: Declarations of Person variables may confuse new developers even as a general class for Leads and Contacts.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create two new classes Leads and Contacts</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Clearly differentiates Leads and Contacts throughout the codebase.</p>
+</li>
+<li>
+<p>Cons: We would have to rewrite most objects to take into account the two new classes.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-how-conversion-will-work"><a class="link" href="#aspect-how-conversion-will-work">Aspect: How conversion will work</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1:</strong> Just convert the basic information. Let user fill in other fields themselves.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: User must do extra work.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Smartly detect which fields can be converted and then do so.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User will only need to fix some mistakes in the conversion.</p>
+</li>
+<li>
+<p>Cons: Smart detection and conversion needs work to do.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-13 16:37:32 UTC
+Last updated 2018-04-13 16:38:14 UTC
 </div>
 </div>
 </body>
