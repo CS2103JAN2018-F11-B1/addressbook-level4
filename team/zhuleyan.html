@@ -94,14 +94,67 @@ This application allows salespeople to organize their Leads, Contacts, and Accou
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="add-or-remove-a-remark-to-a-lead-or-contact-code-rem-code-code-remark-code"><a class="link" href="#add-or-remove-a-remark-to-a-lead-or-contact-code-rem-code-code-remark-code">Add or remove a remark to a Lead or Contact: <code>rem</code>, <code>remark</code></a></h3>
 <div class="paragraph">
-<p><a href="../UserGuide.html#321-add-or-remove-a-remark-to-a-lead-or-contact-rem-remark">Remark Command</a></p>
+<p>Adds or removes a remark to a particular Lead or Contact.<br>
+Format to add remark: <code>rem [INDEX] r/[KEYWORD]</code>, <code>remark [INDEX] r/[KEYWORD]</code>
+Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>rem 1 r/Happy</code><br>
+Adds the remark 'Happy' to the 1st Lead or Contact.</p>
+</li>
+<li>
+<p><code>remark 4 r/</code><br>
+Removes the remark of the 4th Lead or Contact.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sort-persons-by-name-in-alphabetical-order-code-st-code-code-sort-code"><a class="link" href="#sort-persons-by-name-in-alphabetical-order-code-st-code-code-sort-code">Sort persons by name in alphabetical order: <code>st</code>, <code>sort</code></a></h3>
+<div class="paragraph">
+<p>Sorts all persons in CRM Book by name.<br>
+Format: <code>st</code>, <code>sort</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="importing-a-csv-file-code-i-code-code-import-code"><a class="link" href="#importing-a-csv-file-code-i-code-code-import-code">Importing a CSV file: <code>i</code>, <code>import</code></a></h3>
+<div class="paragraph">
+<p>When you have a CSV file of Leads, you can directly import the file to the CRM Book without adding them one by one.<br>
+Format: <code>i PATH</code>, <code>import PATH</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The path refers to the path of the file that the user wants to import.</p>
+</li>
+<li>
+<p>The path must be a valid file path.</p>
+</li>
+<li>
+<p>The columns in the CSV file should be <code>name</code>, <code>phone</code>, <code>email</code>, <code>address</code> respectively. The order has to be followed restrictively to guarantee the success of import.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
-<p><a href="../UserGuide.html#322-sort-persons-by-name-in-alphabetical-order-st-sort">Sort Command</a></p>
+<p>Examples:</p>
 </div>
-<div class="paragraph">
-<p><a href="../UserGuide.html#315-importing-a-csv-file-i-import">Import Command</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>import ./sample.csv</code><br>
+Imports the file <code>sample.csv</code> to the CRM Book</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -118,18 +171,169 @@ This application allows salespeople to organize their Leads, Contacts, and Accou
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="remark-feature"><a class="link" href="#remark-feature">Remark feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p><a href="../DeveloperGuide.html#32-remark-feature">Remark Command</a></p>
+<p>To record more detailed information of a person, a new command <code>RemarkCommand</code> is implemented.</p>
 </div>
 <div class="paragraph">
-<p><a href="../DeveloperGuide.html#37-bulk-import-feature">Import Command</a></p>
+<p>The <code>RemarkCommand</code> inherits from <code>UndoableCommands</code> since it is reasonable to make remark command execute in an <em>undoable</em> way.</p>
+</div>
+<div class="paragraph">
+<p><code>RemarkCommand</code> which is undoable is implemented this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">RemarkCommand</span> <span class="directive">extends</span> UndoableCommand {
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult executeUndoableCommand() {
+        <span class="comment">// ... remark logic ...</span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following diagram shows the inheritance diagram for <code>RemarkCommand</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/RemarkCommandDiagram.png" alt="RemarkCommandDiagram" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>The model <code>Person</code> is modified to have a new field <code>Remark</code>.</p>
+</div>
+<div class="paragraph">
+<p>The default value of the remark field of a person is an empty string.
+A user is not able to assign a remark to a person when adding the person. Therefore, all people in the CRM Book is originally without any remark by default.</p>
+</div>
+<div class="paragraph">
+<p>The implementation of this command is much like the <code>EditCommand</code>.
+For example, when a user type <code>remark 2 r\Likes to swim</code>. Then the remark field of the 2nd person in the current list will be changed to <code>Likes to swim</code>. It’s similar to editing a person’s phone number or address.</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram is shown below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/RemarkCommandSequenceDiagram.png" alt="RemarkCommandSequenceDiagram" width="1000">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-remarkcommand-code"><a class="link" href="#aspect-implementation-of-code-remarkcommand-code">Aspect: Implementation of <code>RemarkCommand</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Add a new <code>remark</code> command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Treat it as a command may be easy to understand. Only a few people needs a remark.</p>
+</li>
+<li>
+<p>Cons: Cannot add a person with remark.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Just make it a part of <code>EditCommand</code> and <code>AddCommand</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Only need to add remark field to every related class. We can add a person with remark.</p>
+</li>
+<li>
+<p>Cons: We may have to type too many things when adding a person. Also, some people don’t have any remark.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="bulk-import-feature"><a class="link" href="#bulk-import-feature">Bulk Import Feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>To add a large number of persons to the CRM Book at the same time, a new command <code>ImportCommand</code> is implemented.</p>
+</div>
+<div class="paragraph">
+<p>The <code>ImportCommand</code> inherits from <code>Command</code>. It is implemented this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ImportCommand</span> <span class="directive">extends</span> Command {
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult execute() {
+        <span class="comment">// … import logic …</span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When an <code>ImportCommand</code> is called, the corresponding CSV file will be processed. Then persons will be added to CRM Book automatically like what a <code>AddCommand</code> can do but without manual typing.</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram is shown below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ImportCommandSequenceDiagram.png" alt="ImportCommandSequenceDiagram" width="1000">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-csv-file-format"><a class="link" href="#aspect-csv-file-format">Aspect: CSV file format</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Requires the CSV file to follow the given format</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement. No need to analyze too much about the file.</p>
+</li>
+<li>
+<p>Cons: More work for users.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Allow attributes not in order and allow different names for attributes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Hard to detect and implement.</p>
+</li>
+<li>
+<p>Cons: More flexible to users. Can help users save time.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-13 16:38:14 UTC
+Last updated 2018-04-13 16:39:35 UTC
 </div>
 </div>
 </body>
