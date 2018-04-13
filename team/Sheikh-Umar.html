@@ -5,14 +5,14 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>SHEIKH UMAR BIN SHAIK ABU BAKAR BANAFE' - Project Portfolio</title>
+<title>Sheikh Umar Bin Shaik Abu Bakar Banafe' - Project Portfolio</title>
 <link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
 </head>
 <body class="article">
 <div id="header">
-<h1>SHEIKH UMAR BIN SHAIK ABU BAKAR BANAFE' - Project Portfolio</h1>
+<h1>Sheikh Umar Bin Shaik Abu Bakar Banafe' - Project Portfolio</h1>
 </div>
 <div id="content">
 <div class="sect1">
@@ -63,9 +63,18 @@ Hence, this enhancement tackles this issues so that the user will have a more pl
 <li>
 <p>Justification: Salespeople may want the CRM Book to do a basic command as quickly as possible. This will involve typing as few letters as possible.</p>
 </li>
+</ul>
+</div>
+</li>
 <li>
-<p>Highlights: Ensuring that each alias command is unique. For example, the sort and select commands may share the alias command 's'. However, this will lead to one command being performed over the other.
-Hence, the sort command has the alias 'st', and the select command has the alias 's'. Examples of a basic command includes commands such as add, delete, clear, and find.</p>
+<p><strong>Minor enhancement</strong>: Enhanced find command to be able to search for phone numbers and email address.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: User can search for Leads and Contacts based on phone numbers and email address.</p>
+</li>
+<li>
+<p>Justification: Salespeople may want to search for Leads and Contacts based on personal inforamtion other than names.</p>
 </li>
 </ul>
 </div>
@@ -92,7 +101,7 @@ Hence, the sort command has the alias 'st', and the select command has the alias
 <div class="ulist">
 <ul>
 <li>
-<p>Managed the collation of code of my team for releases <code>v1.4</code> - <code>v1.5rc</code> (2 releases) on GitHub</p>
+<p>Managed the collation of code of my team for releases <code>v1.4</code> - <code>v1.5</code> (3 releases) on GitHub</p>
 </li>
 </ul>
 </div>
@@ -127,8 +136,38 @@ Hence, the sort command has the alias 'st', and the select command has the alias
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="displaying-all-leads-or-all-contacts-code-disp-code-code-display-code"><a class="link" href="#displaying-all-leads-or-all-contacts-code-disp-code-code-display-code">Displaying all Leads or all Contacts: <code>disp</code>, <code>display</code></a></h3>
 <div class="paragraph">
-<p><a href="../UserGuide.html#36-displaying-all-leads-or-all-contacts-disp-display">Display Command</a></p>
+<p>Shows a list of either Leads or Contacts in the CRM.<br>
+Format: <code>disp Lead</code>, <code>display Lead</code>, <code>disp Contact</code>, <code>display Contact</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>lead</code> will match <code>Lead</code></p>
+</li>
+<li>
+<p>Only a full word will be matched e.g. <code>Contact</code> will not match <code>Contacts</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Display</strong> : <code>disp KEYWORD</code>, <code>display KEYWORD</code><br>
+e.g. <code>disp Lead</code>, <code>display Contact</code></p>
+</li>
+<li>
+<p><strong>Find</strong> : <code>f KEYWORD [MORE_KEYWORDS]</code>, <code>find KEYWORD [MORE_KEYWORDS]</code><br>
+e.g. <code>f Chris</code>, <code>find James Jake</code>, <code>f 99881122</code>, <code>find <a href="mailto:john@gmail.com">john@gmail.com</a></code></p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -145,24 +184,236 @@ Hence, the sort command has the alias 'st', and the select command has the alias
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="alias-commands-feature"><a class="link" href="#alias-commands-feature">Alias Commands feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p><a href="../DeveloperGuide.html#310-alias-commands-feature">Alias Commands feature</a></p>
+<p>A command can be performed by typing in its alias rather than the word.<br>
+The following is an example of implementing the alias command for the list command:<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ListCommand</span> <span class="directive">extends</span> Command {
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> COMMAND_WORD = <span class="string"><span class="delimiter">&quot;</span><span class="content">list</span><span class="delimiter">&quot;</span></span>;
+    <span class="comment">//@@author Sheikh-Umar</span>
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> COMMAND_ALIAS = <span class="string"><span class="delimiter">&quot;</span><span class="content">l</span><span class="delimiter">&quot;</span></span>;
+    <span class="comment">//@@author</span>
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_SUCCESS = <span class="string"><span class="delimiter">&quot;</span><span class="content">Listed all Leads and Contacts</span><span class="delimiter">&quot;</span></span>;
+
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult execute() {
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(MESSAGE_SUCCESS);
+    }
+}</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p><a href="../DeveloperGuide.html#311-identifying-a-duplicate-feature">Identify Duplicates feature</a></p>
+<p>The alias command for all other commands will follow a similar implementation.<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-implement-the-alias-command-for-all-commands"><a class="link" href="#aspect-how-to-implement-the-alias-command-for-all-commands">Aspect: How to implement the alias command for all commands</a></h5>
+<div class="paragraph">
+<p>The feature is implemented by adding the alias of the command into its respective java document, and updating the AddressBookParser java document.<br>
+The feature is implemented this way to utilise the command java documents that are available as opposed to creating a new java document for a certain alias.<br></p>
 </div>
 <div class="paragraph">
-<p><a href="../DeveloperGuide.html#displaying-lead-list-and-contact-list-feature">Displaying Lead list and Contact list feature</a></p>
+<p>This feature is implemented to allow a user to enter a command without specifying the entire word of the command.<br></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="identifying-a-duplicate-feature"><a class="link" href="#identifying-a-duplicate-feature">Identifying a Duplicate feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The CRM Book will ensure that every Lead and Contact stored is a non-duplicate.<br></p>
 </div>
 <div class="paragraph">
-<p><a href="../DeveloperGuide.html#enhancement-of-find-command-feature">Enhancement of Find Command feature</a></p>
+<p>The feature is implemented by checking the phone number and email address of a new Lead with all of the phone numbers and email addresses of all leads and contacts currently in the CRM-Book.<br></p>
+</div>
+<div class="paragraph">
+<p>The feature will be implemented on the add command because the current application detects duplicates at the add command.<br>
+The following is how the feature will be implemented:<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">boolean</span> contains(Person toCheck) {
+        requireNonNull(toCheck);
+        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="integer">0</span>; i &lt; internalList.size(); i++) {
+            Person current = internalList.get(i);
+            <span class="keyword">if</span> (current.getPhone().equals(toCheck.getPhone())
+                    || current.getEmail().equals(toCheck.getEmail())) {
+                <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+            }
+        }
+        <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The phone number and email address of a Lead will be checked in the list of all Leads and Contacts.
+If either the phone number of email address of the Lead to be added is found in the list,
+the CRM application will display a message that the lead is a duplicate and will reject this lead.</p>
+</div>
+<div class="paragraph">
+<p>The following action diagram shows how the operation of identifying a duplicate lead works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DetectDuplicateActivityDiagram.png" alt="DetectDuplicateActivityDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-implement-identifying-a-duplicate"><a class="link" href="#aspect-how-to-implement-identifying-a-duplicate">Aspect: How to implement identifying a duplicate</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Iterate through all Leads and Contacts in CRM-Book.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Search will be performed in linear time, and enhances an existing portion of code.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="displaying-lead-list-and-contact-list-feature"><a class="link" href="#displaying-lead-list-and-contact-list-feature">Displaying Lead list and Contact list feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The CRM Book will be able to list out all Leads and Contacts separately.</p>
+</div>
+<div class="paragraph">
+<p>The feature is implemented by checking on the type of the persons already stored in the CRM, and displaying all persons that match the keyword (either Lead or Contact) that the user enters.<br></p>
+</div>
+<div class="paragraph">
+<p>The feature is implemented through the DisplayCommand, which is based on FindCommand.
+Hence, the DisplayCommand will operate similarly as the FindCommand, with the only difference being the DisplayCommand searches for all Leads or Contacts already in the CRM Book.<br></p>
+</div>
+<div class="paragraph">
+<p>The <code>DisplayCommand</code> inherits from <code>Command</code>. It is implemented this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">DisplayCommand</span> <span class="directive">extends</span> Command {
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult execute() {
+        <span class="comment">// … import logic …</span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following action diagram shows how the operation of displaying the Leads or Contacts list works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DisplayListOfACertainTypeActionDiagram.png" alt="DisplayListOfACertainTypeActionDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-displaying-lead-list-and-contact-list-works"><a class="link" href="#aspect-how-displaying-lead-list-and-contact-list-works">Aspect: How displaying Lead list and Contact list works</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Iterate through the CRM Book for persons that match the keyword that user entered just like the FindCommand.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Iteration will be performed in linear time, and utilises the functionality of the FindCommand.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-of-find-command-feature"><a class="link" href="#enhancement-of-find-command-feature">Enhancement of Find Command feature</a></h3>
+<div class="sect3">
+<h4 id="reason-for-implementation"><a class="link" href="#reason-for-implementation">Reason for Implementation</a></h4>
+<div class="paragraph">
+<p>The user may want to search for Leads and Contacts based on phone numbers and email addresses rather than names.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The CRM Book currently searches for a Lead or Contact based on their name.</p>
+</div>
+<div class="paragraph">
+<p>This command can be further improved by being able to find phone numbers and email addresses.<br></p>
+</div>
+<div class="paragraph">
+<p>The following is how the feature will be implemented:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">boolean</span> test(Person person) {
+         <span class="keyword">return</span> keywords.stream().anyMatch(keyword -&gt; StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword)                .anyMatch(keyword -&gt; StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword)
+                        || StringUtil.containsWordIgnoreCase(person.getPhone().value, keyword)
+                        || StringUtil.containsWordIgnoreCase(person.getEmail().value, keyword));
+     }
+ }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The phone number and email address that the user entered will be checked in the list of all Leads and Contacts.
+If either the phone number of email address is found in the list,
+the CRM Book will display the Leads and/or Contacts that match the keywords entered.
+If not, the CRM Book will display zero Leads and Contacts found.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-implement-finding-phone-numbers-and-email-addresses"><a class="link" href="#aspect-how-to-implement-finding-phone-numbers-and-email-addresses">Aspect: How to implement finding phone numbers and email addresses</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Edit the current search implementation to include finding phone numbers and email addresses.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Search will be performed in linear time, and utilises an existing portion of code.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-13 09:44:07 UTC
+Last updated 2018-04-13 16:37:09 UTC
 </div>
 </div>
 </body>
