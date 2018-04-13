@@ -993,22 +993,25 @@ For example, when a user type <code>remark 2 r\Likes to swim</code>. Then the re
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span><span class="type">[]</span> TAG_COLORS =
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">//In PersonCard.java</span>
+<span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span><span class="type">[]</span> TAG_COLORS =
         { <span class="string"><span class="delimiter">&quot;</span><span class="content">blue</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">cyan</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">green</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">magenta</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">orange</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">pink</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">red</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">yellow</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">teal</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">brown</span><span class="delimiter">&quot;</span></span> };</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>These colors are defined, with their background color and text color spelled out, in the the DarkTheme.css file.</p>
+<p>These colors are defined, with their background color and text color spelled out, in the all the different theme CSS files.</p>
 </div>
 <div class="paragraph">
 <p>A hash code of the tag name is used to select a color for the tag such that it would remain consistent between different runs of the software.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="predefined-type">String</span> getTagColorFor(<span class="predefined-type">String</span> tagName) {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">//In PersonCard.java</span>
+<span class="directive">private</span> <span class="predefined-type">String</span> getTagColorFor(<span class="predefined-type">String</span> tagName) {
     <span class="keyword">return</span> TAG_COLORS[<span class="predefined-type">Math</span>.abs(tagName.hashCode()) % TAG_COLORS.length];
 }
 
+<span class="comment">//In PersonCard.java</span>
 <span class="directive">private</span> <span class="type">void</span> initTags(Person person) {
     person.getTags().forEach(tag -&gt; {
         <span class="predefined-type">Label</span> tagLabel = <span class="keyword">new</span> <span class="predefined-type">Label</span>(tag.tagName);
@@ -1068,27 +1071,28 @@ For example, when a user type <code>remark 2 r\Likes to swim</code>. Then the re
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">TextFields.bindAutoCompletion(commandTextField, Messages.AUTOCOMPLETE_FIELD);</code></pre>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">//In CommandBox.java</span>
+TextFields.bindAutoCompletion(commandTextField, Messages.AUTOCOMPLETE_FIELD);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>All the command words are included in the AUTOCOMPLETE_FIELD string.</p>
+<p>All the command keywords are included in the AUTOCOMPLETE_FIELD string array.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span><span class="type">[]</span> AUTOCOMPLETE_FIELD = { AddCommand.COMMAND_WORD, ClearCommand.COMMAND_WORD,
-    ConvertCommand.COMMAND_WORD, DeleteCommand.COMMAND_WORD, EditCommand.COMMAND_WORD, ExitCommand.COMMAND_WORD,
-    FindCommand.COMMAND_WORD, HelpCommand.COMMAND_WORD, HistoryCommand.COMMAND_WORD,
-    LinkedInLoginCommand.COMMAND_WORD, ListCommand.COMMAND_WORD, RedoCommand.COMMAND_WORD,
-    SelectCommand.COMMAND_WORD, UndoCommand.COMMAND_WORD, AddCommand.COMMAND_AUTO_COMPLETE};</code></pre>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">//In Messages.java</span>
+<span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span><span class="type">[]</span> AUTOCOMPLETE_FIELD = {
+    <span class="comment">//all command keywords</span>
+    };</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In addition to all the command words, a COMMAND_AUTO_COMPLETE string, with both command word and prefixes, is also included for add command.</p>
+<p>In addition to all the command keywords, a COMMAND_AUTO_COMPLETE string, with both command word and prefixes, is also included for add command.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> COMMAND_AUTO_COMPLETE = COMMAND_WORD + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + PREFIX_NAME + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">//In AddCommand.java</span>
+<span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> COMMAND_AUTO_COMPLETE = COMMAND_WORD + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + PREFIX_NAME + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span>
         + PREFIX_PHONE + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + PREFIX_EMAIL + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + PREFIX_ADDRESS + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + PREFIX_TAG;</code></pre>
 </div>
 </div>
@@ -2939,7 +2943,7 @@ Hence, doing a command using its alias will ensure he/she can do a certain comma
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Major Feature</strong> : Auto Completion of commands</p>
+<p><strong>Minor Feature</strong> : Auto Completion of commands</p>
 </div>
 <div class="ulist">
 <ul>
@@ -3572,10 +3576,7 @@ Hence, doing a command using its alias will ensure he/she can do a certain comma
 <p>User requests to change theme</p>
 </li>
 <li>
-<p>CRM Book changes theme setting</p>
-</li>
-<li>
-<p>User restart CRM Book to effect the change</p>
+<p>CRM Book changes the theme setting to display the chosen theme</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3593,6 +3594,19 @@ Hence, doing a command using its alias will ensure he/she can do a certain comma
 <ul class="none">
 <li>
 <p>2a1. CRM Book shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. The input theme is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. CRM Book shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3790,7 +3804,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-12 20:25:45 UTC
+Last updated 2018-04-13 01:06:55 UTC
 </div>
 </div>
 </body>
