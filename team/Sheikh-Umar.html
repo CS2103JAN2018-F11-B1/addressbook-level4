@@ -37,15 +37,15 @@ such as identifying duplicates.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: Displaying list of non-duplicate Leads and Contacts</p>
+<p><strong>Major enhancement</strong>: Displaying list of non-duplicate Leads and Contacts.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: Informs the user if a Lead to be added in is already in the CRM Book as either a Lead or a Contact, and allows the user to see a Lead list and Contact list separately.</p>
+<p>What it does: Informs the user if a Lead to be added in is already in the CRM Book either as a Lead or a Contact, and allows the user to see a Lead list and Contact list separately.</p>
 </li>
 <li>
-<p>Justification: Current CRM applications fail to detect duplicates Leads and Contacts. As a result, these CRM applications may store a Lead or Contact numerous times, hence resulting in redundant data. Furthermore, these CRM applications may not be able to display Leads and Contacts separately.
-Hence, this enhancement tackles these issues so that the user will have a more pleasant experience with managing his/her Leads and Contacts.</p>
+<p>Justification: Salespeople often face the issue of duplicate data as the CRM applications that they are using does not detect duplicates. Furthermore, the CRM application that they are using may not be able to display Leads and Contacts separately.
+Hence, this enhancement tackles this issues so that the user will have a more pleasant experience with a CRM application.</p>
 </li>
 <li>
 <p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives.</p>
@@ -67,14 +67,14 @@ Hence, this enhancement tackles these issues so that the user will have a more p
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: Enhanced the Find command to be able to search for phone numbers and email address</p>
+<p><strong>Minor enhancement</strong>: Enhanced find command to be able to search for phone numbers and email address.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>What it does: User can search for Leads and Contacts based on phone numbers and email address.</p>
 </li>
 <li>
-<p>Justification: Salespeople may want to search for Leads and Contacts based on personal information other than names.</p>
+<p>Justification: Salespeople may want to search for Leads and Contacts based on personal inforamtion other than names.</p>
 </li>
 </ul>
 </div>
@@ -595,109 +595,12 @@ If not, the CRM Book will display zero Leads and Contacts found.</p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="displaying-lead-or-contact-list"><a class="link" href="#displaying-lead-or-contact-list">Displaying Lead or Contact list</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Finding Lead(s) or Contacts(s) based on phone numbers and email addresses.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Prerequisites: Nil.</p>
-</li>
-<li>
-<p>Test case: <code>disp Lead</code>, <code>display Lead</code><br>
-Expected: All Leads in the CRM Book. Timestamp in the status bar is updated.</p>
-</li>
-<li>
-<p>Test case: <code>disp Contact</code>, <code>display Contact</code><br>
-Expected: All Contacts in the CRM Book. Timestamp in the status bar is updated.</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="duplicate-detection"><a class="link" href="#duplicate-detection">Duplicate Detection</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Detecting a duplicate Lead or Contacts.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Prerequisites: There is at least 1 Lead or Contact.</p>
-</li>
-<li>
-<p>Test case: <code>a n/John Tan p/99991234 e/johntan@gmail.com a/33, Eunos Street 7, #5-67</code>, <code>add n/John Tan p/99991234 e/johntan@gmail.com a/33, Eunos Street 7, #5-67</code><br>
-Ensure the information entered has either a phone number or email address that is identical to any Lead or Contact in the CRM Book.
-Expected: Duplicate Lead/Contact message shown. Timestamp in the status bar is updated.</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="executing-commands-via-alias"><a class="link" href="#executing-commands-via-alias">Executing commands via alias</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Executing commands via its alias</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Prerequisites: Read through the User Guide for commands that have aliases.</p>
-</li>
-<li>
-<p>Test case: <code>disp Lead</code>, <code>display Lead</code><br>
-Expected: All Leads in the CRM Book. Timestamp in the status bar is updated.</p>
-</li>
-<li>
-<p>Test case: <code>l</code>, <code>list</code><br>
-Expected: List all Leads and Contacts in the CRM Book. Timestamp in the status bar is updated.</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="finding-lead-s-and-contact-s-via-phone-numbers-and-email-addresses"><a class="link" href="#finding-lead-s-and-contact-s-via-phone-numbers-and-email-addresses">Finding Lead(s) and Contact(s) via Phone Numbers and Email Addresses</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Finding Lead(s) or Contacts(s) based on phone numbers and email addresses.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Prerequisites: Nil.</p>
-</li>
-<li>
-<p>Test case: <code>f 99991234</code>, <code>find 99991234</code><br>
-Expected: Lead/Contact with the phone number <code>99991234</code> is shown in the status message. Timestamp in the status bar is updated.</p>
-</li>
-<li>
-<p>Test case: <code>f <a href="mailto:johntan@gmail.com">johntan@gmail.com</a></code>, <code>find <a href="mailto:johntan@gmail.com">johntan@gmail.com</a></code><br>
-Expected: Lead/Contact with the email address <code>johntan@gmail.com</code> is shown in the status message. Timestamp in the status bar is updated.</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 14:24:17 UTC
+Last updated 2018-04-14 17:52:29 UTC
 </div>
 </div>
 </body>
