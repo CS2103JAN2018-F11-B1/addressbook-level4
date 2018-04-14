@@ -1730,85 +1730,103 @@ If not, the CRM Book will display zero Leads and Contacts found.</p>
 <div class="sect3">
 <h4 id="current-implementation-12"><a class="link" href="#current-implementation-12">3.14.2. Current implementation</a></h4>
 <div class="paragraph">
-<p>Currently, different themes are referenced in different FXML files which uses different CSS files.
-The following piece of code demonstrates how CSS files are referenced in FXML files:</p>
+<p>The sequence diagram below shows the interactions of change theme command within the logic component.</p>
 </div>
-<div class="listingblock">
+<div class="imageblock">
 <div class="content">
-<pre>//in MainWindow.fxml
-&lt;Scene&gt;
-  &lt;stylesheets&gt;
-    &lt;URL value="@DarkTheme.css" /&gt;
-    &lt;URL value="@Extensions.css" /&gt;
-  &lt;/stylesheets&gt;
-  ...</pre>
+<img src="images/ChangeThemeLogicComponentSequenceDiagram.png" alt="ChangeThemeLogicComponentSequenceDiagram" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p>For example, the default dark theme uses "MainWindow.fxml" to config its main window while the light theme uses "MainWindowLight.fxml".
-In "MainWindow.fxml", "DarkTheme.css" and "Extensions.css" are referenced as the stylesheets of the scene.
-Similarly, "MainWindowLight.fxml" uses "LightTheme.css" and "Extensions.css" as shown below:</p>
+<p>The sequence diagram below shows the interactions between different components of CRM Book for change theme command.</p>
 </div>
-<div class="listingblock">
+<div class="imageblock">
 <div class="content">
-<pre>//in MainWindowLight.fxml
-&lt;Scene&gt;
-  &lt;stylesheets&gt;
-    &lt;URL value="@LightTheme.css" /&gt;
-    &lt;URL value="@ExtensionsLight.css" /&gt;
-  &lt;/stylesheets&gt;
-  ...</pre>
+<img src="images/ChangeThemeHighLevelSequenceDiagrams.png" alt="ChangeThemeHighLevelSequenceDiagrams" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p>Since the main window FXML file path is stored in the UserPrefs class, we can get the file path in ModelManager class by
-UserPrefs::getMainWindowFile() method.
-In addition, UserPrefs::setMainWindowFilePath(String newFilePath) method will change the file path of the FXML file, and
-the "mainWindowFilePath" field in "preferences.json" will change accordingly.</p>
-</div>
-<div class="paragraph">
-<p>Users can use the command "changetheme THEME" where THEME can only be "light" and "dark" currently. More themes will be added in v2.0.
-The following piece of code shows how ChangeThemeCommand is implemented:</p>
+<p>Every change theme command will post a ChangeThemeRequestEvent to EventCenter. When this event is handled, the UI will be updated to display the chosen theme. In addition, the themeFilePath in user prefs is updated with the chosen theme file path.
+Currently, there are three themes, namely blue, light and dark. The CSS files of these themes are referenced in Theme class as strings.
+The following piece of code demonstrates how the CSS files are referenced in Theme class:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>//in ChangeThemeCommand.java
-public CommandResult execute() {
-    requireNonNull(targetTheme);
-    try {
-        model.updateTheme(targetTheme.theme);
-    } catch (InputThemeEqualsCurrentThemeException e) {
-        return new CommandResult(String.format(MESSAGE_CHANGE_THEME_FAIL, targetTheme));
-    }
-    return new CommandResult(String.format(MESSAGE_CHANGE_THEME_SUCCESS, targetTheme));
-}</pre>
+<pre>//in Theme.java
+    public static final String DEFAULT_THEME_FILE_PATH = "/view/BlueTheme.css";
+    public static final String DARK_THEME_FILE_PATH = "/view/DarkTheme.css";
+    public static final String LIGHT_THEME_FILE_PATH = "/view/LightTheme.css";</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For example, when the command "changetheme light" is triggered, it checks whether the input theme is the same as the current theme.
-If they are equal, the message of command failure is returned. The code below shows how updateTheme(String newTheme) is implemented.</p>
+<p>There is a method in Theme class to convert theme name into theme file path.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>//in ModelManager.java
-public void updateTheme(String theme) throws InputThemeEqualsCurrentThemeException {
-    if (theme.equals("light")) {
-        if (this.userPrefs.getMainWindowFile().equals("MainWindowLight.fxml")) {
-            throw new InputThemeEqualsCurrentThemeException();
+<pre>//in Theme.java
+    public String convertThemeToFilePath() {
+            switch (this.theme) {
+            case DARK_THEME:
+                return DARK_THEME_FILE_PATH;
+            //other cases
+            }
+        }</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This method is used to check if the chosen theme is equals to the current theme by comparing the file path of the chosen theme with the file path in user prefs.</p>
+</div>
+<div class="paragraph">
+<p>If the chosen theme is not equals to the current theme, the ChangeThemeRequestEvent will be handle in MainWindow class.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>//in MainWindow.java
+public void handleChangeTheme(String theme) {
+        String fullPath = getFullPath(this.themeFilePath);
+        primaryStage.getScene().getStylesheets().remove(fullPath);
+
+        switch (theme) {
+        case Theme.LIGHT_THEME:
+            this.themeFilePath = Theme.LIGHT_THEME_FILE_PATH;
+            break;
+        case Theme.DARK_THEME:
+            this.themeFilePath = Theme.DARK_THEME_FILE_PATH;
+            break;
+        case Theme.BLUE_THEME:
+            this.themeFilePath = Theme.BLUE_THEME_FILE_PATH;
+            break;
+        default:
+            //this will not happen
         }
-        this.userPrefs.setMainWindowFilePath("MainWindowLight.fxml");
-    } else {
-        if (this.userPrefs.getMainWindowFile().equals("MainWindow.fxml")) {
-            throw new InputThemeEqualsCurrentThemeException();
-        }
-        this.userPrefs.setMainWindowFilePath("MainWindow.fxml");
-    }
-}</pre>
+
+        prefs.getGuiSettings().setThemeFilePath(this.themeFilePath);
+        fullPath = getFullPath(this.themeFilePath);
+        primaryStage.getScene().getStylesheets().add(fullPath);
+    }</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Upon command success, users have to restart the app in order to see the change in theme.
-This is because the current implementation cannot dynamically change the settings of the main window.</p>
+<p>This method updates the theme file path in the primary scene in 3 steps:<br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Removes the current theme file path from primary scene.</p>
+</li>
+<li>
+<p>Updates the theme file path</p>
+</li>
+<li>
+<p>Adds the new theme file path into primary scene.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In addition, the updated theme file path is written into user prefs.<br></p>
+</div>
+<div class="paragraph">
+<p>A switch case statement is used to update the new theme file path. This implementation allows easy extension of the feature; i.e. when a new theme is created, it can be easily added as a case.</p>
 </div>
 </div>
 </div>
@@ -3804,7 +3822,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-13 16:39:35 UTC
+Last updated 2018-04-14 05:01:51 UTC
 </div>
 </div>
 </body>
