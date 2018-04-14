@@ -114,7 +114,7 @@ public class ShareToLinkedInCommand extends Command {
 
             //check response to see if it is a correct response before changing the postSuccess
             JSONObject jsnobject = new JSONObject(content);
-            if(jsnobject.has("updateURL")){ //if has updateURL then it successfully got posted
+            if (jsnobject.has("updateURL")) { //if has updateURL then it successfully got posted
                 postSuccess = true;
             }
 
