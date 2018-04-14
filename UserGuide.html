@@ -828,7 +828,31 @@ Setting this address is required if you want to see the Google Map directions to
 <div class="sect2">
 <h3 id="get-directions-to-customer-s-office-commandless"><a class="link" href="#get-directions-to-customer-s-office-commandless">3.26. Get directions to customer&#8217;s office: commandless</a></h3>
 <div class="paragraph">
-<p>To activate this, have a office address set and click on one of your customer&#8217;s name card.</p>
+<p>In order to use this, you must have an office address set. You can then either click on a person card or use the <code>select</code> command in order to view the Google Maps directions.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If a person card was selected while the office location is set, you have to select a different person card to see the map
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Success of this command is also dependent on the success of Google intepreting the address entered
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -858,6 +882,14 @@ Setting this address is required if you want to see the Google Map directions to
 e.g. <code>a n/John Tan p/99991111 e/johntan@example.com a/123, Tampines Rd, 54321 t/colleague</code></p>
 </li>
 <li>
+<p><strong>AddDetails</strong> :  For Leads: <code>adddetails INDEX [c/COMPANY] [i/INDUSTRY] [r/RATING (number from 1 to 5)] [t/TITLE] [w/WEBSITE]</code><br>
+For Contacts: <code>adddetails INDEX [c/COMPANY] [d/DEPARTMENT] [t/TITLE]</code></p>
+</li>
+<li>
+<p><strong>Change Theme</strong> : <code>changetheme THEME</code><br>
+e.g. <code>changetheme dark</code></p>
+</li>
+<li>
 <p><strong>Clear</strong> : <code>c</code>, <code>clear</code></p>
 </li>
 <li>
@@ -872,24 +904,29 @@ e.g. <code>d 5</code>, <code>delete 3</code></p>
 e.g. <code>disp Lead</code>, <code>display Contact</code></p>
 </li>
 <li>
-<p><strong>Exit</strong> : <code>ex</code>, <code>exit</code></p>
-</li>
-<li>
 <p><strong>Edit</strong> : <code>e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code>, <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
 e.g. <code>e 1 n/John Tan e/johntan@example.com</code><br>
 e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
-</li>
-<li>
-<p><strong>AddDetails</strong> :  For Leads: <code>adddetails INDEX [c/COMPANY] [i/INDUSTRY] [r/RATING (number from 1 to 5)] [t/TITLE] [w/WEBSITE]</code><br>
-For Contacts: <code>adddetails INDEX [c/COMPANY] [d/DEPARTMENT] [t/TITLE]</code></p>
 </li>
 <li>
 <p><strong>EditDetails</strong> :  For Leads: <code>editdetails INDEX [c/COMPANY] [i/INDUSTRY] [r/RATING (number from 1 to 5)] [t/TITLE] [w/WEBSITE]</code><br>
 For Contacts: <code>editdetails INDEX [c/COMPANY] [d/DEPARTMENT] [t/TITLE]</code></p>
 </li>
 <li>
+<p><strong>Exit</strong> : <code>ex</code>, <code>exit</code></p>
+</li>
+<li>
 <p><strong>Find</strong> : <code>f KEYWORD [MORE_KEYWORDS]</code>, <code>find KEYWORD [MORE_KEYWORDS]</code><br>
 e.g. <code>f Chris</code>, <code>find James Jake</code>, <code>f 99881122</code>, <code>find <a href="mailto:john@gmail.com">john@gmail.com</a></code></p>
+</li>
+<li>
+<p><strong>Help</strong> : <code>h</code>, <code>help</code></p>
+</li>
+<li>
+<p><strong>History</strong> : <code>hist</code>, <code>history</code></p>
+</li>
+<li>
+<p><strong>Import</strong> : <code>i PATH</code>, <code>import PATH</code></p>
 </li>
 <li>
 <p><strong>Linkedin_login</strong> : <code>linklog</code>, <code>linkedin_login</code></p>
@@ -898,23 +935,7 @@ e.g. <code>f Chris</code>, <code>find James Jake</code>, <code>f 99881122</code>
 <p><strong>Linkedin_share</strong> : <code>linkshare [content]</code>, <code>linkedin_share CONTENT</code></p>
 </li>
 <li>
-<p><strong>SetOfficeAddress</strong> : <code>set_office_address a/ADDRESS</code>, <code>setA a/ADDRESS</code></p>
-</li>
-<li>
 <p><strong>List</strong> : <code>l</code>, <code>list</code></p>
-</li>
-<li>
-<p><strong>Help</strong> : <code>h</code>, <code>help</code></p>
-</li>
-<li>
-<p><strong>Select</strong> : <code>s INDEX</code>, <code>select INDEX</code><br>
-e.g.<code>s 1</code>, <code>select 2</code></p>
-</li>
-<li>
-<p><strong>History</strong> : <code>hist</code>, <code>history</code></p>
-</li>
-<li>
-<p><strong>Undo</strong> : <code>u</code>, <code>undo</code></p>
 </li>
 <li>
 <p><strong>Redo</strong> : <code>r</code>, <code>redo</code></p>
@@ -923,14 +944,17 @@ e.g.<code>s 1</code>, <code>select 2</code></p>
 <p><strong>Remark</strong> : <code>rem</code>, <code>remark</code></p>
 </li>
 <li>
+<p><strong>SetOfficeAddress</strong> : <code>set_office_address a/ADDRESS</code>, <code>setA a/ADDRESS</code></p>
+</li>
+<li>
+<p><strong>Select</strong> : <code>s INDEX</code>, <code>select INDEX</code><br>
+e.g.<code>s 1</code>, <code>select 2</code></p>
+</li>
+<li>
 <p><strong>Sort</strong> : <code>st</code>, <code>sort</code></p>
 </li>
 <li>
-<p><strong>Import</strong> : <code>i PATH</code>, <code>import PATH</code></p>
-</li>
-<li>
-<p><strong>Change Theme</strong> : <code>changetheme THEME</code><br>
-e.g. <code>changetheme dark</code></p>
+<p><strong>Undo</strong> : <code>u</code>, <code>undo</code></p>
 </li>
 </ul>
 </div>
@@ -939,7 +963,7 @@ e.g. <code>changetheme dark</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 05:44:47 UTC
+Last updated 2018-04-14 07:28:22 UTC
 </div>
 </div>
 </body>

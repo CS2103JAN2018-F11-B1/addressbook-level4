@@ -128,14 +128,90 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="log-in-to-linkedin-code-linklog-code-code-linkedin_login-code"><a class="link" href="#log-in-to-linkedin-code-linklog-code-code-linkedin_login-code">Log in to LinkedIn: <code>linklog</code>, <code>linkedin_login</code></a></h3>
 <div class="paragraph">
-<p><a href="../UserGuide.html#32-log-in-to-linkedin-linklog-linkedin_login">LinkedIn Login</a></p>
+<p>Format: 'linklog', 'linkedin_login'</p>
 </div>
-<div class="paragraph">
-<p><a href="../UserGuide.html#33-share-a-post-on-linkedin-linkshare-linkedin_share">LinkedIn Share</a></p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A LinkedIn Login is required if you want to share posts to linkedIn. If this is your first login, you will also have to give permissions for CRM Book in LinkedIn via a pop up.
+</td>
+</tr>
+</table>
 </div>
+</div>
+<div class="sect2">
+<h3 id="share-a-post-on-linkedin-code-linkshare-code-code-linkedin_share-code"><a class="link" href="#share-a-post-on-linkedin-code-linkshare-code-code-linkedin_share-code">Share a Post on LinkedIn: <code>linkshare</code>, <code>linkedin_share</code></a></h3>
 <div class="paragraph">
-<p><a href="../UserGuide.html#1-introduction">Introduction</a></p>
+<p>Format: 'linkshare [content]', 'linkedin_share [content]'</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+This command will allow you to share a post on LinkedIn to all your connections. This will allow you to share any interesting marketing materials your company may be involved in quickly.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="setting-current-location-code-set_office_address-code-code-seta-code"><a class="link" href="#setting-current-location-code-set_office_address-code-code-seta-code">Setting current location: <code>set_office_address</code>, <code>setA</code></a></h3>
+<div class="paragraph">
+<p>Sets the current office address for Google Maps<br>
+Format: `setA a/ADDRESS</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Setting this address is required if you want to see the Google Map directions to a customer&#8217;s location
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="get-directions-to-customer-s-office-commandless"><a class="link" href="#get-directions-to-customer-s-office-commandless">Get directions to customer&#8217;s office: commandless</a></h3>
+<div class="paragraph">
+<p>In order to use this, you must have an office address set. You can then either click on a person card or use the <code>select</code> command in order to view the Google Maps directions.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If a person card was selected while the office location is set, you have to select a different person card to see the map
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Success of this command is also dependent on the success of Google intepreting the address entered
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -152,15 +228,135 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="linkedin-login-feature"><a class="link" href="#linkedin-login-feature">LinkedIn Login Feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p><a href="../DeveloperGuide.html#36-linkedin-login-feature">LinkedIn Login</a></p>
+<p>The linkedInLogin mechanism is handled largely by the oAuth2Client interacting with the browser window, which the user will interact with in order to give LinkedIn their username, password, as well as granting the application permission for use.</p>
+</div>
+<div class="paragraph">
+<p>When the <code>linkedIn_login</code> command is called, a <code>ShowBrowserRequestEvent</code> will be fired by <code>LinkedInLoginCommand(Class)</code> and picked up by the MainWindow.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult execute() {
+        EventsCenter.getInstance().post(<span class="keyword">new</span> ShowBrowserRequestEvent());
+        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(MESSAGE_SUCCESS);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The MainWindow in turn will call the <code>OAuth2Client(Class)</code> which will fire up the browser awaiting an authorization code from LinkedIn that will be sent after the user has successfully logged in and granted the CRM Book permission.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Subscribe</span>
+    <span class="directive">private</span> <span class="type">void</span> handleLinkedInAuthenticationEvent(ShowBrowserRequestEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        handleLinkedInAuthentication();
+    }</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> handleLinkedInAuthentication() {
+    <span class="keyword">try</span> {
+        Oauth2Client.authenticateWithLinkedIn(config);
+    } <span class="keyword">catch</span> (<span class="exception">IOException</span> e) {
+        e.printStackTrace();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> authenticateWithLinkedIn(Config configuration) <span class="directive">throws</span> <span class="exception">IOException</span> {
+    ...
+    String urlString = <span class="string"><span class="delimiter">&quot;</span><span class="content">https://www.linkedin.com/oauth/v2/authorization?response_type=code&amp;client_id=</span><span class="delimiter">&quot;</span></span>
+        + clientId + <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;redirect_uri=</span><span class="delimiter">&quot;</span></span> + redirectUri + <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;state=...</span><span class="delimiter">&quot;</span></span>;
+    bWindow = <span class="keyword">new</span> BrowserWindow(urlString);
+    bWindow.show();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once this has happened, we fire a <code>HideBrowserRequestEvent</code> in order to close the browser properly.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Decrypter</code> will then be fired so that we do not store the app secret in plain text. This decision is explained more in the design considerations below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> handleHideBrowser() {
+    Oauth2Client.closeBrowser();
+    Oauth2Client.getLinkedInS();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After the CRM Book has received the authorization code and the app secret from the decrypter, they are sent back to LinkedIn to request for an AccessToken. Once the AccessToken has been received, the user is considered to be successfully logged in, and the accessToken can be used by the CRM Book to make requests to LinkedIn on behalf of the user. The accessToken is also stored in the config.json file for future usage.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">config.setAppSecret(accessToken);
+ConfigUtil.saveConfig(config, config.DEFAULT_CONFIG_FILE);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the linkedIn_login feature works. As seen, it is an events-driven design.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/LinkedInLoginSequenceDiagram.png" alt="LinkedInLoginSequenceDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-storing-the-linkedin-app-secret"><a class="link" href="#aspect-storing-the-linkedin-app-secret">Aspect: Storing the LinkedIn App Secret</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Slightly encrypting the App Secret</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement, not trivial for attackers to get by scanning the source code.</p>
+</li>
+<li>
+<p>Cons: App secret can be derived if the attacker runs the source code</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Store the App Secret in another server, and requesting it with an authentication code</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Higher security, app secret not stored on GitHub</p>
+</li>
+<li>
+<p>Cons: Significantly harder to implement. Requires user to have a username and password for the server not stored on GitHub.
+<strong>Additional Info:</strong> See comments on Decrypter class for full argument</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 05:44:47 UTC
+Last updated 2018-04-14 07:28:22 UTC
 </div>
 </div>
 </body>
