@@ -265,7 +265,7 @@ If either the phone number of email address of the Lead to be added is found in 
 the CRM application will display a message that the lead is a duplicate and will reject this lead.</p>
 </div>
 <div class="paragraph">
-<p>The following action diagram shows how the operation of identifying a duplicate lead works:</p>
+<p>The following activity diagram shows how the operation of identifying a duplicate lead works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -322,11 +322,11 @@ Hence, the DisplayCommand will operate similarly as the FindCommand, with the on
 </div>
 </div>
 <div class="paragraph">
-<p>The following action diagram shows how the operation of displaying the Leads or Contacts list works:</p>
+<p>The following activity diagram shows how the operation of displaying the Leads or Contacts list works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/DisplayListOfACertainTypeActionDiagram.png" alt="DisplayListOfACertainTypeActionDiagram" width="800">
+<img src="../images/DisplayListOfACertainTypeActivityDiagram.png" alt="DisplayListOfACertainTypeActivityDiagram" width="800">
 </div>
 </div>
 </div>
@@ -352,6 +352,37 @@ Hence, the DisplayCommand will operate similarly as the FindCommand, with the on
 </div>
 </div>
 <div class="sect2">
+<h3 id="adding-a-parent-company-tag-feature-coming-in-v2-0"><a class="link" href="#adding-a-parent-company-tag-feature-coming-in-v2-0">Adding a Parent Company tag feature [Coming in v2.0]</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h4>
+<div class="paragraph">
+<p>It is possible that the user may want to keep track of the companies associated with the Leads and Contacts in the CRM Book.
+For example, Skype and Nokia are two different companies whose parent company is Microsoft.
+Hence, every Lead and Contact will have an additional tag named after the parent company if their company has a parent company.
+The following activity diagram illustrates how this will be implemented:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddParentCompanyTagActivityDiagram.png" alt="AddParentCompanyTagActivityDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-adding-a-parent-company-tag-feature-works"><a class="link" href="#aspect-how-adding-a-parent-company-tag-feature-works">Aspect: How adding a Parent Company tag feature works</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> If the user updated the Company of a Lead or Contact, the CRM Book determines if this company has a parent company using a Google search.
+If yes, it automatically adds a tag to this Lead or Contact labelled as the parent company of the company of the Lead or Contact.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="enhancement-of-find-command-feature"><a class="link" href="#enhancement-of-find-command-feature">Enhancement of Find Command feature</a></h3>
 <div class="sect3">
 <h4 id="reason-for-implementation"><a class="link" href="#reason-for-implementation">Reason for Implementation</a></h4>
@@ -360,7 +391,7 @@ Hence, the DisplayCommand will operate similarly as the FindCommand, with the on
 </div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The CRM Book currently searches for a Lead or Contact based on their name.</p>
 </div>
@@ -388,7 +419,7 @@ If not, the CRM Book will display zero Leads and Contacts found.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-implement-finding-phone-numbers-and-email-addresses"><a class="link" href="#aspect-how-to-implement-finding-phone-numbers-and-email-addresses">Aspect: How to implement finding phone numbers and email addresses</a></h5>
 <div class="ulist">
@@ -408,12 +439,168 @@ If not, the CRM Book will display zero Leads and Contacts found.</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="use-case-user-seeks-lead-list-or-contact-list"><a class="link" href="#use-case-user-seeks-lead-list-or-contact-list">Use case: User seeks Lead list or Contact list</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters command for Lead list or Contact list.</p>
+</li>
+<li>
+<p>CRM retrieves the Lead list or Contact list.</p>
+</li>
+<li>
+<p>User sees the Lead list or Contact list.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User enters a keyword that is neither Lead nor Contact.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. CRM Book displays an empty list.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-user-seeks-to-add-a-company-to-a-lead-or-contact-coming-in-v2-0"><a class="link" href="#use-case-user-seeks-to-add-a-company-to-a-lead-or-contact-coming-in-v2-0">Use case: User seeks to add a company to a Lead or Contact [Coming in v2.0]</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters command to update the company of Lead or Contact.</p>
+</li>
+<li>
+<p>CRM updates company of the Lead or Contact.</p>
+</li>
+<li>
+<p>User sees the updated company of the Lead or Contact.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User enters command incorrectly.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. CRM Book displays an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1a. The keyword  that user entered has a parent company.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. CRM Book adds a tag named after the parent company to the Lead or Contact.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1a. User enters a company (keyword) has no parent company.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. CRM Book does not add any to the Lead or Contact.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-user-enters-phone-numbers-and-or-email-addresses-to-find"><a class="link" href="#use-case-user-enters-phone-numbers-and-or-email-addresses-to-find">Use case: User enters phone numbers and/or email addresses to find</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters keywords (phone numbers and/or email addresses) for find command.</p>
+</li>
+<li>
+<p>CRM searches for Leads and/or Contacts that match with the keywords.</p>
+</li>
+<li>
+<p>User sees the Leads and/or Contacts that match with the keywords.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User enters find command incorrectly.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. CRM Book displays error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2a. CRM Book is unable to find Leads and/or Contacts that match with the keywords.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. User sees an empty list.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 09:18:08 UTC
+Last updated 2018-04-14 10:05:13 UTC
 </div>
 </div>
 </body>

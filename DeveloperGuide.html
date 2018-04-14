@@ -101,12 +101,13 @@
 <ul class="sectlevel2">
 <li><a href="#use-case-user-requests-to-import-a-csv-file-to-crm-book">D.1. Use case: User requests to import a CSV file to CRM Book</a></li>
 <li><a href="#use-case-user-seeks-lead-list-or-contact-list">D.2. Use case: User seeks Lead list or Contact list</a></li>
-<li><a href="#use-case-user-enters-phone-numbers-and-or-email-addresses-to-find">D.3. Use case: User enters phone numbers and/or email addresses to find</a></li>
-<li><a href="#use-case-user-posts-to-linkedin">D.4. Use case: User posts to LinkedIn</a></li>
-<li><a href="#use-case-auto-complete">D.5. Use case: Auto-complete</a></li>
-<li><a href="#use-case-convert-a-lead-to-a-contact">D.6. Use case: Convert a Lead to a Contact</a></li>
-<li><a href="#use-case-color-tag">D.7. Use case: Color tag</a></li>
-<li><a href="#use-case-change-theme">D.8. Use case: Change theme</a></li>
+<li><a href="#use-case-user-seeks-to-add-a-company-to-a-lead-or-contact-coming-in-v2-0">D.3. Use case: User seeks to add a company to a Lead or Contact [Coming in v2.0]</a></li>
+<li><a href="#use-case-user-enters-phone-numbers-and-or-email-addresses-to-find">D.4. Use case: User enters phone numbers and/or email addresses to find</a></li>
+<li><a href="#use-case-user-posts-to-linkedin">D.5. Use case: User posts to LinkedIn</a></li>
+<li><a href="#use-case-auto-complete">D.6. Use case: Auto-complete</a></li>
+<li><a href="#use-case-convert-a-lead-to-a-contact">D.7. Use case: Convert a Lead to a Contact</a></li>
+<li><a href="#use-case-color-tag">D.8. Use case: Color tag</a></li>
+<li><a href="#use-case-change-theme">D.9. Use case: Change theme</a></li>
 </ul>
 </li>
 <li><a href="#non-functional-requirements">Appendix E: Non Functional Requirements</a></li>
@@ -1576,7 +1577,7 @@ If either the phone number of email address of the Lead to be added is found in 
 the CRM application will display a message that the lead is a duplicate and will reject this lead.</p>
 </div>
 <div class="paragraph">
-<p>The following action diagram shows how the operation of identifying a duplicate lead works:</p>
+<p>The following activity diagram shows how the operation of identifying a duplicate lead works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1612,12 +1613,12 @@ the CRM application will display a message that the lead is a duplicate and will
 <div class="paragraph">
 <p>It is possible that the user may want to keep track of the companies associated with the Leads and Contacts in the CRM Book.
 For example, Skype and Nokia are two different companies whose parent company is Microsoft.
-Hence, every Lead and Contact will have an additional tag named after the parent company of their current companies.
-The following action diagram illustrates how this will be implemented:</p>
+Hence, every Lead and Contact will have an additional tag named after the parent company if their company has a parent company.
+The following activity diagram illustrates how this will be implemented:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/AddParentCompanyTag.png" alt="AddParentCompanyTag" width="800">
+<img src="images/AddParentCompanyTagActivityDiagram.png" alt="AddParentCompanyTagActivityDiagram" width="800">
 </div>
 </div>
 </div>
@@ -1664,11 +1665,11 @@ Hence, the DisplayCommand will operate similarly as the FindCommand, with the on
 </div>
 </div>
 <div class="paragraph">
-<p>The following action diagram shows how the operation of displaying the Leads or Contacts list works:</p>
+<p>The following activity diagram shows how the operation of displaying the Leads or Contacts list works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/DisplayListOfACertainTypeActionDiagram.png" alt="DisplayListOfACertainTypeActionDiagram" width="800">
+<img src="images/DisplayListOfACertainTypeActivityDiagram.png" alt="DisplayListOfACertainTypeActivityDiagram" width="800">
 </div>
 </div>
 </div>
@@ -3384,7 +3385,72 @@ Hence, doing a command using its alias will ensure he/she can do a certain comma
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-user-enters-phone-numbers-and-or-email-addresses-to-find"><a class="link" href="#use-case-user-enters-phone-numbers-and-or-email-addresses-to-find">D.3. Use case: User enters phone numbers and/or email addresses to find</a></h3>
+<h3 id="use-case-user-seeks-to-add-a-company-to-a-lead-or-contact-coming-in-v2-0"><a class="link" href="#use-case-user-seeks-to-add-a-company-to-a-lead-or-contact-coming-in-v2-0">D.3. Use case: User seeks to add a company to a Lead or Contact [Coming in v2.0]</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters command to update the company of Lead or Contact.</p>
+</li>
+<li>
+<p>CRM updates company of the Lead or Contact.</p>
+</li>
+<li>
+<p>User sees the updated company of the Lead or Contact.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User enters command incorrectly.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. CRM Book displays an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1a. The keyword  that user entered has a parent company.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. CRM Book adds a tag named after the parent company to the Lead or Contact.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1a. User enters a company (keyword) has no parent company.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. CRM Book does not add any to the Lead or Contact.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-user-enters-phone-numbers-and-or-email-addresses-to-find"><a class="link" href="#use-case-user-enters-phone-numbers-and-or-email-addresses-to-find">D.4. Use case: User enters phone numbers and/or email addresses to find</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3436,7 +3502,7 @@ Hence, doing a command using its alias will ensure he/she can do a certain comma
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-user-posts-to-linkedin"><a class="link" href="#use-case-user-posts-to-linkedin">D.4. Use case: User posts to LinkedIn</a></h3>
+<h3 id="use-case-user-posts-to-linkedin"><a class="link" href="#use-case-user-posts-to-linkedin">D.5. Use case: User posts to LinkedIn</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3510,7 +3576,7 @@ Hence, doing a command using its alias will ensure he/she can do a certain comma
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-auto-complete"><a class="link" href="#use-case-auto-complete">D.5. Use case: Auto-complete</a></h3>
+<h3 id="use-case-auto-complete"><a class="link" href="#use-case-auto-complete">D.6. Use case: Auto-complete</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3545,7 +3611,7 @@ Hence, doing a command using its alias will ensure he/she can do a certain comma
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-convert-a-lead-to-a-contact"><a class="link" href="#use-case-convert-a-lead-to-a-contact">D.6. Use case: Convert a Lead to a Contact</a></h3>
+<h3 id="use-case-convert-a-lead-to-a-contact"><a class="link" href="#use-case-convert-a-lead-to-a-contact">D.7. Use case: Convert a Lead to a Contact</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3609,7 +3675,7 @@ Hence, doing a command using its alias will ensure he/she can do a certain comma
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-color-tag"><a class="link" href="#use-case-color-tag">D.7. Use case: Color tag</a></h3>
+<h3 id="use-case-color-tag"><a class="link" href="#use-case-color-tag">D.8. Use case: Color tag</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3628,7 +3694,7 @@ Hence, doing a command using its alias will ensure he/she can do a certain comma
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-change-theme"><a class="link" href="#use-case-change-theme">D.8. Use case: Change theme</a></h3>
+<h3 id="use-case-change-theme"><a class="link" href="#use-case-change-theme">D.9. Use case: Change theme</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3846,7 +3912,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 09:18:08 UTC
+Last updated 2018-04-14 10:05:13 UTC
 </div>
 </div>
 </body>
