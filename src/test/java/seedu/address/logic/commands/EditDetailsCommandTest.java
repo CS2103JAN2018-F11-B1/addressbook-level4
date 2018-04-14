@@ -144,7 +144,7 @@ public class EditDetailsCommandTest {
     }
 
     @Test
-    public void execute_lead_noArg_failure() throws Exception {
+    public void execute_leadNoArg_failure() throws Exception {
         EditLeadDescriptor descriptor = new EditLeadDescriptor();
 
         EditDetailsCommand editDetailsCommand = prepareLeadCommand(INDEX_FIRST_PERSON, descriptor);
@@ -195,7 +195,7 @@ public class EditDetailsCommandTest {
     }
 
     @Test
-    public void execute_contact_noArg_failure() throws Exception {
+    public void execute_contactNoArg_failure() throws Exception {
         EditContactDescriptor descriptor = new EditContactDescriptor();
 
         EditDetailsCommand editDetailsCommand = prepareContactCommand(INDEX_SECOND_PERSON, descriptor);
