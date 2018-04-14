@@ -91,14 +91,16 @@ Format: 'linklog', 'linkedin_login'
 
 [TIP]
 A LinkedIn Login is required if you want to share posts to linkedIn. If this is your first login, you will also have to give permissions for CRM Book in LinkedIn via a pop up.
+//end::linkedinLogin[]
 
+//tag::linkedinShare[]
 === Share a Post on LinkedIn: `linkshare`, `linkedin_share`
 
 Format: 'linkshare [content]', 'linkedin_share [content]'
 
 [TIP]
 This command will allow you to share a post on LinkedIn to all your connections. This will allow you to share any interesting marketing materials your company may be involved in quickly.
-//end::linkedinLogin[]
+//end::linkedinShare[]
 
 === Adding a Lead: `a`, `add`
 
