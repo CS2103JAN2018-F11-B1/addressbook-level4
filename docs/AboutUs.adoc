@@ -11,14 +11,14 @@ We are a team based in the http://www.comp.nus.edu.sg[School of Computing, Natio
 
 === Ten Chee Onn David Jonathan
 image::davidTen.png[width="150", align="left"]
-{empty}[https://github.com/davidten[github]]
+{empty}[https://github.com/davidten[github]] [<<DavidTen#, portfolio>>]
 
 Role: Team Lead + Scheduling and Tracking + CRM Expert +
-Responsibilities: LinkedIn Integration
+Responsibilities: LinkedIn Integration, Google Maps
 
 '''
 
-=== SHEIKH UMAR BIN SHAIK ABU BAKAR BANAFE'
+=== Sheikh Umar Bin Shaik Abu Bakar Banafe'
 image::sheikh-umar.png[width="150", align="left"]
 {empty}[https://github.com/Sheikh-Umar[github]] [<<Sheikh-Umar#, portfolio>>]
 
