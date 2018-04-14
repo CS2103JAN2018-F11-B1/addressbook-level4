@@ -117,6 +117,9 @@
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-lead-or-contact">H.2. Deleting a Lead or Contact</a></li>
+<li><a href="#sorting-all-people">H.3. Sorting all people</a></li>
+<li><a href="#adding-editing-removing-a-remark-of-a-person">H.4. Adding/Editing/Removing a remark of a person</a></li>
+<li><a href="#importing-a-csv-file">H.5. Importing a CSV file</a></li>
 </ul>
 </li>
 </ul>
@@ -3907,12 +3910,109 @@ Expected: Similar to previous.</p>
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="sorting-all-people"><a class="link" href="#sorting-all-people">H.3. Sorting all people</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Sorting all people in list by name alphabetically</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>sort</code><br>
+Expected: All people in list are sorted by name in alphabetical order.</p>
+</li>
+<li>
+<p>Test case: <code>s</code><br>
+Expected: All people in list are sorted by name in alphabetical order.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-editing-removing-a-remark-of-a-person"><a class="link" href="#adding-editing-removing-a-remark-of-a-person">H.4. Adding/Editing/Removing a remark of a person</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding/Editing/Removing a remark of person in list</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>remark 2 r/Likes to swim</code><br>
+Expected: The remark "Likes to swim" is added to the second person in list.</p>
+</li>
+<li>
+<p>Test case: <code>remark 2 r/Likes to read</code><br>
+Expected: The remark of the second person in list is now changed to "Likes to read"</p>
+</li>
+<li>
+<p>Test case: <code>rem 2 r/</code><br>
+Expected: The remark of the second person in list is now removed.</p>
+</li>
+<li>
+<p>Test case: <code>remark 0 r/aaa</code><br>
+Expected: No person is added with remark. Error details show in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Test case: <code>remark 1 Likes to swim</code><br>
+Expected: No person is added with remark. Error details show in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Test case: <code>remark r/Likes to swim</code><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="importing-a-csv-file"><a class="link" href="#importing-a-csv-file">H.5. Importing a CSV file</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Importing a list of Leads to the CRM Book</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: We provide two sample csv files. Please download them and put them in the same folder as the jar file. If you choose to put them somewhere else, then you need to change the file path in the command accordingly.</p>
+</li>
+<li>
+<p>Test case: <code>import ./sample1.csv</code><br>
+Expected: The 200 Leads in the sample1.csv file are imported to the CRM Book.</p>
+</li>
+<li>
+<p>Test case: <code>import ./sample2.csv</code><br>
+Expected: Since the 16th person in this file has a wrong format of his phone, error details show in the status messages. Status bar remains the same.</p>
+</li>
+<li>
+<p>Test case: <code>import ./</code><br>
+Expected: It&#8217;s an invalid file path. Error details "invalid file path" show in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Test case: <code>import x</code> (where x is any valid file path but not in CSV)+
+Expected: Error details "not a csv file" show in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Test case: <code>import</code><br>
+Expected: Wrong command format. Error details show in the status message. Status bar remains the same.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 10:05:13 UTC
+Last updated 2018-04-14 13:11:09 UTC
 </div>
 </div>
 </body>
