@@ -123,6 +123,9 @@
 <li><a href="#sorting-all-people">G.7. Sorting all people</a></li>
 <li><a href="#adding-editing-removing-a-remark-of-a-person">G.8. Adding/Editing/Removing a remark of a person</a></li>
 <li><a href="#importing-a-csv-file">G.9. Importing a CSV file</a></li>
+<li><a href="#converting-a-lead-to-a-contact">G.10. Converting a Lead to a Contact:</a></li>
+<li><a href="#editing-the-non-essential-details">G.11. Editing the non-essential details:</a></li>
+<li><a href="#adding-an-account-to-a-contact">G.12. Adding an Account to a Contact:</a></li>
 </ul>
 </li>
 </ul>
@@ -4070,12 +4073,109 @@ Expected: Wrong command format. Error details show in the status message. Status
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="converting-a-lead-to-a-contact"><a class="link" href="#converting-a-lead-to-a-contact">G.10. Converting a Lead to a Contact:</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Select a Lead to convert from the current list of people, and note their index number</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If a Contact is chosen, an error will appear in the next step</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>In the command bar, type <code>convert INDEX</code></p>
+</li>
+<li>
+<p>See that the person is now a Contact</p>
+</li>
+<li>
+<p>Note that the fields Rating, and Website and Industry if they exist, disappear</p>
+</li>
+<li>
+<p>Note that the field Department appears</p>
+</li>
+<li>
+<p>Note that all other fields except the type remain the same</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-the-non-essential-details"><a class="link" href="#editing-the-non-essential-details">G.11. Editing the non-essential details:</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Select a Lead or Contact from the current list of people, and note their index number. If Lead, read the <code>a.</code> sections. If Contact, read the <code>b.</code> sections.</p>
+</li>
+<li>
+<p>In the command bar, type <code>editdetails INDEX &#8230;&#8203;</code> or <code>adddetails INDEX &#8230;&#8203;</code>, followed by type-specific data<br>
+At least one of the fields must be specified, or an error is given</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If a Lead, the fields are <code>c/COMPANY</code>, <code>i/INDUSTRY</code>, <code>r/RATING</code>, <code>t/TITLE</code>, and <code>w/WEBSITE</code>
+Company, industry and website are strings, and company must be alphanumeric<br>
+Rating is an integer from 1 to 5, and numbers that do not fall within this range will throw an error<br>
+Title is the honorific of the person, such as <code>Mr.</code>, <code>Mrs.</code>, <code>Dr.</code>, etc.<br>
+Note, company cannot be deleted, only changed, once it is provided</p>
+</li>
+<li>
+<p>If a Contact, the fields are <code>c/COMPANY</code>, <code>d/DEPARTMENT</code>, and <code>t/TITLE</code>
+Company and department are strings, and company must be alphanumeric<br>
+Title is the honorific of the person, such as <code>Mr.</code>, <code>Mrs.</code>, <code>Dr.</code>, etc.<br>
+Note, company cannot be deleted, only changed, once it is provided</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>See that the relevant changes are made</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>The rating will change to the provided number<br>
+Website and industry will appear if provided</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-an-account-to-a-contact"><a class="link" href="#adding-an-account-to-a-contact">G.12. Adding an Account to a Contact:</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Select a Contact from the current list of people, and note their index number</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If a Lead is chosen, an error will appear in the next step</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>In the command bar, type <code>account INDEX an/COMPANY</code></p>
+</li>
+<li>
+<p>Note that the Company field has changed to reflect the new company</p>
+</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 13:16:41 UTC
+Last updated 2018-04-14 14:07:21 UTC
 </div>
 </div>
 </body>
