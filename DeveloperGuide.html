@@ -112,14 +112,17 @@
 </li>
 <li><a href="#non-functional-requirements">Appendix E: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix F: Glossary</a></li>
-<li><a href="#product-survey">Appendix G: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix H: Instructions for Manual Testing</a>
+<li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-lead-or-contact">H.2. Deleting a Lead or Contact</a></li>
-<li><a href="#sorting-all-people">H.3. Sorting all people</a></li>
-<li><a href="#adding-editing-removing-a-remark-of-a-person">H.4. Adding/Editing/Removing a remark of a person</a></li>
-<li><a href="#importing-a-csv-file">H.5. Importing a CSV file</a></li>
+<li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
+<li><a href="#deleting-a-lead-or-contact">G.2. Deleting a Lead or Contact</a></li>
+<li><a href="#displaying-lead-or-contact-list">G.3. Displaying Lead or Contact list</a></li>
+<li><a href="#duplicate-detection">G.4. Duplicate Detection</a></li>
+<li><a href="#executing-commands-via-alias">G.5. Executing commands via alias</a></li>
+<li><a href="#finding-lead-s-and-contact-s-via-phone-numbers-and-email-addresses">G.6. Finding Lead(s) and Contact(s) via Phone Numbers and Email Addresses</a></li>
+<li><a href="#sorting-all-people">G.7. Sorting all people</a></li>
+<li><a href="#adding-editing-removing-a-remark-of-a-person">G.8. Adding/Editing/Removing a remark of a person</a></li>
+<li><a href="#importing-a-csv-file">G.9. Importing a CSV file</a></li>
 </ul>
 </li>
 </ul>
@@ -3792,44 +3795,7 @@ Hence, doing a command using its alias will ensure he/she can do a certain comma
 </div>
 </div>
 <div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix G: Product Survey</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Product Name</strong></p>
-</div>
-<div class="paragraph">
-<p>Author: &#8230;&#8203;</p>
-</div>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix H: Instructions for Manual Testing</a></h2>
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Given below are instructions to test the app manually.</p>
@@ -3847,7 +3813,7 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">H.1. Launch and Shutdown</a></h3>
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">G.1. Launch and Shutdown</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3882,7 +3848,7 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-lead-or-contact"><a class="link" href="#deleting-a-lead-or-contact">H.2. Deleting a Lead or Contact</a></h3>
+<h3 id="deleting-a-lead-or-contact"><a class="link" href="#deleting-a-lead-or-contact">G.2. Deleting a Lead or Contact</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3911,7 +3877,104 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sorting-all-people"><a class="link" href="#sorting-all-people">H.3. Sorting all people</a></h3>
+<h3 id="displaying-lead-or-contact-list"><a class="link" href="#displaying-lead-or-contact-list">G.3. Displaying Lead or Contact list</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Finding Lead(s) or Contacts(s) based on phone numbers and email addresses.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Nil.</p>
+</li>
+<li>
+<p>Test case: <code>disp Lead</code>, <code>display Lead</code><br>
+Expected: All Leads in the CRM Book. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>disp Contact</code>, <code>display Contact</code><br>
+Expected: All Contacts in the CRM Book. Timestamp in the status bar is updated.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="duplicate-detection"><a class="link" href="#duplicate-detection">G.4. Duplicate Detection</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Detecting a duplicate Lead or Contacts.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: There is at least 1 Lead or Contact.</p>
+</li>
+<li>
+<p>Test case: <code>a n/John Tan p/99991234 e/johntan@gmail.com a/33, Eunos Street 7, #5-67</code>, <code>add n/John Tan p/99991234 e/johntan@gmail.com a/33, Eunos Street 7, #5-67</code><br>
+Ensure the information entered has either a phone number or email address that is identical to any Lead or Contact in the CRM Book.
+Expected: Duplicate Lead/Contact message shown. Timestamp in the status bar is updated.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="executing-commands-via-alias"><a class="link" href="#executing-commands-via-alias">G.5. Executing commands via alias</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Executing commands via its alias</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Read through the User Guide for commands that have aliases.</p>
+</li>
+<li>
+<p>Test case: <code>disp Lead</code>, <code>display Lead</code><br>
+Expected: All Leads in the CRM Book. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>l</code>, <code>list</code><br>
+Expected: List all Leads and Contacts in the CRM Book. Timestamp in the status bar is updated.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="finding-lead-s-and-contact-s-via-phone-numbers-and-email-addresses"><a class="link" href="#finding-lead-s-and-contact-s-via-phone-numbers-and-email-addresses">G.6. Finding Lead(s) and Contact(s) via Phone Numbers and Email Addresses</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Finding Lead(s) or Contacts(s) based on phone numbers and email addresses.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Nil.</p>
+</li>
+<li>
+<p>Test case: <code>f 99991234</code>, <code>find 99991234</code><br>
+Expected: Lead/Contact with the phone number <code>99991234</code> is shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>f <a href="mailto:johntan@gmail.com">johntan@gmail.com</a></code>, <code>find <a href="mailto:johntan@gmail.com">johntan@gmail.com</a></code><br>
+Expected: Lead/Contact with the email address <code>johntan@gmail.com</code> is shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sorting-all-people"><a class="link" href="#sorting-all-people">G.7. Sorting all people</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3933,7 +3996,7 @@ Expected: All people in list are sorted by name in alphabetical order.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-editing-removing-a-remark-of-a-person"><a class="link" href="#adding-editing-removing-a-remark-of-a-person">H.4. Adding/Editing/Removing a remark of a person</a></h3>
+<h3 id="adding-editing-removing-a-remark-of-a-person"><a class="link" href="#adding-editing-removing-a-remark-of-a-person">G.8. Adding/Editing/Removing a remark of a person</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3971,7 +4034,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="importing-a-csv-file"><a class="link" href="#importing-a-csv-file">H.5. Importing a CSV file</a></h3>
+<h3 id="importing-a-csv-file"><a class="link" href="#importing-a-csv-file">G.9. Importing a CSV file</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -4012,7 +4075,7 @@ Expected: Wrong command format. Error details show in the status message. Status
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 13:11:09 UTC
+Last updated 2018-04-14 13:16:41 UTC
 </div>
 </div>
 </body>
