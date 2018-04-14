@@ -12,6 +12,9 @@ import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import org.junit.Test;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
@@ -20,6 +23,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.person.Contact;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
 
@@ -42,6 +46,11 @@ public class ConvertCommandTest {
         expectedModel.updatePerson(model.getFilteredPersonList().get(0), convertedPerson);
 
         assertCommandSuccess(convertCommand, model, expectedMessage, expectedModel);
+
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+        assertTrue(((Contact) model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()))
+                .getConvertedDate().equals(dateFormat.format(date)));
     }
 
     @Test
@@ -58,6 +67,11 @@ public class ConvertCommandTest {
         expectedModel.updatePerson(model.getFilteredPersonList().get(0), convertedPerson);
 
         assertCommandSuccess(convertCommand, model, expectedMessage, expectedModel);
+
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+        assertTrue(((Contact) model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()))
+                .getConvertedDate().equals(dateFormat.format(date)));
     }
 
     /**
