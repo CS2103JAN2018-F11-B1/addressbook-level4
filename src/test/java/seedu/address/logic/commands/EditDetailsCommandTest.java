@@ -13,8 +13,8 @@ import org.junit.Test;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
-import seedu.address.logic.commands.EditDetailsCommand.EditLeadDescriptor;
 import seedu.address.logic.commands.EditDetailsCommand.EditContactDescriptor;
+import seedu.address.logic.commands.EditDetailsCommand.EditLeadDescriptor;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -31,7 +31,7 @@ public class EditDetailsCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
-    public void execute_LeadCompany_success() throws Exception {
+    public void execute_leadCompany_success() throws Exception {
         Lead personInFilteredList = (Lead) model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
 
         EditLeadDescriptor descriptor = new EditLeadDescriptor();
@@ -52,7 +52,7 @@ public class EditDetailsCommandTest {
     }
 
     @Test
-    public void execute_LeadRating_success() throws Exception {
+    public void execute_leadRating_success() throws Exception {
         Lead personInFilteredList = (Lead) model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
 
         EditLeadDescriptor descriptor = new EditLeadDescriptor();
@@ -69,8 +69,8 @@ public class EditDetailsCommandTest {
         EditDetailsCommand editDetailsCommand = prepareLeadCommand(INDEX_FIRST_PERSON, descriptor);
 
         assertCommandSuccess(editDetailsCommand, model, expectedMessage, expectedModel);
-        assertTrue(((Lead) model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased())).getRating() ==
-                editedPerson.getRating());
+        assertTrue(((Lead) model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased())).getRating()
+                == editedPerson.getRating());
 
         descriptor.setRating(5);
 
@@ -81,12 +81,12 @@ public class EditDetailsCommandTest {
         editDetailsCommand = prepareLeadCommand(INDEX_FIRST_PERSON, descriptor);
 
         assertCommandSuccess(editDetailsCommand, model, expectedMessage, expectedModel);
-        assertTrue(((Lead) model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased())).getRating() ==
-                editedPerson.getRating());
+        assertTrue(((Lead) model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased())).getRating()
+                == editedPerson.getRating());
     }
 
     @Test
-    public void execute_LeadWebsite_success() throws Exception {
+    public void execute_leadWebsite_success() throws Exception {
         Lead personInFilteredList = (Lead) model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
 
         EditLeadDescriptor descriptor = new EditLeadDescriptor();
@@ -107,7 +107,7 @@ public class EditDetailsCommandTest {
     }
 
     @Test
-    public void execute_LeadIndustry_success() throws Exception {
+    public void execute_leadIndustry_success() throws Exception {
         Lead personInFilteredList = (Lead) model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
 
         EditLeadDescriptor descriptor = new EditLeadDescriptor();
@@ -128,7 +128,7 @@ public class EditDetailsCommandTest {
     }
 
     @Test
-    public void execute_LeadRating_failure() throws Exception {
+    public void execute_leadRating_failure() throws Exception {
         EditLeadDescriptor descriptor = new EditLeadDescriptor();
         descriptor.setRating(0);
 
@@ -144,7 +144,7 @@ public class EditDetailsCommandTest {
     }
 
     @Test
-    public void execute_Lead_noArg_failure() throws Exception {
+    public void execute_lead_noArg_failure() throws Exception {
         EditLeadDescriptor descriptor = new EditLeadDescriptor();
 
         EditDetailsCommand editDetailsCommand = prepareLeadCommand(INDEX_FIRST_PERSON, descriptor);
@@ -153,7 +153,7 @@ public class EditDetailsCommandTest {
     }
 
     @Test
-    public void execute_ContactCompany_success() throws Exception {
+    public void execute_contactCompany_success() throws Exception {
         Contact personInFilteredList = (Contact) model.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
 
         EditContactDescriptor descriptor = new EditContactDescriptor();
@@ -174,7 +174,7 @@ public class EditDetailsCommandTest {
     }
 
     @Test
-    public void execute_ContactDepartment_success() throws Exception {
+    public void execute_contactDepartment_success() throws Exception {
         Contact personInFilteredList = (Contact) model.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
 
         EditContactDescriptor descriptor = new EditContactDescriptor();
@@ -195,7 +195,7 @@ public class EditDetailsCommandTest {
     }
 
     @Test
-    public void execute_Contact_noArg_failure() throws Exception {
+    public void execute_contact_noArg_failure() throws Exception {
         EditContactDescriptor descriptor = new EditContactDescriptor();
 
         EditDetailsCommand editDetailsCommand = prepareContactCommand(INDEX_SECOND_PERSON, descriptor);
