@@ -1771,10 +1771,12 @@ At least one of the fields must be specified, or an error is given
 .. If a Lead, the fields are `c/COMPANY`, `i/INDUSTRY`, `r/RATING`, `t/TITLE`, and `w/WEBSITE`
 Company, industry and website are strings, and company must be alphanumeric +
 Rating is an integer from 1 to 5, and numbers that do not fall within this range will throw an error +
-Title is the honorific of the person, such as `Mr.`, `Mrs.`, `Dr.`, etc.
+Title is the honorific of the person, such as `Mr.`, `Mrs.`, `Dr.`, etc. +
+Note, company cannot be deleted, only changed, once it is provided
 .. If a Contact, the fields are `c/COMPANY`, `d/DEPARTMENT`, and `t/TITLE`
 Company and department are strings, and company must be alphanumeric +
-Title is the honorific of the person, such as `Mr.`, `Mrs.`, `Dr.`, etc.
+Title is the honorific of the person, such as `Mr.`, `Mrs.`, `Dr.`, etc. +
+Note, company cannot be deleted, only changed, once it is provided
 . See that the relevant changes are made
 .. The rating will change to the provided number +
 Website and industry will appear if provided
