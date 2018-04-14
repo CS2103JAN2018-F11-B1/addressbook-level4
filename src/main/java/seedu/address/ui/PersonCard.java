@@ -66,8 +66,8 @@ public class PersonCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         if (person instanceof Lead && ((Lead) person).getTitle() != null && !((Lead) person).getTitle().equals("")) {
             name.setText(((Lead) person).getTitle() + " " + person.getName().fullName);
-        } else if (person instanceof Contact &&
-                ((Contact) person).getTitle() != null && !((Contact) person).getTitle().equals("")) {
+        } else if (person instanceof Contact
+                && ((Contact) person).getTitle() != null && !((Contact) person).getTitle().equals("")) {
             String text = ((Contact) person).getTitle() + " " + person.getName().fullName;
             name.setText(text);
         } else {
