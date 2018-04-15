@@ -2039,4 +2039,3 @@ Website and industry will appear if provided
 .. If the current theme is not light, theme will be changed to light with a success message.
 
 .. If the current theme is light, CRM Book will give a message to notify the user that the current theme is light.
->>>>>>> upstream/master
