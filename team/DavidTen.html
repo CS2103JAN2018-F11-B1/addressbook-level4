@@ -128,6 +128,27 @@
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>A CRM System is a Customer Relationship Management system, mainly used in the real world by Sales and Marketing teams to manage their business-customer relationships, as well as to manage business contacts, employees, clients, contract wins and sales leads. Some examples of popular CRMs include Salesforce, SAP, and Microsoft Dynamics CRM.</p>
+</div>
+<div class="paragraph">
+<p>A common complaint against such traditional CRMs is that they are large, contain too many functionalities, and in some cases even require additional training before using. (Search for: Salesforce Trailhead)</p>
+</div>
+<div class="paragraph">
+<p>The CRM Book application aims to assist Salespeople by implementing the most important functionality of a CRM System, that is, managing their business contacts and clients. In a CRM, business contacts are seperated into two categories, Leads and Contacts. Leads are people that the salesperson has sold to in the past, while Contacts are people whom the salesperson has sold to before, even if the company they represent may no longer purchase the product. Also, accounts represent Companies.</p>
+</div>
+<div class="paragraph">
+<p>Some unique features of this CRM in v1.5 that benefits the individual Salesperson even more is an enhanced detection of duplicates through fields such as email and phone number, importing of a CSV file of leads that the salesperson may have bought through a mailing list or obtained through a tradeshow, sharing of posts about their company through LinkedIn, as well as seeing directions to their Lead&#8217;s office through Google Maps. It is important to note that these features all enhance the experience of the salesperson, and does not distract from the core functionality of managing their relationship with their leads and contacts.</p>
+</div>
+<div class="paragraph">
+<p>Future releases of the CRM Book would include the ability to schedule meetings through a Calendar, integration with other Social Media networks to post company related news, allowing a client to choose a meeting slot among a few that the salesperson has specified, and also manage the contracts that tie a Contact to an account.</p>
+</div>
+<div class="paragraph">
+<p><strong>More importantly, CRM Book is optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, CRM Book can get your contact management tasks done faster than traditional GUI apps.</p>
+</div>
+<div class="paragraph">
+<p>Interested? Jump to the <a href="#Quick Start">[Quick Start]</a> to get started. Enjoy!</p>
+</div>
 <div class="sect2">
 <h3 id="log-in-to-linkedin-code-linklog-code-code-linkedin_login-code"><a class="link" href="#log-in-to-linkedin-code-linklog-code-code-linkedin_login-code">Log in to LinkedIn: <code>linklog</code>, <code>linkedin_login</code></a></h3>
 <div class="paragraph">
@@ -285,7 +306,21 @@ Success of this command is also dependent on the success of Google intepreting t
 <p>Once this has happened, we fire a <code>HideBrowserRequestEvent</code> in order to close the browser properly.</p>
 </div>
 <div class="paragraph">
-<p>The <code>Decrypter</code> will then be fired so that we do not store the app secret in plain text. This decision is explained more in the design considerations below.</p>
+<p>The <code>Decrypter</code> will then be fired so that we do not store the app secret in plain text. This decision to use a Decrypter class is in the comments section of the Decrypter class, and duplicated here for convenience to the reader.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"> <span class="comment">// Decrypts the s for use for OAuth</span>
+ <span class="comment">// While this is not an ideal situation, LinkedIn's OAuth API does not have a client-side authentication flow.</span>
+ <span class="comment">// This means that it will always require the app s for purposes of authentication.</span>
+ <span class="comment">// Because of this, building a native (desktop) app that authenticates with LinkedIn is not ideal.</span>
+ <span class="comment">// However, a number of sites have agreed that if you have to store the key in the code, then obscuring it to make</span>
+ <span class="comment">// it slightly more difficult for a potential hacker to get it is best. (They will need to run the app rather than</span>
+ <span class="comment">// just reading the plain text version)</span>
+ <span class="comment">// This is especially so because a LinkedIn S is not especially valuable, since anyone can create a LinkedIn app.</span>
+ <span class="comment">// Furthermore the chances of competitors abusing the secret to disable this application is minimal, since it is</span>
+ <span class="comment">// ultimately, a school project.</span></code></pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -356,7 +391,7 @@ ConfigUtil.saveConfig(config, config.DEFAULT_CONFIG_FILE);</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 17:52:29 UTC
+Last updated 2018-04-15 02:11:38 UTC
 </div>
 </div>
 </body>
