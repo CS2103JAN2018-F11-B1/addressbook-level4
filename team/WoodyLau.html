@@ -127,8 +127,10 @@ This application allows salespeople to organize their Leads, Contacts, and Accou
 <h3 id="editing-nonessential-details-of-a-person-code-editdetails-code"><a class="link" href="#editing-nonessential-details-of-a-person-code-editdetails-code">Editing nonessential details of a person : <code>editdetails</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing person in the CRM Book.<br>
-For Leads, format: <code>editdetails INDEX [c/COMPANY] [i/INDUSTRY] [r/RATING (number from 1 to 5)] [t/TITLE] [w/WEBSITE]</code><br>
-For Contacts, format: <code>editdetails INDEX [c/COMPANY] [d/DEPARTMENT] [t/TITLE]</code></p>
+For Leads, format: <code>editdetails INDEX [c/COMPANY] [i/INDUSTRY] [r/RATING (number from 1 to 5)] [t/TITLE] [w/WEBSITE]</code><br></p>
+</div>
+<div class="paragraph">
+<p>For Contacts, format: <code>editdetails INDEX [c/COMPANY] [d/DEPARTMENT] [t/TITLE]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -166,7 +168,7 @@ Edits the department of the 2nd person to be <code>IT</code> and sets the title 
 <div class="sect2">
 <h3 id="converting-a-person-code-con-code-code-convert-code"><a class="link" href="#converting-a-person-code-con-code-code-convert-code">Converting a person : <code>con</code>, <code>convert</code></a></h3>
 <div class="paragraph">
-<p>Converts an existing Lead in the address book to a Contact. For further description of Leads and Contacts, see the Introduction<br>
+<p>Converts an existing Lead in the CRM Book to a Contact. For further description of Leads and Contacts, see the Introduction<br>
 Format: <code>con INDEX</code>, <code>convert INDEX</code></p>
 </div>
 <div class="sidebarblock">
@@ -254,7 +256,7 @@ Adds the Account Macrosoft to the 2nd person in the list</p>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p>People in the address book were stored under a single class with no options for differentiating between two types of classes.</p>
+<p>People in the CRM Book were stored under a single class with no options for differentiating between two types of classes.</p>
 </div>
 <div class="paragraph">
 <p>To implement a CRM Book, Leads and Contacts must be differentiated so that they can each hold different fields like a proper CRM Book. To do so, they currently extend the Person class so that all existing functionality associated with Persons will work with both Leads an Contacts. Unique fields will be given their own classes like the original generic fields like Name and Address.</p>
@@ -379,7 +381,7 @@ Adds the Account Macrosoft to the 2nd person in the list</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 11:56:32 UTC
+Last updated 2018-04-15 12:12:19 UTC
 </div>
 </div>
 </body>

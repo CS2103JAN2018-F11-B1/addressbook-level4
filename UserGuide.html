@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<meta name="author" content="By: `Team SE-EDU` Since: `Jun 2016` Licence: `MIT`">
+<meta name="author" content="By: `Team F11-B1` Since: `Jan 2018` Licence: `MIT`">
 <title>CRM Book - User Guide</title>
 <link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -15,7 +15,7 @@
 <div id="header">
 <h1>CRM Book - User Guide</h1>
 <div class="details">
-<span id="author" class="author">By: `Team SE-EDU` Since: `Jun 2016` Licence: `MIT`</span><br>
+<span id="author" class="author">By: `Team F11-B1` Since: `Jan 2018` Licence: `MIT`</span><br>
 </div>
 </div>
 <div id="content">
@@ -70,7 +70,7 @@ This app will not work with earlier versions of Java 8.
 <p>Download the latest <code>crmbook.jar</code> <a href="https://github.com/CS2103JAN2018-F11-B1/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
+<p>Copy the file to the folder you want to use as the home folder for your CRM Book.</p>
 </li>
 <li>
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
@@ -92,7 +92,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>list</code></strong> : lists all Leads and Contacts</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a Lead named <code>John Doe</code> to the Address Book.</p>
+<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a Lead named <code>John Doe</code> to the CRM Book.</p>
 </li>
 <li>
 <p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd person shown in the current list</p>
@@ -125,10 +125,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>In v 1.4: Added Accounts. Made CRMBook look nicer.</p>
 </li>
 <li>
-<p>In v 1.5: Able to find phone numbers. Able to change theme dynamically.</p>
+<p>In v 1.5: Able to find phone numbers. Able to change theme dynamically. Able to set office location and view directions via Google Maps. There are multiple themes for user to choose from.</p>
 </li>
 <li>
-<p>Coming in v2.0: Functional CRM, with Leads, Contacts, and Accounts. Events (such as meetings) play a role in alerting salesperson if a person needs to be reached out to. Data enrichment. Google Maps integration to show a salesperson how to get to a Lead&#8217;s office. There are multiple themes for user to choose from. Google Maps. Adds a parent company tag to Leads and Contacts if their company has a parent company. Example: Leads and Contacts from Skype and Nokia will have an additional tag called Microsoft.</p>
+<p>Coming in v2.0: Functional CRM, with Leads, Contacts, and Accounts. Events (such as meetings) play a role in alerting salesperson if a person needs to be reached out to. Data enrichment. Adds a parent company tag to Leads and Contacts if their company has a parent company. Example: Leads and Contacts from Skype and Nokia will have an additional tag called Microsoft.</p>
 </li>
 </ul>
 </div>
@@ -264,7 +264,7 @@ Format: <code>disp Lead</code>, <code>display Lead</code>, <code>disp Contact</c
 <div class="sect2">
 <h3 id="editing-a-person-code-e-code-code-edit-code"><a class="link" href="#editing-a-person-code-e-code-code-edit-code">3.7. Editing a person : <code>e</code>, <code>edit</code></a></h3>
 <div class="paragraph">
-<p>Edits an existing Lead or Contact in the address book.<br>
+<p>Edits an existing Lead or Contact in the CRM Book.<br>
 Format: <code>e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code>, <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
@@ -314,8 +314,10 @@ Edits the phone number and email address of the 1st person to be <code>99990000<
 <h3 id="adding-nonessential-details-of-a-person-code-adddetails-code"><a class="link" href="#adding-nonessential-details-of-a-person-code-adddetails-code">3.8. Adding nonessential details of a person : <code>adddetails</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing person in the CRM Book.<br>
-For Leads, format: <code>adddetails INDEX [c/COMPANY] [i/INDUSTRY] [r/RATING (number from 1 to 5)] [t/TITLE] [w/WEBSITE]</code><br>
-For Contacts, format: <code>adddetails INDEX [c/COMPANY] [d/DEPARTMENT] [t/TITLE]</code></p>
+For Leads, format: <code>adddetails INDEX [c/COMPANY] [i/INDUSTRY] [r/RATING (number from 1 to 5)] [t/TITLE] [w/WEBSITE]</code><br></p>
+</div>
+<div class="paragraph">
+<p>For Contacts, format: <code>adddetails INDEX [c/COMPANY] [d/DEPARTMENT] [t/TITLE]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -351,8 +353,10 @@ Sets the department of the 2nd person to be <code>IT</code> and sets the title t
 <h3 id="editing-nonessential-details-of-a-person-code-editdetails-code"><a class="link" href="#editing-nonessential-details-of-a-person-code-editdetails-code">3.9. Editing nonessential details of a person : <code>editdetails</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing person in the CRM Book.<br>
-For Leads, format: <code>editdetails INDEX [c/COMPANY] [i/INDUSTRY] [r/RATING (number from 1 to 5)] [t/TITLE] [w/WEBSITE]</code><br>
-For Contacts, format: <code>editdetails INDEX [c/COMPANY] [d/DEPARTMENT] [t/TITLE]</code></p>
+For Leads, format: <code>editdetails INDEX [c/COMPANY] [i/INDUSTRY] [r/RATING (number from 1 to 5)] [t/TITLE] [w/WEBSITE]</code><br></p>
+</div>
+<div class="paragraph">
+<p>For Contacts, format: <code>editdetails INDEX [c/COMPANY] [d/DEPARTMENT] [t/TITLE]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -390,7 +394,7 @@ Edits the department of the 2nd person to be <code>IT</code> and sets the title 
 <div class="sect2">
 <h3 id="converting-a-person-code-con-code-code-convert-code"><a class="link" href="#converting-a-person-code-con-code-code-convert-code">3.10. Converting a person : <code>con</code>, <code>convert</code></a></h3>
 <div class="paragraph">
-<p>Converts an existing Lead in the address book to a Contact. For further description of Leads and Contacts, see the Introduction<br>
+<p>Converts an existing Lead in the CRM Book to a Contact. For further description of Leads and Contacts, see the Introduction<br>
 Format: <code>con INDEX</code>, <code>convert INDEX</code></p>
 </div>
 <div class="sidebarblock">
@@ -511,7 +515,7 @@ Returns the Lead or Contact with the email address <code>johntan@gmail.com</code
 <div class="sect2">
 <h3 id="deleting-a-person-code-d-code-code-delete-code"><a class="link" href="#deleting-a-person-code-d-code-code-delete-code">3.13. Deleting a person : <code>d</code>, <code>delete</code></a></h3>
 <div class="paragraph">
-<p>Deletes the specified person from the address book.<br>
+<p>Deletes the specified person from the CRM Book.<br>
 Format: <code>d INDEX</code>, <code>delete INDEX</code></p>
 </div>
 <div class="sidebarblock">
@@ -659,7 +663,7 @@ Format: <code>hist</code>, <code>history</code></p>
 <div class="sect2">
 <h3 id="undoing-previous-command-code-u-code-code-undo-code"><a class="link" href="#undoing-previous-command-code-u-code-code-undo-code">3.17. Undoing previous command : <code>u</code>, <code>undo</code></a></h3>
 <div class="paragraph">
-<p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
+<p>Restores the CRM Book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>u</code>, <code>undo</code></p>
 </div>
 <div class="admonitionblock note">
@@ -798,7 +802,7 @@ Example: <code>changetheme light</code></p>
 <div class="sect2">
 <h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.24. Saving the data</a></h3>
 <div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
+<p>CRM Book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
@@ -953,7 +957,7 @@ e.g.<code>s 1</code>, <code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 11:56:32 UTC
+Last updated 2018-04-15 12:12:19 UTC
 </div>
 </div>
 </body>
