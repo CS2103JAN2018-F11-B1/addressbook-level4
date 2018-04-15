@@ -284,7 +284,7 @@ Success of this command is also dependent on the success of Google intepreting t
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> handleLinkedInAuthentication() {
     <span class="keyword">try</span> {
-        Oauth2Client.authenticateWithLinkedIn(config);
+        Oauth2Client.authenticateWithLinkedIn();
     } <span class="keyword">catch</span> (<span class="exception">IOException</span> e) {
         e.printStackTrace();
     }
@@ -293,7 +293,7 @@ Success of this command is also dependent on the success of Google intepreting t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> authenticateWithLinkedIn(Config configuration) <span class="directive">throws</span> <span class="exception">IOException</span> {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> authenticateWithLinkedIn() <span class="directive">throws</span> <span class="exception">IOException</span> {
     ...
     String urlString = <span class="string"><span class="delimiter">&quot;</span><span class="content">https://www.linkedin.com/oauth/v2/authorization?response_type=code&amp;client_id=</span><span class="delimiter">&quot;</span></span>
         + clientId + <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;redirect_uri=</span><span class="delimiter">&quot;</span></span> + redirectUri + <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;state=...</span><span class="delimiter">&quot;</span></span>;
@@ -375,13 +375,178 @@ ConfigUtil.saveConfig(config, config.DEFAULT_CONFIG_FILE);</code></pre>
 <p>Pros: Higher security, app secret not stored on GitHub</p>
 </li>
 <li>
-<p>Cons: Significantly harder to implement. Requires user to have a username and password for the server not stored on GitHub.
-<strong>Additional Info:</strong> See comments on Decrypter class for full argument</p>
+<p>Cons: Significantly harder to implement. Requires user to have a username and password for the server not stored on GitHub.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 3:</strong> Store the App Secret in plain text</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Much easier to code and implement</p>
+</li>
+<li>
+<p>Cons: Bad security, secret will likely end up in a paste database somewhere in the internet</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="share-to-linkedin-feature"><a class="link" href="#share-to-linkedin-feature">Share to LinkedIn Feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>When the linkedin_share command is executed, it will call the Config class to get a current copy of the configurations used by the Application. It will also set the boolean value of postSuccess to false. This boolean value will be used to determine if we managed to successfully post to LinkedIn.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> postToLinkedIn() {
+    Config config = Config.setupConfig();
+    postSuccess = <span class="predefined-constant">false</span>;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next, we create a JSON Object that LinkedIn requires, specifying the visibility (privacy) of the post, and the actual content of the post. By default, we set the visibility to be 'anyone', or in Facebook terms, 'Public'. An overview on LinkedIn&#8217;s share API can be found at <a href="https://developer.linkedin.com/docs/share-on-linkedin" class="bare">https://developer.linkedin.com/docs/share-on-linkedin</a></p>
+</div>
+<div class="paragraph">
+<p>With the JSON Object and the access_token taken from the user&#8217;s configuration file, we create a HttpPost Object and HttpClient Object, send it to LinkedIn, and analyze the response. In particular, if the response contains an updateUrl, it means that the post has been successfully posted, and we update the boolean value of postSuccess to true.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">HttpPost httppost = getHttpPostObject(jsonToSend, accessToken);
+HttpClient httpclient = getHttpClientObject();
+JSONObject linkedInResponse = sendHttpRequestToLinkedIn(httppost, httpclient);
+logger.info(<span class="string"><span class="delimiter">&quot;</span><span class="content">LinkedIn Response is : </span><span class="delimiter">&quot;</span></span> + linkedInResponse.toString());
+<span class="keyword">if</span> (linkedInResponse.has(<span class="string"><span class="delimiter">&quot;</span><span class="content">updateUrl</span><span class="delimiter">&quot;</span></span>) || linkedInResponse.has(<span class="string"><span class="delimiter">&quot;</span><span class="content">updateURL</span><span class="delimiter">&quot;</span></span>)) {
+    <span class="comment">//if has updateURL then it successfully got posted</span>
+    logger.info(<span class="string"><span class="delimiter">&quot;</span><span class="content">Post has been successfully posted</span><span class="delimiter">&quot;</span></span>);
+    postSuccess = <span class="predefined-constant">true</span>;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally we use the postSuccess value to determine if we send a success or failed message to the user.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the command works</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/LinkedInShareSequenceDiagram.png" alt="LinkedInShareSequenceDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-allowing-salesperson-to-set-privacy-level-of-their-post"><a class="link" href="#aspect-allowing-salesperson-to-set-privacy-level-of-their-post">Aspect: Allowing salesperson to set privacy level of their post</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Only option is 'anyone'</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Salesperson always wants to share to as many people as possible. Reduces complexity of command and/or save on a command to set a default level of visibility.</p>
+</li>
+<li>
+<p>Cons: Salesperson is limited to only posting public posts using CRM Book</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Allow salesperson to set a default visibility option using another command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Salesperson has greater flexibility in setting the visibility type of their post.</p>
+</li>
+<li>
+<p>Cons: Have to write a new command that may not be used.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 3:</strong> Allow salesperson to specify visibility in share command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Salesperson has the greatest level flexibility in setting the visibility type of their post.</p>
+</li>
+<li>
+<p>Cons: Increases complexity of the command</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-a-location-for-google-maps"><a class="link" href="#saving-a-location-for-google-maps">Saving a location for Google Maps</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
+<div class="paragraph">
+<p>To save a location in Google Maps, it does not matter whether CRM Book already has a pre-existing address. Rather, we always overwrite the config file to be updated with the latest address.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">Config initializedConfig = Config.setupConfig();
+initializedConfig.setUserLocation(address.toString());</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the command works</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SaveGoogleLocationSequenceDiagram.png" alt="SaveGoogleLocationSequenceDiagram" width="800">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="view-directions-to-a-client-s-office"><a class="link" href="#view-directions-to-a-client-s-office">View directions to a Client&#8217;s office</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The current implementation of this feature is the same as when a person card is changed (Like the select command). The difference is that if the config file states that a user&#8217;s office location has been set, then load Google maps instead of doing a Google Search.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Subscribe</span>
+<span class="directive">private</span> <span class="type">void</span> handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
+    getConfig();
+    logger.info(LogsCenter.getEventHandlingLogMessage(event));
+    <span class="comment">//if person has no home location set</span>
+    <span class="keyword">if</span> (config.getUserLocation() == <span class="predefined-constant">null</span> || config.getUserLocation().length() == <span class="integer">0</span>) {
+        logger.info(<span class="string"><span class="delimiter">&quot;</span><span class="content">No office location set, doing Google search</span><span class="delimiter">&quot;</span></span>);
+        loadPersonPage(event.getNewSelection().person);
+    } <span class="keyword">else</span> {
+        <span class="predefined-type">String</span> url = generateUrl(config.getUserLocation(), event.getNewSelection().person.getAddress().toString());
+        logger.info(<span class="string"><span class="delimiter">&quot;</span><span class="content">Office location set, Load Google Maps. URL IS </span><span class="delimiter">&quot;</span></span> + url);
+        loadPage(url);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how this feature works. The select command is used only if the user activated it via commandline. However, clicking on another person card without using the select command will work as well.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/LoadGoogleMapsSequenceDiagram.png" alt="LoadGoogleMapsSequenceDiagram" width="800">
 </div>
 </div>
 </div>
@@ -391,7 +556,7 @@ ConfigUtil.saveConfig(config, config.DEFAULT_CONFIG_FILE);</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 11:27:28 UTC
+Last updated 2018-04-15 11:44:24 UTC
 </div>
 </div>
 </body>
